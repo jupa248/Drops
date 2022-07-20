@@ -1,16 +1,16 @@
-.homepage {
+.landingPage {
     height: 100%;
     position: absolute;
     width: 100%;
   }
   
-  .homepage-logo {
+  .landingPage-logo {
     width: 150px;
     position: relative;
     top: 30px;
   }
   
-  .homepage-login {
+  .landingPage-login {
     display: flex;
     flex-direction: column;
     align-items: center;

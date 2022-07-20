@@ -9,7 +9,7 @@ const LandingPage = () => {
   return (
     <>
       <div className="bg-img">
-        <div className="homepage-login">
+        <div className="landingPage-login">
           <div className="login-container">
             <Login />
           </div>
