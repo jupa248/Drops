@@ -1,0 +1,18 @@
+.nav-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: linear-gradient(360deg, rgba(61,62,55,0.4) 0%, rgba(97,5,5,0.7) 100%);
+    background-color: transparent;
+    height: 2.5rem;
+    align-items: center;
+    color: antiquewhite;
+}
+
+.logo {
+    justify-self: center;
+}
+
+.my-notes {
+    justify-self: end;
+    margin-right: 1rem;
+}

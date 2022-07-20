@@ -1,9 +1,10 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Login from "./components/Login";
 import Signup from "./components/Signup";
-import Profile from "./components/Profile";
+import HomePage from "./components/HomePage";
 import AuthContextProvider from "./contexts/AuthContext";
+import LandingPage from "./components/LandingPage"
+import "./App.css"
 
 // ! FALTA CRIAR OS PROTECTED ROUTES!!
 
@@ -13,9 +14,9 @@ function App() {
       <AuthContextProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/login" element={<Login/>} />
+            <Route path="/login" element={<LandingPage/>} />
             <Route path="/signup" element={<Signup/>} />
-            <Route path="/profile" element={<Profile/>} />
+            <Route path="/homepage" element={<HomePage/>} />
             <Route path="*" element={<Navigate to="/login" replace/>} />
           </Routes>
         </BrowserRouter>

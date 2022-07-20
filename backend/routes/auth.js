@@ -158,25 +158,23 @@ router.post("/signup", (req, res) => {
 
 //! this route only used to check if the token already exists in browser
 //? http://localhost:5000/auth/verify-token
-router.get("/verify-token", async (req, res) => {
-  console.log("first")
-  //* take the token from the browser
-  const token = req.headers.authorization.split(" ")[1];
-  console.log("token", token)
-  //* there is no token
-  if (!token) {
-    return res.status(401).json("You need to Login");
-  }
-  //* if exists, decrypt token to get the user
-  const decryptedUser = await jwt.verify(token, process.env.PRIVATE_KEY);
-  //* find user on DB
-  User.findOne((err, results) => {
-    //* if user is not found
-    if (err) res.status(500).json(err.toString());
-    //* if exists user, take out password from object and send it
-    const { hashedPassword, ...user } = results;
-    res.status(200).send(user);
-  }, decryptedUser);
-});
+// router.get("/verify-token", async (req, res) => {
+//   //* take the token from the browser
+//   const token = req.headers.authorization.split(" ")[1];
+//   //* there is no token
+//   if (!token) {
+//     return res.status(401).json("You need to Login");
+//   }
+//   //* if exists, decrypt token to get the user
+//   const decryptedUser = await jwt.verify(token, process.env.PRIVATE_KEY);
+//   //* find user on DB
+//   User.findOne((err, results) => {
+//     //* if user is not found
+//     if (err) res.status(500).json(err.toString());
+//     //* if exists user, take out password from object and send it
+//     const { hashedPassword, ...user } = results;
+//     res.status(200).send(user);
+//   }, decryptedUser);
+// });
 
 module.exports = router;
