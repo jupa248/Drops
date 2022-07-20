@@ -12,7 +12,9 @@ function Signup() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    console.log("user", state)
     axios.post('/auth/signup', state).then((response) => {
+      console.log("response", response)
       alert('User has been registered')
       navigate('/login')
     })

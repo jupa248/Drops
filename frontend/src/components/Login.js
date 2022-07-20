@@ -20,7 +20,7 @@ function Login() {
     axios.post('/auth/login', state).then((response) => {
       setUser(response.data)
       setAuth(true)
-      alert('User is logged')
+     // alert('User is logged')
       navigate('/profile')
 
     })

@@ -128,6 +128,8 @@ router.post("/login", (req, res) => {
 //? http://localhost:5000/auth/signup
 router.post("/signup", (req, res) => {
   const { email } = req.body;
+  console.log("email", email)
+  console.log("req", req.body)
   let validationErrors = null;
   //* check if the email already exists
   User.findByEmail(email)
@@ -157,14 +159,16 @@ router.post("/signup", (req, res) => {
 //! this route only used to check if the token already exists in browser
 //? http://localhost:5000/auth/verify-token
 router.get("/verify-token", async (req, res) => {
+  console.log("first")
   //* take the token from the browser
   const token = req.headers.authorization.split(" ")[1];
+  console.log("token", token)
   //* there is no token
   if (!token) {
     return res.status(401).json("You need to Login");
   }
   //* if exists, decrypt token to get the user
-  const decryptedUser = await jwt.verify(token, process.env.JWT_SECRET);
+  const decryptedUser = await jwt.verify(token, process.env.PRIVATE_KEY);
   //* find user on DB
   User.findOne((err, results) => {
     //* if user is not found
