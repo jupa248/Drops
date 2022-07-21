@@ -21,18 +21,27 @@ function HomePage() {
           <div>
             {/* <h2>Top Rated:</h2> */}
           {wines.filter((wine) => wine.points === 99).map(
-        (wine) => (
+            (wine) => (
               <TopWines {...wine} />
           )
           )}
           </div>
-          
+          <div>
+            <ul>
+              {wines.filter((wine) => wine.points === 98).map(
+                (wine) => (
+                  <li>{wine.title}</li>
+                  )
+                  )}
+                  </ul>
+          </div>
          
         </div>
       </div>
     </div>
   )  
 }
+
 
 export default HomePage;
 
