@@ -55,7 +55,7 @@ const create = ({ email, password, firstname, lastname, city, language }) => {
         language,
       })
       .then(([result]) => {
-        // console.log(result);
+       
         const id = result.insertId;
         return { email, firstname, lastname, city, language, id };
       });

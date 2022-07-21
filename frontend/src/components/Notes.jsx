@@ -8,19 +8,18 @@ import {useNavigate} from 'react-router-dom'
 
 
 function Notes() {
-    const [notes, setNotes] = useState({})
+    const [notes, setNotes] = useState([])
     const navigate = useNavigate()
 
     const handleChange = (event) => {
-      const {value, title} = event.target
-      setNotes({...notes, [title]:value})
+      const {value, name} = event.target
+      setNotes({...notes, [name]:value})
     }
   
     
     const handleSubmission = (event) => {
         event.preventDefault()
-        console.log("note", notes)
-        axios.post("/notes/insert", notes).then((response) => {
+        axios.post("/notes/notes-insert", [notes]).then((response) => {
             console.log("response", response)
             alert('Note has been registered')
             navigate('/homepage')
@@ -29,24 +28,24 @@ function Notes() {
             alert(error)
         })
     }
-        const handleSearch = (event) => {
-            const {value} = event.target
-            const filteredWines = wines.filter(wine => wine.title.toLowerCase().includes(value.toLowerCase()))
-            console.log(filteredWines)
-            setNotes(filteredWines)
-        }
+        // const handleSearch = (event) => {
+        //     const {value} = event.target
+        //     const filteredWines = wines.filter(wine => wine.title.toLowerCase().includes(value.toLowerCase()))
+        //     console.log(filteredWines)
+        //     setNotes(filteredWines)
+        // }
 
     return (
 
       <div className="notes-container" >
         <form onSubmit={handleSubmission}>
             <label>Wine</label>
-            <input type="text" placeholder="Search" onChange={handleSearch}/>
+            <input name="wine" type="text" onChange={handleChange}/>
             <label>Date</label>
             <input name='date' type='date' onChange={handleChange}/>
             <label>Price</label>
             <input name='price' type='number' onChange={handleChange}/>
-            <label>Year</label>
+            <label>Year</label> 
             <input name='year' type='number'onChange={handleChange}/>
             <label>Variety</label>
             <input name='variety' type='text' onChange={handleChange}/>
@@ -64,6 +63,8 @@ function Notes() {
             <input name='taste' type='text' onChange={handleChange}/>
             <label>Finish</label>
             <input name='finish' type='text' onChange={handleChange}/>
+            <label>My notes</label>
+            <textarea name='notes' type='text' onChange={handleChange}/>
             <button type="submit" className="notes-button">Save</button>
         </form>
       </div>

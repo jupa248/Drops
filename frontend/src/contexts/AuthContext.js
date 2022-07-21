@@ -9,17 +9,6 @@ export default function AuthContextProvider(props) {
   const [auth, setAuth] = React.useState(false);
   const [user, setUser] = React.useState({})
 
-  // useEffect(() => {
-  //   axios.get('/auth/verify-token', config ).then((response) => {
-  //     console.log("response", response)
-  //     setUser(response.data)
-  //     setAuth(true)
-  //   })
-  //   // .catch((error) => {
-  //   //     setAuth(false)
-  //   //     Cookies.remove('user_token')
-  //   // })
-  // },[])
   
   return (
     <AuthContext.Provider 

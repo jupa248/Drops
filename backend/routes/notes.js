@@ -1,10 +1,11 @@
-const notesRouter = require("express").Router();
+const router = require("express").Router();
 const Notes = require("../models/notes");
 
-notesRouter.get("/notes", (req, res) => {
+router.get("/notes", (req, res) => {
   Notes.findAllnotes()
     .then((results) => {
       res.json(results);
+      console.log(results);
     })
     .catch((err) => {
       console.error(err);
@@ -12,7 +13,7 @@ notesRouter.get("/notes", (req, res) => {
     });
 });
 
-notesRouter.post("/insert", (req, res) => {
+router.post("/notes-insert", (req, res) => {
   Notes.createNotes(req.body)
     .then((result) => {
       res.json(result);
@@ -25,4 +26,4 @@ notesRouter.post("/insert", (req, res) => {
 
 
 
-module.exports = notesRouter;
+module.exports = router;

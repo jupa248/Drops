@@ -128,8 +128,7 @@ router.post("/login", (req, res) => {
 //? http://localhost:5000/auth/signup
 router.post("/signup", (req, res) => {
   const { email } = req.body;
-  console.log("email", email)
-  console.log("req", req.body)
+ 
   let validationErrors = null;
   //* check if the email already exists
   User.findByEmail(email)

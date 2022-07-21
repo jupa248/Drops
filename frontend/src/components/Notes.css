@@ -60,3 +60,14 @@
     align-self: center;
 }
 
+.notes-container form input {
+    color: antiquewhite;
+}
+
+.notes-container textarea {
+    background: transparent;
+    color:antiquewhite;
+    border: solid 1px #D8BFD8;
+    border-radius: 10px;
+    height: 5rem;
+}

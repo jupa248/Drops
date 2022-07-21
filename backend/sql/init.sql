@@ -27,7 +27,7 @@ CREATE TABLE `notes` (
     `winery` VARCHAR(80),
     `region` VARCHAR(40),
     `color` VARCHAR(40) NOT NULL,
-    `Aroma` VARCHAR(40),
+    `aroma` VARCHAR(40),
     `body` VARCHAR(40),
     `taste` VARCHAR(55) NOT NULL,
     `finish` VARCHAR(55) NOT NULL,
