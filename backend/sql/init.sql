@@ -16,3 +16,21 @@ CREATE TABLE users
 language VARCHAR
 (90)
 );
+
+CREATE TABLE `notes` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `wine` VARCHAR(40) NOT NULL,
+    `date` DATE NOT NULL,
+    `price` VARCHAR(40) NOT NULL,
+    `year` VARCHAR(40) NOT NULL,
+    `variety` VARCHAR(40) NOT NULL,
+    `winery` VARCHAR(80),
+    `region` VARCHAR(40),
+    `color` VARCHAR(40) NOT NULL,
+    `Aroma` VARCHAR(40),
+    `body` VARCHAR(40),
+    `taste` VARCHAR(55) NOT NULL,
+    `finish` VARCHAR(55) NOT NULL,
+    `my-notes` VARCHAR(255),
+    PRIMARY KEY (`id`)
+  ) ENGINE = InnoDB AUTO_INCREMENT = 1 DEFAULT CHARSET = utf8;

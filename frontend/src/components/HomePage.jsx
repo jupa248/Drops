@@ -17,19 +17,17 @@ function HomePage() {
       <NavBar />
       <div className="homepage">
         <div className="home-bg">
-          {wines.map((wine, title) => (
             
-          <div className="top-wines">
-           {
-             (wine.points > 98 ? (
+          <div>
+            {/* <h2>Top Rated:</h2> */}
+          {wines.filter((wine) => wine.points === 99).map(
+        (wine) => (
               <TopWines {...wine} />
-            ) : (
-              null)
           )
-           }
+          )}
           </div>
           
-          ))}
+         
         </div>
       </div>
     </div>

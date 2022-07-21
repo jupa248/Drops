@@ -3,6 +3,7 @@ const app = express();
 const connection = require("./config");
 const authRouter = require("./routes/auth");
 const passwordRouter = require("./routes/passwordManagement");
+const notesRouter = require("./routes/notes")
 
 const port = process.env.PORT || 5001;
 
@@ -15,6 +16,7 @@ app.use(express.json());
 
 app.use("/auth", authRouter);
 app.use("/password", passwordRouter);
+app.use("/notes", notesRouter);
 
 app.listen(port, (err) => {
   if (err) throw err;

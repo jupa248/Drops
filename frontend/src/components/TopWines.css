@@ -1,10 +1,36 @@
 .top-wines-container {
     display: flex;
-    height: 40%;
-    width: 80%;
+    flex-direction: column;
+    /* height: 40%;
+    width: 80%; */
+    margin: 2.5rem;
+}
+
+.top-rated {
+    background: linear-gradient(360deg, rgba(61,62,55,0.7) 0%, rgba(97,5,5,0.7) 100%);
+    border-radius: 10px 10px 0 0;
+    color:antiquewhite;
+    width: 25%;
+    padding: 4px;
 }
 
 .top-wines {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    border-radius: 0 15px 15px 15px;
+    background: linear-gradient(360deg, rgba(61,62,55,0.7) 0%, rgba(97,5,5,0.7) 100%);
+    padding: 1.5rem;
+    justify-items: center;
+    justify-content: center;
+    color:antiquewhite
+}
+
+.wine-img {
+    height: 35vh;
+    width: 35vw;
+}
+
+.wine-img img {
+    height: 100%;
+    width: 100%;
 }

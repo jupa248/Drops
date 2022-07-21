@@ -1,17 +1,12 @@
-.homepage {
-    height: 100%;
+.myNotespage {
     position: absolute;
     width: 100%;
-  }
-
-.homepage h2 {
-  color:antiquewhite;
-}
-
-.home-bg {
     background-image: url('https://i.ibb.co/gJ1dcLX/dan-cristian-padure-LDMgqr8z7-ZE-unsplash.jpg');
     opacity: 0.8;
     background-size: cover;
     position: absolute;
     width: 100%;
-}
+    
+  }
+
+

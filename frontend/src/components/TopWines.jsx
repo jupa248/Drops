@@ -4,29 +4,34 @@ import "./TopWines.css";
 
 //create wine cards
 
-const TopWines = () => {
+
+
+const TopWines = (props) => {
+
+    const {points, title, price, designation, variety, region_1, province, country, winery, image} = props;
+
     return (
         <div className="top-wines-container">
-        {wines.map((wine, title) => (
+            <div className="top-rated">Top rated</div>
             <div className="top-wines">
-                <p>{wine.points}</p>
-                <p>{wine.title}</p>
-                <p>{wine.description}</p>
-                <p>{wine.price}</p>
-                <p>{wine.designation}</p>
-                <p>{wine.variety}</p>
-                <p>{wine.region_1}</p>
-                <p>{wine.region_2}</p>
-                <p>{wine.province}</p>
-                <p>{wine.country}</p>
-                <p>{wine.winery}</p>
-            </div>&&
-            <div>
-                <img src={wine.image} alt=""/>
+                <div>
+                    <p>Points: {points}</p>
+                    <p>Name: {title}</p>
+                    <p>Price: {price}</p>
+                    <p>Designation: {designation}</p>
+                    <p>Variety: {variety}</p>
+                    <p>Region: {region_1}</p>
+                    <p>Province: {province}</p>
+                    <p>Country: {country}</p>
+                    <p>Winery: {winery}</p>
+                </div>
+                <div className="wine-img">
+                    <img src={image} alt=""/>
+                </div>
             </div>
-        ))}
         </div>
     );
     }
+
 
     export default TopWines;
