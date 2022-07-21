@@ -1,4 +1,4 @@
-.myNotespage {
+.notesPage {
     position: absolute;
     width: 100%;
     background-image: url('https://i.ibb.co/gJ1dcLX/dan-cristian-padure-LDMgqr8z7-ZE-unsplash.jpg');
@@ -7,7 +7,8 @@
     position: absolute;
     width: 100%;
     
-  }
+}
+
 
 
 .myNotes-container {
@@ -23,4 +24,29 @@
 .myNotes-container p {
     color:antiquewhite;
     background: transparent;
+}
+
+
+@media only screen and (min-width: 1024px) {
+    
+    .notes {
+        display: flex;
+        justify-content: center;
+    }
+
+    .myNotes-container {
+        width: 80%;
+        height: 100%;
+        margin: 1rem;
+    }
+
+    .myNotespage {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+    }
+
+    .myNotes {
+        height: 100%;
+    }
 }

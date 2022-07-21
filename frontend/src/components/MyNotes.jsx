@@ -32,31 +32,33 @@ const MyNotes = () => {
     
     
     return (
-      <div className="myNotespage">
+      <div className="notesPage">
             <NavBar />
-
+              <h2>My notes</h2>
+            <div className="myNotespage">
                 {data.map((note, id) => note.id < 5 ? (
-                  
-                  <div className="myNotes-container">
-                        <p>Name: {note.wine}</p>
-                        <p>Tasting date: {note.date}</p>
-                        <p>Price: €{note.price}</p>
-                        <p>Year: {note.year}</p>
-                        <p>Variety: {note.variety}</p>
-                        <p>Winery: {note.winery}</p>
-                        <p>Country/Region: {note.region}</p>
-                        <p>Color: {note.color}</p>
-                        <p>Aroma: {note.aroma}</p>
-                        <p>Body: {note.body}</p>
-                        <p>Taste: {note.taste}</p>
-                        <p>Finish: {note.finish}</p>
-                        <p>My notes: {note.mynotes}</p>
+                 <div className="myNotes"> 
+                    <div className="myNotes-container">
+                          <p>Name: {note.wine}</p>
+                          <p>Tasting date: {note.date}</p>
+                          <p>Price: €{note.price}</p>
+                          <p>Year: {note.year}</p>
+                          <p>Variety: {note.variety}</p>
+                          <p>Winery: {note.winery}</p>
+                          <p>Country/Region: {note.region}</p>
+                          <p>Color: {note.color}</p>
+                          <p>Aroma: {note.aroma}</p>
+                          <p>Body: {note.body}</p>
+                          <p>Taste: {note.taste}</p>
+                          <p>Finish: {note.finish}</p>
+                          <p>My notes: {note.mynotes}</p>
+                      </div>
                     </div>
-                    
                 )
                 : null)}
-            
-            <div>
+            </div>
+              <h2>Create your own notes</h2>
+            <div className="notes">
                 <Notes />
             </div>    
         </div>

@@ -16,6 +16,7 @@
     background: linear-gradient(360deg, rgba(61,62,55,0.7) 0%, rgba(97,5,5,0.7) 100%);
     padding: 1.5rem;
     margin-top: 2rem;
+    line-height: 2rem;
 }
 
 .signup-container input {
@@ -60,3 +61,14 @@
     align-self: center;
 }
 
+@media only screen and (min-width: 1024px) {
+    .signup-container {
+        width: 40%;
+    }
+
+    .signup-img {   
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

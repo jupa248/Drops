@@ -3,18 +3,19 @@
     grid-template-columns: 1fr 1fr;
     background: linear-gradient(360deg, rgba(61,62,55,0.4) 0%, rgb(96, 6, 6) 50%);
     background-color: transparent;
-    height: 4rem;
+    height: 6rem;
     align-items: center;
     color: antiquewhite;
 }
 
 .logo {
-    justify-self: start;
+    justify-self: end;
 }
 
 .logo img {
-    height: 4rem;
-    width: 80%;
+    height: 5rem;
+    width: 100%;
+    border-radius: 50%;
 }
 
 .my-notes {

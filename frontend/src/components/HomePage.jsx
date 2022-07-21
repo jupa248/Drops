@@ -26,14 +26,15 @@ function HomePage() {
           )
           )}
           </div>
-          <div>
+          <div className="top-list">
+            <h2>Top List:</h2>
             <ul>
               {wines.filter((wine) => wine.points === 98).map(
                 (wine) => (
                   <li>{wine.title}</li>
                   )
                   )}
-                  </ul>
+                </ul>
           </div>
          
         </div>

@@ -18,9 +18,16 @@
     width: 100%;
 }
 
-
-.home-bg ul li {
+.top-list {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(360deg, rgba(61,62,55,0.7) 0%, rgba(97,5,5,0.7) 100%);
+  padding: 1.5rem;
   color:antiquewhite;
+}
+
+.home-bg ul {
+  margin-top: 2rem;
 }
 
 @media only screen and (min-width: 1024px) {
