@@ -4,6 +4,7 @@
     /* height: 40%;
     width: 80%; */
     margin: 2.5rem;
+    padding-top: 3rem;
 }
 
 .top-rated {
@@ -26,11 +27,47 @@
 }
 
 .wine-img {
-    height: 35vh;
-    width: 35vw;
+    height: 40vh;
+    width: 70vw;
 }
 
 .wine-img img {
     height: 100%;
     width: 100%;
+    
+}
+
+.description {
+    display: none;
+}
+
+@media only screen and (min-width: 1024px) {
+    .top-wines-container {
+        width: 50%;
+    }
+    
+    .top-wines {
+        display: flex;
+    }
+
+    .wine-img {
+        height: 30vh;
+        width: 20vw;
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+
+    }
+
+    .wine-img img {
+        margin-left: 1.5rem;
+    }
+
+    .description {
+        display: contents;
+    }
+
+    .top-wines-text {
+        max-width: 50%;
+    }
 }

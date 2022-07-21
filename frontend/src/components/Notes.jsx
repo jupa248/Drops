@@ -43,7 +43,7 @@ function Notes() {
             <input name="wine" type="text" onChange={handleChange}/>
             <label>Date</label>
             <input name='date' type='date' onChange={handleChange}/>
-            <label>Price</label>
+            <label>Price €€€</label>
             <input name='price' type='number' onChange={handleChange}/>
             <label>Year</label> 
             <input name='year' type='number'onChange={handleChange}/>
@@ -64,7 +64,7 @@ function Notes() {
             <label>Finish</label>
             <input name='finish' type='text' onChange={handleChange}/>
             <label>My notes</label>
-            <textarea name='notes' type='text' onChange={handleChange}/>
+            <textarea name='mynotes' type='text' onChange={handleChange}/>
             <button type="submit" className="notes-button">Save</button>
         </form>
       </div>

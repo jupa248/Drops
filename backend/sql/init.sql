@@ -31,6 +31,6 @@ CREATE TABLE `notes` (
     `body` VARCHAR(40),
     `taste` VARCHAR(55) NOT NULL,
     `finish` VARCHAR(55) NOT NULL,
-    `my-notes` VARCHAR(255),
+    `mynotes` VARCHAR(255),
     PRIMARY KEY (`id`)
   ) ENGINE = InnoDB AUTO_INCREMENT = 1 DEFAULT CHARSET = utf8;

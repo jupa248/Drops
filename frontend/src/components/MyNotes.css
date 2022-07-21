@@ -10,3 +10,17 @@
   }
 
 
+.myNotes-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    background: linear-gradient(360deg, rgba(61,62,55,0.7) 0%, rgba(97,5,5,0.7) 100%);
+    padding: 1.5rem;
+    margin: 2rem;
+    
+}
+
+.myNotes-container p {
+    color:antiquewhite;
+    background: transparent;
+}
