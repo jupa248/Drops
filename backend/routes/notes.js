@@ -5,7 +5,7 @@ router.get("/notes", (req, res) => {
   Notes.findAllnotes()
     .then((results) => {
       res.json(results);
-      console.log(results);
+      
     })
     .catch((err) => {
       console.error(err);

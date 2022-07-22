@@ -27,7 +27,7 @@ const MyNotes = () => {
       fetchData();
     }, []);
 
-    console.log(data)
+   
 
     
     

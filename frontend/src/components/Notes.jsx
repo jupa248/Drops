@@ -20,7 +20,7 @@ function Notes() {
     const handleSubmission = (event) => {
         event.preventDefault()
         axios.post("/notes/notes-insert", [notes]).then((response) => {
-            console.log("response", response)
+            
             alert('Note has been registered')
             navigate('/homepage')
         })

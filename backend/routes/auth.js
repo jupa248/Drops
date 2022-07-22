@@ -97,11 +97,7 @@ router.post("/login", (req, res) => {
     "local-login",
     //* Passport callback function below
     (err, user, info) => {
-      // console.log("err", err);
-      // console.log("info", info);
-      // console.log("user", user);
-
-      //* error handling callback
+      
       if (err) {
         //* user not found from callback
         if (err === "USER_NOT_FOUND") res.status(403).json({ message: info });
