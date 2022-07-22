@@ -34,9 +34,9 @@ const MyNotes = () => {
     return (
       <div className="notesPage">
             <NavBar />
-              <h2>My notes</h2>
+              <h2>My wine tasting notes</h2>
             <div className="myNotespage">
-                {data.map((note, id) => note.id < 5 ? (
+                {data.map((note, id) => note.id < 9 ? (
                  <div className="myNotes"> 
                     <div className="myNotes-container">
                           <p>Name: {note.wine}</p>
@@ -57,7 +57,7 @@ const MyNotes = () => {
                 )
                 : null)}
             </div>
-              <h2>Create your own notes</h2>
+              <h2>Swirl, smell, taste...</h2>
             <div className="notes">
                 <Notes />
             </div>    

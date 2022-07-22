@@ -26,6 +26,12 @@
     background: transparent;
 }
 
+.notesPage h2 {
+    font-size: 2rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
 
 @media only screen and (min-width: 1024px) {
     
@@ -48,5 +54,9 @@
 
     .myNotes {
         height: 100%;
+    }
+
+    .notesPage h2 {
+        font-size: 80px;
     }
 }

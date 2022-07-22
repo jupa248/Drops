@@ -1,6 +1,6 @@
 .landingPage {
     height: 100%;
-    position: absolute;
+    /* position: absolute; */
     width: 100%;
   }
   
@@ -22,16 +22,22 @@
         background-repeat: no-repeat;
         background-size: cover;
         height: 100%;
-        position: absolute;
         width: 100%;
   }
 
+  
   .login-img {
     width: 150px;
     position: relative;
     top: 30px;
   }
   
+  .login-container {
+    margin-top: 25%;
+    margin-bottom: 25%;
+   
+ }
+
   .form-login {
     display: flex;
     flex-direction: column;
@@ -59,10 +65,43 @@
     border: none;
     border-radius: 20px;
   }
+
+  .landingPage-login p {
+    color: antiquewhite;
+  }
+
+  .join {
+    
+    display: flex;
+    justify-content: center;
+    text-decoration: none; 
+  }
+
+  .join p:hover {
+    color: #8B0000
+  }
   
+  .dropsLogin {
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: 700;
+    color: 	#590505;
+    padding-top: 3rem;
+}
+  .dropsIcon {
+    display: flex;
+    align-self: center;
+    font-size: 40px;
+    font-weight: 700;
+    color: #8B0000
+}
+
+
   @media only screen and (min-width: 1024px){
     .login-container {
-      margin: 8rem;
+      margin-top: 10%;
+      margin-bottom: 10%;
      
    }
   }

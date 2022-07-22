@@ -9,7 +9,14 @@
 }
 
 .logo {
-    justify-self: end;
+    justify-self: start;
+    margin-left: 1.5rem;
+    text-decoration: none; 
+}
+
+.drops {
+    font-size: 48px;
+    font-weight: 700;
 }
 
 .logo img {
@@ -20,5 +27,13 @@
 
 .my-notes {
     justify-self: end;
-    margin-right: 1rem;
+    margin-right: 1.5rem;
+    text-decoration: none; 
 }
+
+.myNotesNav {
+    font-size: 28px;
+    font-weight: 700;
+    
+}
+

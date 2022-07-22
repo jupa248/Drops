@@ -26,6 +26,7 @@
     color: #2F4F4F;
     background-color: transparent;
     border: solid 1px #D8BFD8;
+    color:antiquewhite;
 }
 
 .signup-container label {
@@ -40,9 +41,9 @@
     background-size: cover;
     background-blend-mode: lighten;
     height: 100%;
-    position: absolute;
     width: 100%;
-    /* background-image: url("https://i.ibb.co/MPj4rQm/nazaregal5.jpg"), linear-gradient(360deg, rgba(57, 73, 87, 0.9) 0%, rgba(255, 255, 255, 0) 100%); */
+    display: flex;
+    justify-content: center;
 }
 
 .signup-button {

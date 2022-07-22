@@ -24,23 +24,11 @@
     color: #2F4F4F;
     background-color: transparent;
     border: solid 1px #D8BFD8;
+    color:antiquewhite;
 }
 
 
-.lock-icon {
-    position: absolute;
-    left: 46%;
-    bottom: 60%;
-    border-radius: 50%;
-  }
 
-  .lock-icon-container {
-    display: flex;
-    flex-direction: column;
-    width: 25%;
-    height: 25%;
-    align-items: center;
-  }
 
   .submit-button {
         background-image: url('https://i.ibb.co/y5kSbcj/wine-corkscrew-wooden-handle-engraving-style-old-cork-screw-vintage-199123870.jpg');
