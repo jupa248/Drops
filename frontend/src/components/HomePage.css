@@ -4,6 +4,11 @@
     width: 100%;
   }
 
+.homepage a:link {
+    text-decoration: none;
+    
+}
+
 .homepage h2 {
   color:antiquewhite;
 }
@@ -12,10 +17,10 @@
     display: flex;
     flex-direction: column;
     background-image: url('https://i.ibb.co/gJ1dcLX/dan-cristian-padure-LDMgqr8z7-ZE-unsplash.jpg');
-    opacity: 0.8;
     background-size: cover;
     position: absolute;
     width: 100%;
+    height: 100vh;
 }
 
 .top-list {
@@ -28,6 +33,48 @@
 
 .home-bg ul {
   margin-top: 2rem;
+}
+
+.see-all {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.create-note-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+  border: none;
+}
+
+.create-note-button img {
+  height: 3rem;
+  width: 3rem;
+}
+
+.create-note-button span {
+  font-size: 12px;
+  font-style: italic;
+  color: darkgrey;
+}
+
+.see-all-button {
+  background-image: url('https://i.ibb.co/XJJw37t/posters-cork-background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 3.5rem;
+    width: 3.5rem;
+    border-radius: 50%;
+    font-weight: 500;
+    text-align: center;
+    font-family: 'Graduate', cursive;
+    font-weight: bold;
+    color: #2E0C0C;
+    font-size: 0.8rem;
 }
 
 @media only screen and (min-width: 1024px) {

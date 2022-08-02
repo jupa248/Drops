@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import "./HomePage.css"
-import { wines } from "../utils/wines"
-import TopWines from "./TopWines";
+import WineCards from "./WineCards";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import note from "../utils/note.png"
 
 
 
@@ -12,6 +14,27 @@ import TopWines from "./TopWines";
 
 
 function HomePage() {
+
+  const [loading, setLoading] = useState(true);
+    const [data, setData] = useState([]);
+  
+    useEffect(() => {
+      const fetchData = async () =>{
+        setLoading(true);
+        try {
+          const {data: response} = await axios.get("/notes/notes");
+          setData(response);
+        } catch (error) {
+          console.error(error.message);
+        }
+        setLoading(false);
+      }
+  
+      fetchData();
+    }, []);
+
+
+
   return (
     <div>
       <NavBar />
@@ -19,24 +42,25 @@ function HomePage() {
         <div className="home-bg">
             
           <div>
-            {/* <h2>Top Rated:</h2> */}
-          {wines.filter((wine) => wine.points === 99).map(
+            <h2>Recent tastes...</h2>
+          {data.filter((wine, id) => id < 3).map(
             (wine) => (
-              <TopWines {...wine} />
-          )
-          )}
+              <WineCards {...wine} />
+              )
+              )}
           </div>
-          <div className="top-list">
-            <h2>Top List:</h2>
-            <ul>
-              {wines.filter((wine) => wine.points === 98).map(
-                (wine) => (
-                  <li>{wine.title}</li>
-                  )
-                  )}
-                </ul>
-          </div>
-         
+          <div className="see-all">
+            <div>
+              <Link to="/create-notes">
+                <button className="create-note-button"><img src={note} alt="" /></button>
+              </Link>
+            </div>
+            <div>
+              <Link to="/my-notes">
+                <button className="see-all-button">My notes</button>
+              </Link>
+            </div>
+          </div>   
         </div>
       </div>
     </div>
@@ -45,4 +69,6 @@ function HomePage() {
 
 
 export default HomePage;
+              
+              
 

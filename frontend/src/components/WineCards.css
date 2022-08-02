@@ -1,0 +1,51 @@
+.card-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    width: 90%;
+    justify-content: center;
+    margin: 1rem;
+    
+}
+
+.card-bg {
+    background: linear-gradient(360deg, rgba(61,62,55,0.4) 0%, rgb(96, 6, 6) 50%);
+    background-color: transparent;
+}
+
+.card-img {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.card-img img {
+    height: 10vh;
+    width: 20vw;
+}
+
+.card-text {
+    font-size: 12px;
+}
+
+.link-button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.read-more-button {
+    font-size: 1rem;
+    appearance: none;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    align-self: center;
+    justify-self: end;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}

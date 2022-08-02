@@ -1,8 +1,6 @@
 .top-wines-container {
     display: flex;
     flex-direction: column;
-    /* height: 40%;
-    width: 80%; */
     margin: 2.5rem;
     padding-top: 3rem;
 }

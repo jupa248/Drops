@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import  NavBar from "./NavBar";
-import Notes from "./Notes";
 import "./MyNotes.css";
 import axios from "axios";
 
@@ -28,7 +27,7 @@ const MyNotes = () => {
     }, []);
 
    
-
+    
     
     
     return (
@@ -56,11 +55,7 @@ const MyNotes = () => {
                     </div>
                 )
                 : null)}
-            </div>
-              <h2>Swirl, smell, taste...</h2>
-            <div className="notes">
-                <Notes />
-            </div>    
+            </div>            
         </div>
     )
 }
