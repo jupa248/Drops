@@ -44,7 +44,7 @@ function App() {
               <Route path="/my-notes" element={<MyNotes/>} />
               <Route path="/create-notes" element={<CreateNotes/>} />
               <Route
-                  path="/my-notes/:id"
+                  path="/single-note/:id"
                   element={<SingleNote />}
                 />
               {/* <Route path="/wish" element={<WishList/>} /> */}

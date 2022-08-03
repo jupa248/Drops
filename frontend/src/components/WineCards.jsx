@@ -26,7 +26,7 @@ const {id, wine, variety, year} = props;
                     <h3>Wine: {wine}</h3>
                     <p>Variety: {variety}</p>
                     <p>Year: {year}</p>              
-                    <Link to={`/my-notes/${id}`} className="link-button">
+                    <Link to={`/single-note/${id}`} className="link-button">
                         <button className="read-more-button" onMouseOver={mouseOverChevron} onMouseLeave={mouseOverChevron}>See note <FaChevronRight className={hoverButton ? "svg-fill-white" : "null"} /></button>
                     </Link>
                 </div>

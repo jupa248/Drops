@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import  NavBar from "./NavBar";
 import "./MyNotes.css";
 import "./HomePage.css"
+import "./SingleNote.css"
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -37,10 +38,9 @@ const SingleNote = () => {
     
     
     return (
-      <div className="notesPage">
+      <div className="singleNotesPage">
             <NavBar />
-              <h2>My wine tasting notes</h2>
-            <div className="myNotespage">
+            <div className="single-container">
                 {data.filter((note) => note.id === +param.id).map((note, id) => (
                  <div className="myNotes"> 
                     <div className="myNotes-container">
