@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaChevronRight } from "react-icons/fa";
 import "./WineCards.css";
+import bottle1 from "../utils/bottle1.png"
 
 
 
@@ -13,13 +14,13 @@ const WineCards = (props) => {
     };
 
    
-const {id, image, wine, variety, year} = props;
+const {id, wine, variety, year} = props;
 
     return (
         <div className="card-bg">              
             <div className="card-container">
                 <div className="card-img">
-                    <img src={image} alt="wine" />
+                    <img src={bottle1} alt="wine" />
                 </div>
                 <div className="card-text">
                     <h3>{wine}</h3>
