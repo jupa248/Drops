@@ -7,6 +7,8 @@ import LandingPage from "./components/LandingPage";
 import MyNotes from "./components/MyNotes";
 import "./App.css"
 import { AuthContext } from "./contexts/AuthContext";
+import CreateNotes from "./components/CreateNotes";
+import SingleNote from "./components/SingleNote";
 
 // ! FALTA CRIAR OS PROTECTED ROUTES!!
 //create protected routes
@@ -40,6 +42,13 @@ function App() {
             <Route path="/signup" element={<Signup/>} />
               <Route path="/homepage" element={<HomePage/>} />
               <Route path="/my-notes" element={<MyNotes/>} />
+              <Route path="/create-notes" element={<CreateNotes/>} />
+              <Route
+                  path="/my-notes/:id"
+                  element={<SingleNote />}
+                />
+              {/* <Route path="/wish" element={<WishList/>} /> */}
+              {/* <Route path="/dictionary" element={<Dictionary/>} /> */}
             <Route path="*" element={<Navigate to="/login" replace/>} />
           </Routes>
         </BrowserRouter>

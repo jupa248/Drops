@@ -3,13 +3,15 @@ import  NavBar from "./NavBar";
 import "./MyNotes.css";
 import "./HomePage.css"
 import axios from "axios";
-import { Link , useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import note from "../utils/note.png"
 
 
 
 
-const MyNotes = () => {
+
+const SingleNote = () => {
 
     let param = useParams();
     const [loading, setLoading] = useState(true);
@@ -39,7 +41,7 @@ const MyNotes = () => {
             <NavBar />
               <h2>My wine tasting notes</h2>
             <div className="myNotespage">
-                {data.map((note, id) => (
+                {data.filter((note) => note.id === +param.id).map((note, id) => (
                  <div className="myNotes"> 
                     <div className="myNotes-container">
                           <p>Name: {note.wine}</p>
@@ -59,16 +61,22 @@ const MyNotes = () => {
                     </div>
                 )
                 )}
-                 <div className="create-container">
+                <div className="see-all">
+                    <div>
                     <Link to="/create-notes">
                         <button className="create-note-button"><img src={note} alt="" /></button>
                     </Link>
-                  </div>
+                    </div>
+                    <div>
+                    <Link to="/my-notes">
+                        <button className="see-all-button">My notes</button>
+                    </Link>
+                    </div>
+                </div>   
             </div>            
         </div>
     )
 }
 
-export default MyNotes;
+export default SingleNote;
 
-//.filter((note) => note.id === +param.id)

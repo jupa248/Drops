@@ -63,7 +63,7 @@ function Notes() {
             <input name='taste' type='text' onChange={handleChange}/>
             <label>Finish</label>
             <input name='finish' type='text' onChange={handleChange}/>
-            <label>My notes</label>
+            <label>Description</label>
             <textarea name='mynotes' type='text' onChange={handleChange}/>
             <button type="submit" className="notes-button">Save</button>
         </form>
