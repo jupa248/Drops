@@ -1,8 +1,8 @@
-.homepage {
+/* .homepage {
     
   position: absolute;
   width: 100%;
-}
+} */
 
 .homepage a:link {
   text-decoration: none;
@@ -41,6 +41,7 @@ justify-content: space-between;
 align-items: center;
 padding-right: 1rem;
 padding-left: 1rem;
+padding-bottom: 1rem;
 margin-top: 2rem;
 }
 
@@ -79,7 +80,34 @@ background-image: url('https://i.ibb.co/XJJw37t/posters-cork-background.jpg');
 }
 
 @media only screen and (min-width: 1024px) {
-.home-bg {
-  flex-direction: row;
+
+.desk-home {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.homepage h2 {
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.see-all {
+  justify-content: flex-end;
+  margin-right: 2rem;
+  gap: 2rem;
+}
+
+.see-all-button:hover {
+  transform: rotate(-25deg);
+}
+
+.create-note-button:hover {
+  transform: scale(1.1);
+
 }
 }

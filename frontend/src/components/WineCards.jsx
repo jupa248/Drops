@@ -23,9 +23,9 @@ const {id, wine, variety, year} = props;
                     <img src={bottle1} alt="wine" />
                 </div>
                 <div className="card-text">
-                    <h3>{wine}</h3>
-                    <p>{variety}</p>
-                    <p>{year}</p>              
+                    <h3>Wine: {wine}</h3>
+                    <p>Variety: {variety}</p>
+                    <p>Year: {year}</p>              
                     <Link to={`/my-notes/${id}`} className="link-button">
                         <button className="read-more-button" onMouseOver={mouseOverChevron} onMouseLeave={mouseOverChevron}>See note <FaChevronRight className={hoverButton ? "svg-fill-white" : "null"} /></button>
                     </Link>

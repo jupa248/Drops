@@ -3,8 +3,6 @@
     width: 100%;
     background-image: url('https://i.ibb.co/gJ1dcLX/dan-cristian-padure-LDMgqr8z7-ZE-unsplash.jpg');
     background-size: cover;
-    position: absolute;
-    width: 100%;
 }
 
 
@@ -32,12 +30,12 @@
 
 .create-container {
     display: flex;
-    justify-content: center;
     padding-bottom: 1rem;
 }
 
 @media only screen and (min-width: 1024px) {
     
+
     .notes {
         display: flex;
         justify-content: center;
@@ -55,9 +53,9 @@
         gap: 20px;
     }
 
-    .myNotes {
+    /* .myNotes {
         height: 100%;
-    }
+    } */
 
     .notesPage h2 {
         font-size: 80px;

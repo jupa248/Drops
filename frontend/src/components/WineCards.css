@@ -52,3 +52,41 @@
     gap: 4px;
     cursor: pointer;
 }
+
+@media only screen and (min-width: 1024px) {
+
+    .card-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 300px;;
+    }
+
+    .card-bg {
+        height: 100%;
+        width: 100%;
+        border-radius: 25px;
+    }
+
+    .card-text {
+        font-size: 16px;
+        padding-top: 1rem;
+    }
+
+    .card-img img {
+        height: 18vh;
+        width: 10vw;
+    }
+
+    .card-img {
+        justify-content: center;
+    }
+    
+    .read-more-button:hover {
+        color:	#696969;
+    }
+   
+    .link-button {
+        margin-top: 1rem;
+    }
+}

@@ -3,8 +3,16 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  font-family: 'Shadows Into Light', cursive;
+  /* font-family: 'Shadows Into Light', cursive; */
   color:antiquewhite;
   font-size: 18px;
   font-weight: 400;
+}
+
+@media only screen and (min-width: 1024px) {
+  * {
+    font-size: 20px;
+  }
+
+ 
 }

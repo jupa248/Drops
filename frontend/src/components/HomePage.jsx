@@ -40,9 +40,8 @@ function HomePage() {
       <NavBar />
       <div className="homepage">
         <div className="home-bg">
-            
-          <div>
-            <h2>Recent tastes...</h2>
+            <h2>Your latest notes...</h2>
+          <div className="desk-home">
           {data.filter((wine, id) => id < 3).map(
             (wine) => (
               <WineCards {...wine} />
