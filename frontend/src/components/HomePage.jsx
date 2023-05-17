@@ -1,57 +1,49 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import NavBar from "./NavBar";
-import "./HomePage.css"
+import "./HomePage.css";
 import WineCards from "./WineCards";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import note from "../utils/note.png"
-
-
-
-
-
-
-
+import note from "../utils/note.png";
 
 function HomePage() {
-
   const [loading, setLoading] = useState(true);
-    const [data, setData] = useState([]);
-  
-    useEffect(() => {
-      const fetchData = async () =>{
-        setLoading(true);
-        try {
-          const {data: response} = await axios.get("/notes/notes");
-          setData(response);
-        } catch (error) {
-          console.error(error.message);
-        }
-        setLoading(false);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const { data: response } = await axios.get("/notes/notes");
+        setData(response);
+      } catch (error) {
+        console.error(error.message);
       }
-  
-      fetchData();
-    }, []);
+      setLoading(false);
+    };
 
-
+    fetchData();
+  }, []);
 
   return (
     <div>
       <NavBar />
       <div className="homepage">
         <div className="home-bg">
-            <h2>Your latest notes...</h2>
+          <h2>Your latest notes...</h2>
           <div className="desk-home">
-          {data.filter((wine, id) => id < 3).map(
-            (wine) => (
-              <WineCards {...wine} />
-              )
-              )}
+            {data
+              .filter((wine, id) => id < 3)
+              .map((wine) => (
+                <WineCards key={wine.id} {...wine} />
+              ))}
           </div>
           <div className="see-all">
             <div>
               <Link to="/create-notes">
-                <button className="create-note-button"><img src={note} alt="" /></button>
+                <button className="create-note-button">
+                  <img src={note} alt="" />
+                </button>
               </Link>
             </div>
             <div>
@@ -59,15 +51,11 @@ function HomePage() {
                 <button className="see-all-button">My notes</button>
               </Link>
             </div>
-          </div>   
+          </div>
         </div>
       </div>
     </div>
-  )  
+  );
 }
 
-
 export default HomePage;
-              
-              
-

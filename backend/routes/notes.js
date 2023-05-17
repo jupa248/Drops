@@ -5,7 +5,17 @@ router.get("/notes", (req, res) => {
   Notes.findAllnotes()
     .then((results) => {
       res.json(results);
-      
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error retrieving notes from database");
+    });
+});
+
+router.get("/notes/:id", (req, res) => {
+  Notes.getNote()
+    .then((results) => {
+      res.json(results);
     })
     .catch((err) => {
       console.error(err);
@@ -23,7 +33,5 @@ router.post("/notes-insert", (req, res) => {
       res.status(500).send("Error saving Notes to database");
     });
 });
-
-
 
 module.exports = router;
