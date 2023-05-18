@@ -93,3 +93,12 @@ export const authenticate = (req, res, next) => {
     return next(error);
   }
 };
+
+export const logout = (req, res) => {
+  // Clear the authentication cookie
+  res.clearCookie("token");
+
+  // Optionally, you can also invalidate the JWT token on the server-side if required
+
+  return res.status(200).json({ message: "Logout successful" });
+};

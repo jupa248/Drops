@@ -1,6 +1,6 @@
 import express from "express";
 import cookieParser from "cookie-parser";
-import { register, login, authenticate } from "../controllers/users.js";
+import { register, login, logout, authenticate } from "../controllers/users.js";
 import {
   createNote,
   getAllNotes,
@@ -18,6 +18,8 @@ router.post("/register", register);
 
 // User login route
 router.post("/login", login);
+
+router.post("/logout", authenticate, logout);
 
 // Protected route (requires authentication)
 router.get("/protected", authenticate, (req, res) => {

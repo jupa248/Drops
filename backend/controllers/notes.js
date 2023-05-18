@@ -120,16 +120,11 @@ export const updateNote = async (req, res, next) => {
         finish,
         mynotes,
         noteId,
-      ],
-      (err, result) => {
-        if (err) {
-          console.log("1", err); // Log any errors encountered during the update query
-          return res.status(500).json({ message: "Error updating note" });
-        }
-        console.log("result", result); // Log the result of the update query for debugging purposes
-        return res.status(200).json({ message: "Note updated successfully" });
-      }
+      ]
     );
+
+    console.log("Note updated successfully");
+    return res.status(200).json({ message: "Note updated successfully" });
   } catch (error) {
     return next(error);
   }
