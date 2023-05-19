@@ -47,7 +47,7 @@ export const login = async (req, res, next) => {
     }
 
     const user = users[0];
-
+    console.log("user, backend:", user);
     // Compare the provided password with the hashed password
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
@@ -62,14 +62,37 @@ export const login = async (req, res, next) => {
 
     // Set the JWT token as a cookie
     res.cookie("token", token, { httpOnly: true });
-
-    return res.status(200).json({ message: "User logged in successfully" });
+    console.log("token:", token);
+    return res
+      .status(200)
+      .json({ message: "User logged in successfully", token, user });
   } catch (error) {
     return next(error);
   }
 };
 
-// User authentication middleware
+// users.js
+
+// Get user by ID
+export const getUserById = async (req, res, next) => {
+  try {
+    const [userId] = req.params.userId;
+    console.log("hola", userId);
+    // Retrieve the user data from the database based on the user ID
+    const user = await pool.query("SELECT * FROM users WHERE id = ?", [userId]);
+
+    // Check if the user exists
+    if (user.length === 0) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Return the user data
+    return res.status(200).json(user[0]);
+  } catch (error) {
+    return next(error);
+  }
+};
+
 export const authenticate = (req, res, next) => {
   try {
     const token = req.cookies.token;

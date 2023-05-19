@@ -1,6 +1,12 @@
 import express from "express";
 import cookieParser from "cookie-parser";
-import { register, login, logout, authenticate } from "../controllers/users.js";
+import {
+  register,
+  login,
+  logout,
+  authenticate,
+  getUserById,
+} from "../controllers/users.js";
 import {
   createNote,
   getAllNotes,
@@ -18,8 +24,9 @@ router.post("/register", register);
 
 // User login route
 router.post("/login", login);
+router.get("/users/:userId", getUserById);
 
-router.post("/logout", authenticate, logout);
+router.post("/logout", logout);
 
 // Protected route (requires authentication)
 router.get("/protected", authenticate, (req, res) => {
@@ -27,10 +34,10 @@ router.get("/protected", authenticate, (req, res) => {
 });
 
 // Create a new note
-router.post("/notes", authenticate, createNote);
+router.post("/notes", createNote);
 
 // Get all notes for the authenticated user
-router.get("/notes", authenticate, getAllNotes);
+router.get("/notes/:userId", getAllNotes);
 
 // Update a note
 router.put("/notes/:noteId", authenticate, updateNote);

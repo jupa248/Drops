@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
-import { AuthContext } from "../contexts/AuthContext";
+import { useAppContext } from "../contexts/AppContext";
 import "./Register.css";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const { register } = useContext(AuthContext);
+  const { register } = useContext(useAppContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();

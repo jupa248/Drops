@@ -2,13 +2,19 @@ import React, { useState, useContext } from "react";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 import { CgDrop } from "react-icons/cg";
-import { AuthContext } from "../contexts/AuthContext";
+import { useAppContext } from "../contexts/AppContext";
+import { button } from "@material-tailwind/react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [active, setActive] = useState(false);
-  const { user } = useContext(AuthContext);
-  console.log(user);
+  const { user, logout } = useAppContext();
+  const navigate = useNavigate();
 
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
   const handleHamburger = () => {
     setActive(!active);
   };
@@ -26,6 +32,12 @@ const Navbar = () => {
           Drops
         </div>
       </Link>
+      <h2>{user?.username}</h2>
+      {user && (
+        <button type="button" onClick={handleLogout}>
+          Logout
+        </button>
+      )}
       <nav className="navbar-desktop">
         <div className="">
           <Link to="/homepage">Home</Link>

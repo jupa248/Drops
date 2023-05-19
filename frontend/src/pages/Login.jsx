@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
-import { AuthContext } from "../contexts/AuthContext";
-import "./Login.css";
+import React, { useState } from "react";
+import { useAppContext } from "../contexts/AppContext";
 import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
+  const { login } = useAppContext();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -12,11 +12,14 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    await login({ username, password });
+    try {
+      const response = await login({ username, password });
+      const { user } = response.data;
 
-    setUsername("");
-    setPassword("");
-    navigate("/home");
+      navigate("/home");
+    } catch (error) {
+      console.log("Login error:", error);
+    }
   };
 
   return (
@@ -43,5 +46,4 @@ const Login = () => {
     </div>
   );
 };
-
 export default Login;
