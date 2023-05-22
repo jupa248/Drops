@@ -3,7 +3,6 @@ import "./NavBar.css";
 import { Link } from "react-router-dom";
 import { CgDrop } from "react-icons/cg";
 import { useAppContext } from "../contexts/AppContext";
-import { button } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
@@ -32,11 +31,13 @@ const Navbar = () => {
           Drops
         </div>
       </Link>
-      <h2>{user?.username}</h2>
       {user && (
-        <button type="button" onClick={handleLogout}>
-          Logout
-        </button>
+        <div>
+          <h2>{user[0]?.username}</h2>
+          <button type="button" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
       )}
       <nav className="navbar-desktop">
         <div className="">

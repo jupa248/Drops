@@ -2,10 +2,15 @@ import "./NotesForm.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useAppContext } from "../contexts/AppContext";
 
 const NotesForm = () => {
+  const { user } = useAppContext();
   const [notes, setNotes] = useState([]);
   const navigate = useNavigate();
+  //console.log(user[0].id);
+  const userId = user && user[0].id;
+  console.log("user", userId);
 
   const handleChange = (event) => {
     const { value, name } = event.target;
@@ -15,11 +20,10 @@ const NotesForm = () => {
   const handleSubmission = (event) => {
     event.preventDefault();
     axios
-      .post(`/notes`, notes)
+      .post(`/notes/${userId}`, notes)
       .then((response) => {
-        console.log(response);
         alert("Note has been registered");
-        navigate("/homepage");
+        navigate("/home");
       })
       .catch((error) => {
         alert(error);

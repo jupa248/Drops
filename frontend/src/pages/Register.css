@@ -65,6 +65,16 @@
   align-self: center;
 }
 
+.link {
+  text-decoration: none;
+  color: antiquewhite;
+  text-align: center;
+}
+
+.link:hover {
+  color: gray;
+}
+
 @media only screen and (min-width: 1024px) {
   .signup-container {
     width: 40%;

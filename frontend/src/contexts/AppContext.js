@@ -1,12 +1,14 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import axios from "axios";
-import Cookies from "js-cookie";
 
 const AppContext = createContext();
 export const useAppContext = () => useContext(AppContext);
 
 export const AppProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const storedUser = localStorage.getItem("user");
+  const initialUser = storedUser ? JSON.parse(storedUser) : null;
+
+  const [user, setUser] = useState(initialUser);
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -37,9 +39,12 @@ export const AppProvider = ({ children }) => {
     try {
       const response = await axios.post(`${API_URL}/login`, credentials);
       const { token, user } = response.data;
+
+      // Store the user in localStorage
+      localStorage.setItem("user", JSON.stringify(user));
+
       // Set the Authorization header for subsequent requests
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
       setUser(user);
       console.log("User logged in successfully");
       return response; // Return the response data for handling in the Login component
@@ -54,59 +59,49 @@ export const AppProvider = ({ children }) => {
       const response = await axios.get(`${API_URL}/users/${userId}`);
       const user = response.data;
 
-      const notesResponse = await axios.get(`${API_URL}/notes/${userId}`);
-      const notes = notesResponse.data;
-
       setUser(user);
-      setNotes(notes);
     } catch (error) {
       console.log("Fetch user error:", error);
     }
   };
 
-  useEffect(() => {
-    const storedUserId = localStorage.getItem("userId");
-    const token = localStorage.getItem("token");
-
-    if (storedUserId && token) {
-      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
-      fetchUser(storedUserId);
-    } else {
-      setLoading(false);
+  const fetchNotes = async (userId) => {
+    try {
+      const response = await axios.get(`${API_URL}/notes/${userId}`);
+      const notes = response.data;
+      setNotes(notes);
+    } catch (error) {
+      console.log("Fetch notes error:", error);
     }
+  };
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      const parsedUser = JSON.parse(storedUser);
+      setUser(parsedUser);
+      axios.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${parsedUser.token}`;
+    }
+    setLoading(false);
   }, []);
-
-  // const fetchNotes = async (token, userId) => {
-  //   try {
-  //     const response = await axiosInstance.get("/notes", {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //         user_id: userId,
-  //       },
-  //     });
-
-  //     const notes = response.data;
-  //     console.log("notes:", notes);
-  //     setNotes(notes);
-  //   } catch (error) {
-  //     console.log("Fetch notes error:", error);
-  //   }
-  // };
 
   const logout = async () => {
     try {
       await axios.post(`${API_URL}/logout`);
       setUser(null);
+      localStorage.removeItem("user");
     } catch (error) {
       console.error("Logout error:", error.message);
     }
   };
+
   const createNote = async (noteData) => {
     try {
       const response = await axios.post(`${API_URL}/notes`, noteData);
       const data = response.data;
-      setNotes([...notes, data]);
+      setNotes([...notes, data]); // Update the notes state with the new note
+      await fetchNotes(); // Fetch the updated notes from the server
     } catch (error) {
       console.log(error);
     }
@@ -145,7 +140,7 @@ export const AppProvider = ({ children }) => {
         register,
         login,
         logout,
-        //fetchNotes,
+        fetchNotes,
         createNote,
         updateNotes,
         deleteNote,

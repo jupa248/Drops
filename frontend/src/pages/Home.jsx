@@ -1,61 +1,52 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
 import "./Home.css";
-//import WineCards from "./WineCards";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import { useAppContext } from "../contexts/AppContext";
+import wineGlass from "../assets/wine-glass.svg";
+import note from "../assets/note.svg";
+import NoteCardSmall from "../components/NoteCardSmall";
 
 const Home = () => {
-  const { user, notes } = useAppContext();
+  const { user, notes, fetchNotes } = useAppContext();
+  console.log("user home", user);
+  useEffect(() => {
+    // Fetch notes for the logged-in user
+    if (user) {
+      fetchNotes(user?.id);
+    }
+  }, [user]);
 
-  //const [notes, setNotes] = useState([]);
-  // useEffect(() => {
-  //   const fetchNotes = async () => {
-  //     try {
-  //       // Retrieve the token and userId from local storage
-  //       const token = localStorage.getItem("token");
-  //       const userId = localStorage.getItem("userId");
-
-  //       // Make the API call to fetch notes
-  //       const response = await axios.get(`/notes/${userId}`, {
-  //         headers: { Authorization: `Bearer ${token}` },
-  //       });
-
-  //       // Update the state with the fetched notes
-  //       setNotes(response.data);
-  //       //console.log(notes);
-  //     } catch (error) {
-  //       console.log("Fetch notes error:", error);
-  //     }
-  //   };
-
-  //   fetchNotes();
-  // }, []);
-  console.log("notes", notes);
-  const userData = user[0];
-  console.log("userData", userData);
+  //console.log("notes home", notes);
+  if (!user || !notes) {
+    // Render a loading state or placeholder while data is being fetched
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
       <NavBar />
-      <h2>{userData?.username}</h2>
-      {/* <div className="homepage">
+      <div className="homepage">
         <div className="home-bg">
           <h2>Your latest notes...</h2>
-          <div className="desk-home"> */}
-      {/* {data
+          <div className="desk-home">
+            {notes
+              .filter((note, index) => index < 4)
+              .map((note) => (
+                <NoteCardSmall key={note.note_id} note={note} />
+              ))}
+            {/* {data
               .filter((wine, id) => id < 3)
               .map((wine) => (
                 <WineCards {...wine} />
-              ))} */}
-      {/* </div>
+              ))}  */}
+          </div>
           <div className="see-all">
             <div>
               <Link to="/create-notes">
                 <button className="create-note-button">
-                  {/* <img src={note} alt="" /> */}
-      {/*} </button>
+                  <img src={note} alt="" />
+                </button>
               </Link>
             </div>
             <div>
@@ -65,7 +56,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

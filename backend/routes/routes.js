@@ -34,7 +34,7 @@ router.get("/protected", authenticate, (req, res) => {
 });
 
 // Create a new note
-router.post("/notes", createNote);
+router.post("/notes/:userId", createNote);
 
 // Get all notes for the authenticated user
 router.get("/notes/:userId", getAllNotes);

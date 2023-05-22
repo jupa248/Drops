@@ -3,7 +3,6 @@ import { authenticate } from "./users.js";
 
 // Create a note
 export const createNote = async (req, res, next) => {
-  console.log("hola req be:", req.body);
   try {
     const {
       wine,
@@ -21,7 +20,7 @@ export const createNote = async (req, res, next) => {
       mynotes,
     } = req.body;
     const userId = req.params.userId; // Get the authenticated user's ID from the request object
-    console.log("userId be", userId);
+
     // Insert the new note into the database
     await pool.query(
       "INSERT INTO notes (wine, date, price, year, variety, winery, region, color, aroma, body, taste, finish, mynotes, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
@@ -42,8 +41,17 @@ export const createNote = async (req, res, next) => {
         userId,
       ]
     );
-    console.log("res be", res);
-    return res.status(201).json({ message: "Note created successfully" });
+
+    // Fetch the updated list of notes for the user
+    const updatedNotes = await pool.query(
+      "SELECT * FROM notes WHERE user_id = ?",
+      [userId]
+    );
+
+    return res.status(201).json({
+      message: "Note created successfully",
+      notes: updatedNotes,
+    });
   } catch (error) {
     return next(error);
   }

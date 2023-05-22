@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useAppContext } from "../contexts/AppContext";
 import "./Register.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Register = () => {
-  const { register } = useContext(useAppContext);
+  const { register } = useAppContext();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -37,6 +37,9 @@ const Register = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          <Link to="/login" className="link">
+            I have an account
+          </Link>
           <button type="submit" className="signup-button">
             SIGNUP
           </button>
