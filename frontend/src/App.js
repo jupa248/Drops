@@ -6,10 +6,13 @@ import CreateNote from "./pages/CreateNote";
 import Note from "./pages/Note";
 import Navbar from "./components/NavBar";
 import ProtectedRoute from "./components/ProtectedRoute";
+import { useAppContext } from "./contexts/AppContext";
 
 const App = () => {
+  const { user } = useAppContext();
   return (
     <BrowserRouter>
+      {user && <Navbar />}
       <Routes>
         <Route
           path="/home"
@@ -19,8 +22,8 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        {!user && <Route path="/register" element={<Register />} />}
+        {!user && <Route path="/login" element={<Login />} />}
         <Route
           path="/create-notes"
           element={
@@ -37,7 +40,8 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route path="*" element={<Navigate to="/login" replace />} />
+        {!user && <Route path="*" element={<Navigate to="/login" replace />} />}
+        {user && <Route path="*" element={<Navigate to="/home" replace />} />}
       </Routes>
     </BrowserRouter>
   );

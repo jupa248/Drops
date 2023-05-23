@@ -12,6 +12,7 @@ import {
   getAllNotes,
   updateNote,
   deleteNote,
+  getNoteById,
 } from "../controllers/notes.js";
 
 const router = express.Router();
@@ -24,9 +25,9 @@ router.post("/register", register);
 
 // User login route
 router.post("/login", login);
-router.get("/users/:userId", getUserById);
+router.get("/users/:userId", authenticate, getUserById);
 
-router.post("/logout", logout);
+router.post("/logout", authenticate, logout);
 
 // Protected route (requires authentication)
 router.get("/protected", authenticate, (req, res) => {
@@ -34,10 +35,11 @@ router.get("/protected", authenticate, (req, res) => {
 });
 
 // Create a new note
-router.post("/notes/:userId", createNote);
+router.post("/notes/:userId", authenticate, createNote);
 
 // Get all notes for the authenticated user
-router.get("/notes/:userId", getAllNotes);
+router.get("/notes/:userId", authenticate, getAllNotes);
+router.get("/note/:noteId", authenticate, getNoteById);
 
 // Update a note
 router.put("/notes/:noteId", authenticate, updateNote);

@@ -78,6 +78,25 @@ export const getAllNotes = async (req, res, next) => {
   }
 };
 
+// Get note by ID
+export const getNoteById = async (req, res, next) => {
+  try {
+    const noteId = req.params.noteId;
+
+    const note = await pool.query("SELECT * FROM notes WHERE note_id = ?", [
+      noteId,
+    ]);
+
+    if (note.length === 0) {
+      return res.status(404).json({ message: "Note not found" });
+    }
+
+    return res.status(200).json(note[0]);
+  } catch (error) {
+    return next(error);
+  }
+};
+
 export const updateNote = async (req, res, next) => {
   const noteId = req.params.noteId;
   try {
@@ -98,19 +117,10 @@ export const updateNote = async (req, res, next) => {
     } = req.body;
     const userId = req.userId; // Get the authenticated user's ID from the request object
 
-    // Check if the note belongs to the authenticated user
-    console.log(
-      "SQL Query:",
-      "SELECT * FROM notes WHERE note_id = ? AND user_id = ?",
-      [noteId, userId]
-    );
-
     const [existingNote] = await pool.query(
       "SELECT * FROM notes WHERE note_id = ? AND user_id = ?",
       [noteId, userId]
     );
-
-    console.log("existing", existingNote); // Log the existing note for debugging purposes
 
     if (existingNote.length === 0) {
       return res.status(404).json({ message: "Note not found" });

@@ -13,16 +13,32 @@ export const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const API_URL = "http://localhost:5000";
-  const axiosInstance = axios.create({
-    baseURL: API_URL,
+  const token = localStorage.getItem("token");
+
+  const config = {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      Authorization: `Bearer ${token}`,
     },
-  });
+  };
+
+  const axiosRequest = async (method, url, data = null) => {
+    try {
+      const response = await axios({
+        method,
+        url: `${API_URL}/${url}`,
+        data,
+        headers: config.headers,
+      });
+      return response;
+    } catch (error) {
+      console.error("Request error:", error.message);
+      throw error;
+    }
+  };
 
   const register = async (userData) => {
     try {
-      const response = await axios.post(`${API_URL}/register`, userData);
+      const response = await axiosRequest("post", "register", userData);
       const data = response.data;
 
       if (response.status === 201) {
@@ -37,26 +53,25 @@ export const AppProvider = ({ children }) => {
 
   const login = async (credentials) => {
     try {
-      const response = await axios.post(`${API_URL}/login`, credentials);
+      const response = await axiosRequest("post", "login", credentials);
       const { token, user } = response.data;
 
-      // Store the user in localStorage
+      localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
 
-      // Set the Authorization header for subsequent requests
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       setUser(user);
       console.log("User logged in successfully");
-      return response; // Return the response data for handling in the Login component
+      return response;
     } catch (error) {
       console.log("Login error:", error);
-      throw error; // Throw the error for handling in the Login component
+      throw error;
     }
   };
 
   const fetchUser = async (userId) => {
     try {
-      const response = await axios.get(`${API_URL}/users/${userId}`);
+      const response = await axiosRequest("get", `users/${userId}`);
       const user = response.data;
 
       setUser(user);
@@ -67,13 +82,14 @@ export const AppProvider = ({ children }) => {
 
   const fetchNotes = async (userId) => {
     try {
-      const response = await axios.get(`${API_URL}/notes/${userId}`);
+      const response = await axiosRequest("get", `notes/${userId}`);
       const notes = response.data;
       setNotes(notes);
     } catch (error) {
       console.log("Fetch notes error:", error);
     }
   };
+
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
@@ -88,9 +104,10 @@ export const AppProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await axios.post(`${API_URL}/logout`);
+      await axiosRequest("post", "logout");
       setUser(null);
       localStorage.removeItem("user");
+      localStorage.removeItem("token");
     } catch (error) {
       console.error("Logout error:", error.message);
     }
@@ -98,10 +115,19 @@ export const AppProvider = ({ children }) => {
 
   const createNote = async (noteData) => {
     try {
-      const response = await axios.post(`${API_URL}/notes`, noteData);
+      const response = await axiosRequest("post", "notes", noteData);
       const data = response.data;
-      setNotes([...notes, data]); // Update the notes state with the new note
-      await fetchNotes(); // Fetch the updated notes from the server
+      setNotes([...notes, data]);
+      await fetchNotes();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getNote = async (noteId) => {
+    try {
+      const response = await axiosRequest("get", `note/${noteId}`);
+      return response.data;
     } catch (error) {
       console.log(error);
     }
@@ -109,7 +135,7 @@ export const AppProvider = ({ children }) => {
 
   const updateNotes = async (noteId, updatedData) => {
     try {
-      await axios.put(`${API_URL}/notes/${noteId}`, updatedData);
+      await axiosRequest("put", `notes/${noteId}`, updatedData);
       const updatedNotes = notes.map((note) =>
         note.id === noteId ? { ...note, ...updatedData } : note
       );
@@ -121,7 +147,7 @@ export const AppProvider = ({ children }) => {
 
   const deleteNote = async (noteId) => {
     try {
-      await axios.delete(`${API_URL}/notes/${noteId}`);
+      await axiosRequest("delete", `notes/${noteId}`);
       const updatedNotes = notes.filter((note) => note.id !== noteId);
       setNotes(updatedNotes);
     } catch (error) {
@@ -142,6 +168,7 @@ export const AppProvider = ({ children }) => {
         logout,
         fetchNotes,
         createNote,
+        getNote,
         updateNotes,
         deleteNote,
       }}

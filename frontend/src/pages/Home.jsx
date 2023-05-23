@@ -3,7 +3,6 @@ import NavBar from "../components/NavBar";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import { useAppContext } from "../contexts/AppContext";
-import wineGlass from "../assets/wine-glass.svg";
 import note from "../assets/note.svg";
 import NoteCardSmall from "../components/NoteCardSmall";
 
@@ -25,7 +24,6 @@ const Home = () => {
 
   return (
     <div>
-      <NavBar />
       <div className="homepage">
         <div className="home-bg">
           <h2>Your latest notes...</h2>

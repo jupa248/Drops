@@ -5,12 +5,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(
-    360deg,
-    rgba(61, 62, 55, 0.4) 0%,
-    rgb(96, 6, 6) 50%
-  );
-  background-color: transparent;
+  background-color: rgb(96, 6, 6);
 }
 
 .navbar-desktop {

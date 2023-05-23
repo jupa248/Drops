@@ -38,16 +38,17 @@ export const login = async (req, res, next) => {
     const { username, password } = req.body;
 
     // Retrieve the user from the database
-    const [users] = await pool.query("SELECT * FROM users WHERE username = ?", [
-      username,
-    ]);
+    const [users] = await pool.query(
+      "SELECT id, username, password FROM users WHERE username = ?",
+      [username]
+    );
 
     if (users.length === 0) {
       return res.status(401).json({ message: "Invalid username or password" });
     }
 
     const user = users[0];
-    console.log("user, backend:", user);
+
     // Compare the provided password with the hashed password
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
@@ -57,21 +58,22 @@ export const login = async (req, res, next) => {
 
     // Generate a JWT token
     const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET_KEY, {
-      expiresIn: "1h",
+      expiresIn: "7d",
     });
 
     // Set the JWT token as a cookie
     res.cookie("token", token, { httpOnly: true });
-    console.log("token:", token);
+
+    // Exclude the password field from the user object
+    const { password: excludedPassword, ...userData } = user;
+
     return res
       .status(200)
-      .json({ message: "User logged in successfully", token, user });
+      .json({ message: "User logged in successfully", token, user: userData });
   } catch (error) {
     return next(error);
   }
 };
-
-// users.js
 
 // Get user by ID
 export const getUserById = async (req, res, next) => {
@@ -87,7 +89,8 @@ export const getUserById = async (req, res, next) => {
     }
 
     // Return the user data
-    return res.status(200).json(user[0]);
+    const { password, ...userData } = user[0];
+    return res.status(200).json(userData);
   } catch (error) {
     return next(error);
   }
@@ -95,21 +98,24 @@ export const getUserById = async (req, res, next) => {
 
 export const authenticate = (req, res, next) => {
   try {
-    const token = req.cookies.token;
-
+    const token = req.headers.authorization;
     if (!token) {
       return res.status(401).json({ message: "Unauthorized" });
     }
 
-    // Verify the JWT token
-    jwt.verify(token, process.env.JWT_SECRET_KEY, (err, decoded) => {
+    // Remove "Bearer " from the token string
+    const tokenString = token.replace("Bearer ", "");
+    console.log("token be:", tokenString);
+
+    jwt.verify(tokenString, process.env.JWT_SECRET_KEY, (err, decoded) => {
+      console.log("decoded", decoded);
       if (err) {
+        console.log("Token verification error:", err);
         return res.status(401).json({ message: "Unauthorized" });
       }
 
       // Add the decoded user ID to the request object
       req.userId = decoded.userId;
-
       return next();
     });
   } catch (error) {

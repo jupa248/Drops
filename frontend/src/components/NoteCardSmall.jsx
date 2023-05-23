@@ -14,11 +14,11 @@ const NoteCardSmall = ({ note }) => {
           {variety}, {year}
         </p>
       </div>
-      <div className="card-link">
-        <Link to={`/note/${note_id}`} className="link-button">
+      <Link to={`/note/${note_id}`} className="link-button card-link">
+        <span>
           See note <FaChevronRight />
-        </Link>
-      </div>
+        </span>
+      </Link>
     </article>
   );
 };

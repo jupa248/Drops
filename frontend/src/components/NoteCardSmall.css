@@ -28,19 +28,19 @@
   align-items: center;
   background-color: rgb(96, 6, 6);
   height: 100%;
-}
-
-.link-button {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
   color: #fff;
 }
 
-.link-button:hover,
-.link-button:active {
-  transition: all 0.5s;
+.card-link span {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.card-link span:hover,
+:active {
+  transition: all 0.5s ease-in-out;
   transform: scale(1.1);
+  color: gray;
 }
 
 .card-link:active {
