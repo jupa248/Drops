@@ -1,12 +1,15 @@
 import { useParams, Link } from "react-router-dom";
 import { useAppContext } from "../contexts/AppContext";
 import note from "../assets/note.svg";
+import EditInput from "../components/EditInput";
 import "./Note.css";
 import { useEffect, useState } from "react";
 
 const Note = () => {
   const { getNote } = useAppContext();
   const [myNote, setMyNote] = useState("");
+  const [activeField, setActiveField] = useState("");
+
   let param = useParams();
 
   useEffect(() => {
@@ -22,25 +25,56 @@ const Note = () => {
     fetchData();
   }, []);
 
+  const handleInputChange = (fieldName, value) => {
+    setMyNote((prevNote) => ({
+      ...prevNote,
+      [fieldName]: value,
+    }));
+  };
+
+  const handleEditClick = (fieldName) => {
+    setActiveField(fieldName);
+  };
+
+  const includedProperties = [
+    "wine",
+    "date",
+    "price",
+    "year",
+    "variety",
+    "winery",
+    "region",
+    "color",
+    "aroma",
+    "body",
+    "taste",
+    "finish",
+    "mynotes",
+  ];
+
   return (
     <div className="singleNotesPage">
       <div className="single-container">
-        <div className="myNotes-container">
-          <span>Name:</span>
-          <p>{myNote.wine}</p>
-          <p>Tasting date: {myNote.date}</p>
-          <p>Price: €{myNote.price}</p>
-          <p>Year: {myNote.year}</p>
-          <p>Variety: {myNote.variety}</p>
-          <p>Winery: {myNote.winery}</p>
-          <p>Country/Region: {myNote.region}</p>
-          <p>Color: {myNote.color}</p>
-          <p>Aroma: {myNote.aroma}</p>
-          <p>Body: {myNote.body}</p>
-          <p>Taste: {myNote.taste}</p>
-          <p>Finish: {myNote.finish}</p>
-          <p>My notes: {myNote.mynotes}</p>
-        </div>
+        <form className="myNotes-container">
+          {Object.entries(myNote)
+            .filter(([fieldName, fieldValue]) =>
+              includedProperties.includes(fieldName)
+            )
+            .map(([fieldName, fieldValue]) => {
+              const isFocused = activeField === fieldName;
+
+              return (
+                <EditInput
+                  key={fieldName}
+                  label={fieldName}
+                  value={fieldValue}
+                  onChange={(e) => handleInputChange(fieldName, e.target.value)}
+                  focused={isFocused}
+                  onEditClick={() => handleEditClick(fieldName)}
+                />
+              );
+            })}
+        </form>
         <div className="see-all">
           <div>
             <Link to="/create-notes">
@@ -59,4 +93,5 @@ const Note = () => {
     </div>
   );
 };
+
 export default Note;

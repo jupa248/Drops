@@ -8,9 +8,10 @@ const NotesForm = () => {
   const { user } = useAppContext();
   const [notes, setNotes] = useState([]);
   const navigate = useNavigate();
-  //console.log(user[0].id);
-  const userId = user && user[0].id;
-  console.log("user", userId);
+
+  const userId = user?.id;
+
+  console.log("userId", userId);
 
   const handleChange = (event) => {
     const { value, name } = event.target;

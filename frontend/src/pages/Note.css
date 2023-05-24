@@ -27,8 +27,44 @@
   );
   padding: 1.5rem;
   margin: 2rem;
+  gap: 1rem;
 }
 
-.myNotes-container p {
+.myNotes-container div {
+  display: grid;
+  grid-template-columns: 20% auto 5%;
+  align-items: center;
+}
+
+label {
+  color: antiquewhite;
+  text-align: start;
+}
+
+input {
+  border-radius: 5px;
   background-color: antiquewhite;
+  text-align: center;
+  padding: 0.5rem;
+  align-items: stretch;
+  border: none;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  border-radius: 5px;
+  height: 90%;
+  width: auto;
+  /* display: none; */
+}
+.icon:hover {
+  cursor: pointer;
+  background: #0e73d8;
+}
+.icon svg {
+  fill: antiquewhite;
 }
