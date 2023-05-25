@@ -26,7 +26,6 @@ const Home = () => {
     <div>
       <div className="homepage">
         <div className="home-bg">
-          <h2>Your latest notes...</h2>
           <div className="desk-home">
             {notes
               .filter((note, index) => index < 4)

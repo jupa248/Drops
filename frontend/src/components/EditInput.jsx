@@ -1,20 +1,23 @@
-import React, { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { EditIcon } from "../assets/svgIcons";
 
-const EditInput = ({ label, value, onChange, focused, onEditClick }) => {
+const EditInput = ({ label, value, onChange, type }) => {
   const inputRef = useRef(null);
-
-  useEffect(() => {
-    if (focused && inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [focused]);
+  const handleFocus = () => {
+    inputRef.current.focus();
+  };
 
   return (
-    <div>
+    <div className="edit-input">
       <label>{label}:</label>
-      <input type="text" value={value} onChange={onChange} ref={inputRef} />
-      <button className="icon" onClick={onEditClick}>
+      <input
+        type={type}
+        name={label}
+        value={value}
+        onChange={onChange}
+        ref={inputRef}
+      />
+      <button className="icon icon-edit" type="button" onClick={handleFocus}>
         <EditIcon />
       </button>
     </div>

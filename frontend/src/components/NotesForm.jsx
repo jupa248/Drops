@@ -30,7 +30,6 @@ const NotesForm = () => {
         alert(error);
       });
   };
-  console.log("notes", notes);
 
   return (
     <div className="notes-container">

@@ -5,17 +5,6 @@
   background-size: cover;
 }
 
-@media only screen and (min-width: 1024px) {
-  .singleNotesPage {
-    height: 100%;
-  }
-
-  .single-container {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
 .myNotes-container {
   display: flex;
   flex-direction: column;
@@ -36,12 +25,12 @@
   align-items: center;
 }
 
-label {
+.edit-input label {
   color: antiquewhite;
   text-align: start;
 }
 
-input {
+.edit-input input {
   border-radius: 5px;
   background-color: antiquewhite;
   text-align: center;
@@ -50,21 +39,110 @@ input {
   border: none;
 }
 
-.icon {
+.create-note-button {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   background: transparent;
   border: none;
+}
+
+.create-note-button img {
+  height: 3.5rem;
+  width: 3.5rem;
+}
+
+.create-note-button span {
+  font-size: 12px;
+  font-style: italic;
+  color: darkgrey;
+}
+
+/* .see-all-button {
+  background-image: url("https://i.ibb.co/XJJw37t/posters-cork-background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 50%;
+  font-weight: 500;
+  text-align: center;
+  font-family: "Graduate", cursive;
+  font-weight: bold;
+  color: #2e0c0c;
+  font-size: 0.8rem;
+} */
+
+.icon-notes {
+  color: antiquewhite;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  background: transparent;
+  border: none;
+}
+
+.icon {
+  background: transparent;
   border-radius: 5px;
-  height: 90%;
+}
+
+.icon-edit {
+  display: flex;
+  align-items: center;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   width: auto;
-  /* display: none; */
 }
 .icon:hover {
   cursor: pointer;
   background: #0e73d8;
 }
-.icon svg {
+.icon-edit svg {
   fill: antiquewhite;
+}
+
+/* .icon-barrel:hover {
+    background-color: transparent;
+  } */
+
+.icon-barrel {
+  color: antiquewhite;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  background: linear-gradient(
+    360deg,
+    rgba(61, 62, 55, 0.7) 0%,
+    rgba(97, 5, 5, 0.7) 100%
+  );
+  /* background-color: rgb(96, 6, 6); */
+  padding: 0.5rem;
+  gap: 0.5rem;
+}
+
+.icon-barrel svg {
+  height: 100%;
+  width: auto;
+}
+
+@media only screen and (min-width: 1024px) {
+  .singleNotesPage {
+    height: 100%;
+  }
+
+  .single-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .see-all-button:hover {
+    transform: rotate(-25deg);
+  }
+
+  .create-note-button:hover {
+    transform: scale(1.1);
+  }
 }

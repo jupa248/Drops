@@ -36,12 +36,12 @@
   gap: 0.6rem;
 }
 
-.card-link span:hover,
+/* .card-link span:hover,
 :active {
   transition: all 0.5s ease-in-out;
   transform: scale(1.1);
   color: gray;
-}
+} */
 
 .card-link:active {
   background-color: rgb(54, 4, 4);

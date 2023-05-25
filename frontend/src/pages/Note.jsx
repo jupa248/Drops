@@ -1,14 +1,17 @@
 import { useParams, Link } from "react-router-dom";
 import { useAppContext } from "../contexts/AppContext";
+import { BarrelIcon } from "../assets/svgIcons";
 import note from "../assets/note.svg";
+import barrel from "../assets/barrel.svg";
+import myNotesIcon from "../assets/myNotesIcon.svg";
 import EditInput from "../components/EditInput";
 import "./Note.css";
 import { useEffect, useState } from "react";
 
 const Note = () => {
-  const { getNote } = useAppContext();
+  const { getNote, updateNotes } = useAppContext();
   const [myNote, setMyNote] = useState("");
-  const [activeField, setActiveField] = useState("");
+  const [inputChanged, setInputChanged] = useState(false);
 
   let param = useParams();
 
@@ -26,14 +29,18 @@ const Note = () => {
   }, []);
 
   const handleInputChange = (fieldName, value) => {
+    setInputChanged(true);
     setMyNote((prevNote) => ({
       ...prevNote,
       [fieldName]: value,
     }));
   };
 
-  const handleEditClick = (fieldName) => {
-    setActiveField(fieldName);
+  const handleEditSubmit = async (e) => {
+    e.preventDefault();
+    const noteId = myNote.note_id;
+    await updateNotes(noteId, myNote);
+    setInputChanged(false);
   };
 
   const includedProperties = [
@@ -61,16 +68,13 @@ const Note = () => {
               includedProperties.includes(fieldName)
             )
             .map(([fieldName, fieldValue]) => {
-              const isFocused = activeField === fieldName;
-
               return (
                 <EditInput
                   key={fieldName}
                   label={fieldName}
-                  value={fieldValue}
+                  type={fieldName === "date" ? "date" : "text"}
+                  value={fieldValue || ""}
                   onChange={(e) => handleInputChange(fieldName, e.target.value)}
-                  focused={isFocused}
-                  onEditClick={() => handleEditClick(fieldName)}
                 />
               );
             })}
@@ -78,16 +82,30 @@ const Note = () => {
         <div className="see-all">
           <div>
             <Link to="/create-notes">
-              <button className="create-note-button">
+              <button className="icon-notes">
                 <img src={note} alt="" />
+                <span>New Note</span>
               </button>
             </Link>
           </div>
           <div>
             <Link to="/my-notes">
-              <button className="see-all-button">My notes</button>
+              <button className="icon-notes">
+                <img src={myNotesIcon} alt="my-notes-icon" />
+                <span>My Notes</span>
+              </button>
             </Link>
           </div>
+          {inputChanged && (
+            <button
+              className="icon-barrel icon"
+              type="submit"
+              onClick={handleEditSubmit}
+            >
+              <img src={barrel} alt="barrel" />
+              <span>Save</span>
+            </button>
+          )}
         </div>
       </div>
     </div>

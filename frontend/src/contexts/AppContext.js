@@ -90,17 +90,17 @@ export const AppProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      const parsedUser = JSON.parse(storedUser);
-      setUser(parsedUser);
-      axios.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${parsedUser.token}`;
-    }
-    setLoading(false);
-  }, []);
+  // useEffect(() => {
+  //   const storedUser = localStorage.getItem("user");
+  //   if (storedUser) {
+  //     const parsedUser = JSON.parse(storedUser);
+  //     setUser(parsedUser);
+  //     axios.defaults.headers.common[
+  //       "Authorization"
+  //     ] = `Bearer ${parsedUser.token}`;
+  //   }
+  //   setLoading(false);
+  // }, []);
 
   const logout = async () => {
     try {
