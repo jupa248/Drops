@@ -1,0 +1,58 @@
+.notes-actions {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1.5rem auto;
+  width: 100%;
+}
+
+.icon-notes {
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  grid-template-columns: auto;
+  color: antiquewhite;
+  align-items: center;
+  background: transparent;
+  border-radius: 10px;
+  border: none;
+  -webkit-box-shadow: 0px 17px 12px -15px antiquewhite;
+  -moz-box-shadow: 0px 17px 12px -15px antiquewhite;
+  box-shadow: 0px 17px 12px -15px antiquewhite;
+}
+
+.icon-notes img {
+  width: 5rem;
+  height: auto;
+}
+
+.icon-edition {
+  align-self: stretch;
+}
+.icon-edition img {
+  justify-self: center;
+  width: 3.5rem;
+  height: auto;
+}
+.barrel img {
+  transform: rotate(90deg);
+}
+
+.hide-action {
+  display: none;
+}
+
+@media only screen and (min-width: 1024px) {
+  .see-all-button:hover {
+    transform: rotate(-25deg);
+  }
+
+  .create-note-button:hover {
+    transform: scale(1.1);
+  }
+
+  .notes-actions {
+    justify-content: flex-end;
+    margin-right: 2rem;
+    gap: 2rem;
+  }
+}

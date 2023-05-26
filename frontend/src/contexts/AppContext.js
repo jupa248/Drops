@@ -113,10 +113,11 @@ export const AppProvider = ({ children }) => {
     }
   };
 
-  const createNote = async (noteData) => {
+  const createNote = async (noteId, noteData) => {
     try {
-      const response = await axiosRequest("post", "notes", noteData);
+      const response = await axiosRequest("post", `notes/${noteId}`, noteData);
       const data = response.data;
+      console.log(data);
       setNotes([...notes, data]);
       await fetchNotes();
     } catch (error) {

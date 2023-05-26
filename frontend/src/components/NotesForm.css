@@ -41,7 +41,6 @@
   background-size: cover;
   background-blend-mode: lighten;
   height: 100%;
-  position: absolute;
   width: 100%;
 }
 
@@ -71,6 +70,12 @@
   border: solid 1px #d8bfd8;
   border-radius: 10px;
   height: 5rem;
+}
+
+.save-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
 @media only screen and (min-width: 1024px) {

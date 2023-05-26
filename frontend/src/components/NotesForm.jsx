@@ -3,32 +3,27 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAppContext } from "../contexts/AppContext";
+import { toast } from "react-toastify";
+import NotesActions from "./NotesActions";
+import SaveNoteBtn from "./SaveNoteBtn";
 
 const NotesForm = () => {
-  const { user } = useAppContext();
+  const { user, createNote } = useAppContext();
   const [notes, setNotes] = useState([]);
   const navigate = useNavigate();
 
   const userId = user?.id;
-
-  console.log("userId", userId);
 
   const handleChange = (event) => {
     const { value, name } = event.target;
     setNotes({ ...notes, [name]: value });
   };
 
-  const handleSubmission = (event) => {
-    event.preventDefault();
-    axios
-      .post(`/notes/${userId}`, notes)
-      .then((response) => {
-        alert("Note has been registered");
-        navigate("/home");
-      })
-      .catch((error) => {
-        alert(error);
-      });
+  const handleSubmission = async (e) => {
+    e.preventDefault();
+    await createNote(userId, notes);
+    navigate("/home");
+    toast.success("Note has been registered");
   };
 
   return (
@@ -60,10 +55,13 @@ const NotesForm = () => {
         <input name="finish" type="text" onChange={handleChange} />
         <label>Description</label>
         <textarea name="mynotes" type="text" onChange={handleChange} />
-        <button type="submit" className="notes-button">
+        {/* <button type="submit" className="notes-button">
           Save
-        </button>
+        </button> */}
       </form>
+      <div className="save-btn">
+        <SaveNoteBtn handleSubmit={handleSubmission} />
+      </div>
     </div>
   );
 };

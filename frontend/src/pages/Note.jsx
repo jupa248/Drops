@@ -1,17 +1,25 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useAppContext } from "../contexts/AppContext";
-import { BarrelIcon } from "../assets/svgIcons";
 import note from "../assets/note.svg";
 import barrel from "../assets/barrel.svg";
 import myNotesIcon from "../assets/myNotesIcon.svg";
 import EditInput from "../components/EditInput";
 import "./Note.css";
 import { useEffect, useState } from "react";
+import NotesActions from "../components/NotesActions";
+import { ToastContainer, toast } from "react-toastify";
+import NewNoteBtn from "../components/NewNoteBtn";
+import MyNotesBtn from "../components/MyNotesBtn";
+import SaveNoteBtn from "../components/SaveNoteBtn";
+import CancelBtn from "../components/CancelBtn";
+import DeleteNoteBtn from "../components/DeleteNoteBtn";
 
 const Note = () => {
-  const { getNote, updateNotes } = useAppContext();
+  const { getNote, updateNotes, deleteNote } = useAppContext();
   const [myNote, setMyNote] = useState("");
   const [inputChanged, setInputChanged] = useState(false);
+  const [cancelEdit, setCancelEdit] = useState(false);
+  const navigate = useNavigate();
 
   let param = useParams();
 
@@ -21,12 +29,13 @@ const Note = () => {
         const response = await getNote(param.id);
         setMyNote(response[0]);
       } catch (error) {
-        console.log(error);
+        toast.error(error);
+        console.error(error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [cancelEdit]);
 
   const handleInputChange = (fieldName, value) => {
     setInputChanged(true);
@@ -41,6 +50,19 @@ const Note = () => {
     const noteId = myNote.note_id;
     await updateNotes(noteId, myNote);
     setInputChanged(false);
+    toast.success("Note updated!");
+  };
+
+  const handleCancelEdit = () => {
+    setCancelEdit(!cancelEdit);
+    setInputChanged(false);
+  };
+
+  const handleDelete = async () => {
+    const noteId = myNote.note_id;
+    await deleteNote(noteId);
+    navigate("/home");
+    toast.success("Note has been deleted");
   };
 
   const includedProperties = [
@@ -60,55 +82,39 @@ const Note = () => {
   ];
 
   return (
-    <div className="singleNotesPage">
-      <div className="single-container">
-        <form className="myNotes-container">
-          {Object.entries(myNote)
-            .filter(([fieldName, fieldValue]) =>
-              includedProperties.includes(fieldName)
-            )
-            .map(([fieldName, fieldValue]) => {
-              return (
-                <EditInput
-                  key={fieldName}
-                  label={fieldName}
-                  type={fieldName === "date" ? "date" : "text"}
-                  value={fieldValue || ""}
-                  onChange={(e) => handleInputChange(fieldName, e.target.value)}
-                />
-              );
-            })}
-        </form>
-        <div className="see-all">
-          <div>
-            <Link to="/create-notes">
-              <button className="icon-notes">
-                <img src={note} alt="" />
-                <span>New Note</span>
-              </button>
-            </Link>
-          </div>
-          <div>
-            <Link to="/my-notes">
-              <button className="icon-notes">
-                <img src={myNotesIcon} alt="my-notes-icon" />
-                <span>My Notes</span>
-              </button>
-            </Link>
-          </div>
-          {inputChanged && (
-            <button
-              className="icon-barrel icon"
-              type="submit"
-              onClick={handleEditSubmit}
-            >
-              <img src={barrel} alt="barrel" />
-              <span>Save</span>
-            </button>
-          )}
-        </div>
+    <section className="singleNotesPage">
+      <form className="myNotes-container">
+        {Object.entries(myNote)
+          .filter(([fieldName, fieldValue]) =>
+            includedProperties.includes(fieldName)
+          )
+          .map(([fieldName, fieldValue]) => {
+            return (
+              <EditInput
+                key={fieldName}
+                label={fieldName}
+                type={fieldName === "date" ? "date" : "text"}
+                value={fieldValue || ""}
+                onChange={(e) => handleInputChange(fieldName, e.target.value)}
+              />
+            );
+          })}
+      </form>
+      <div className="notes-actions">
+        {!inputChanged && <NewNoteBtn />}
+        {!inputChanged && <MyNotesBtn />}
+        {inputChanged && <CancelBtn handleCancel={handleCancelEdit} />}
+        {inputChanged && <SaveNoteBtn handleSubmit={handleEditSubmit} />}
+        <DeleteNoteBtn handleDelete={handleDelete} />
       </div>
-    </div>
+      {/* <NotesActions
+        inputChanged={inputChanged}
+        handleSubmit={handleEditSubmit}
+        handleCancel={handleCancelEdit}
+        handleDelete={handleDelete}
+      /> */}
+      <ToastContainer />
+    </section>
   );
 };
 
