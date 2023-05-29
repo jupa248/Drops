@@ -11,6 +11,7 @@ export const AppProvider = ({ children }) => {
   const [user, setUser] = useState(initialUser);
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   const API_URL = "http://localhost:5000";
   const token = localStorage.getItem("token");
@@ -113,15 +114,29 @@ export const AppProvider = ({ children }) => {
     }
   };
 
+  // const createNote = async (noteId, noteData) => {
+  //   try {
+  //     const response = await axiosRequest("post", `notes/${noteId}`, noteData);
+  //     const data = response.data;
+  //     setNotes([...notes, data]);
+  //   } catch (err) {
+  //     const error = err.response.data.error;
+  //     console.log(error);
+  //     setError(error);
+  //   }
+  // };
+
   const createNote = async (noteId, noteData) => {
     try {
       const response = await axiosRequest("post", `notes/${noteId}`, noteData);
       const data = response.data;
-      console.log(data);
       setNotes([...notes, data]);
-      await fetchNotes();
-    } catch (error) {
+      return { success: true, message: "Note created successfully" };
+    } catch (err) {
+      const error = err.response.data.error;
       console.log(error);
+      setError(error);
+      return { success: false, message: "Failed to create the note", error };
     }
   };
 
@@ -169,6 +184,8 @@ export const AppProvider = ({ children }) => {
         logout,
         fetchNotes,
         createNote,
+        error,
+        setError,
         getNote,
         updateNotes,
         deleteNote,

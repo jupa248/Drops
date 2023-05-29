@@ -22,7 +22,7 @@ export const createNote = async (req, res, next) => {
     const userId = req.params.userId; // Get the authenticated user's ID from the request object
 
     // Insert the new note into the database
-    await pool.query(
+    const result = await pool.query(
       "INSERT INTO notes (wine, date, price, year, variety, winery, region, color, aroma, body, taste, finish, mynotes, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
       [
         wine,
@@ -42,18 +42,25 @@ export const createNote = async (req, res, next) => {
       ]
     );
 
-    // Fetch the updated list of notes for the user
-    const updatedNotes = await pool.query(
-      "SELECT * FROM notes WHERE user_id = ?",
-      [userId]
-    );
+    // Check if the note was successfully inserted
+    console.log("affected:", result[0].affectedRows);
+    if (result[0].affectedRows === 1) {
+      // Fetch the updated list of notes for the user
+      const updatedNotes = await pool.query(
+        "SELECT * FROM notes WHERE user_id = ?",
+        [userId]
+      );
 
-    return res.status(201).json({
-      message: "Note created successfully",
-      notes: updatedNotes,
-    });
+      return res.status(201).json({
+        message: "Note created successfully",
+        notes: updatedNotes,
+      });
+    } else {
+      throw new Error("Failed to create the note");
+    }
   } catch (error) {
-    return next(error);
+    // Handle the error and return a descriptive error message
+    return res.status(500).json({ error: error.message });
   }
 };
 
@@ -71,7 +78,6 @@ export const getAllNotes = async (req, res, next) => {
       return res.status(404).json({ message: "No notes found for this user" });
     }
 
-    //console.log("notes be:", notes);
     return res.status(200).json(notes);
   } catch (error) {
     return next(error);
@@ -147,7 +153,6 @@ export const updateNote = async (req, res, next) => {
       ]
     );
 
-    console.log("Note updated successfully");
     return res.status(200).json({ message: "Note updated successfully" });
   } catch (error) {
     return next(error);

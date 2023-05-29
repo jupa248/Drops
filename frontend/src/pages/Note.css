@@ -24,6 +24,13 @@
   gap: 1rem;
 }
 
+.myNotes-container h2 {
+  color: antiquewhite;
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+}
+
 .myNotes-container div {
   display: grid;
   grid-template-columns: 20% auto 5%;
@@ -33,15 +40,22 @@
 .edit-input label {
   color: antiquewhite;
   text-align: start;
+  text-transform: capitalize;
 }
 
-.edit-input input {
+.edit-input input,
+textarea {
   border-radius: 5px;
   background-color: antiquewhite;
   text-align: center;
   padding: 0.5rem;
   align-items: stretch;
   border: none;
+}
+
+textarea {
+  /* resize: none; */
+  /* height: 5rem; */
 }
 
 .icon {

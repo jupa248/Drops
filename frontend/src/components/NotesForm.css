@@ -78,6 +78,34 @@
   margin-top: 1rem;
 }
 
+.required {
+  position: relative;
+  background-color: gray;
+}
+
+.err-tooltip {
+  background: #d8bfd8;
+  padding: 0.5rem;
+  color: #cc0000;
+  position: absolute;
+  border-radius: 5px;
+  top: -0.5rem;
+  left: -0.5rem;
+  z-index: 20;
+  transition: ease-in-out;
+}
+
+.err-tooltip::after {
+  content: " ";
+  position: absolute;
+  top: 100%; /* At the top of the tooltip */
+  margin-top: -2.7rem;
+  margin-left: -7rem;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #d8bfd8 transparent;
+}
+
 @media only screen and (min-width: 1024px) {
   .notes-container {
     width: 50%;

@@ -1,12 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useAppContext } from "../contexts/AppContext";
-import note from "../assets/note.svg";
-import barrel from "../assets/barrel.svg";
-import myNotesIcon from "../assets/myNotesIcon.svg";
 import EditInput from "../components/EditInput";
 import "./Note.css";
 import { useEffect, useState } from "react";
-import NotesActions from "../components/NotesActions";
 import { ToastContainer, toast } from "react-toastify";
 import NewNoteBtn from "../components/NewNoteBtn";
 import MyNotesBtn from "../components/MyNotesBtn";
@@ -66,7 +62,6 @@ const Note = () => {
   };
 
   const includedProperties = [
-    "wine",
     "date",
     "price",
     "year",
@@ -84,6 +79,7 @@ const Note = () => {
   return (
     <section className="singleNotesPage">
       <form className="myNotes-container">
+        <h2>{myNote.wine}</h2>
         {Object.entries(myNote)
           .filter(([fieldName, fieldValue]) =>
             includedProperties.includes(fieldName)
@@ -107,12 +103,6 @@ const Note = () => {
         {inputChanged && <SaveNoteBtn handleSubmit={handleEditSubmit} />}
         <DeleteNoteBtn handleDelete={handleDelete} />
       </div>
-      {/* <NotesActions
-        inputChanged={inputChanged}
-        handleSubmit={handleEditSubmit}
-        handleCancel={handleCancelEdit}
-        handleDelete={handleDelete}
-      /> */}
       <ToastContainer />
     </section>
   );

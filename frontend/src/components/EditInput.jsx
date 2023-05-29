@@ -9,14 +9,27 @@ const EditInput = ({ label, value, onChange, type }) => {
 
   return (
     <div className="edit-input">
-      <label>{label}:</label>
-      <input
-        type={type}
-        name={label}
-        value={value}
-        onChange={onChange}
-        ref={inputRef}
-      />
+      <label>{label === "mynotes" ? "My notes" : label}:</label>
+      {label === "mynotes" && (
+        <textarea
+          rows={8}
+          maxLength={255}
+          type={type}
+          name={label}
+          value={value}
+          onChange={onChange}
+          ref={inputRef}
+        />
+      )}
+      {label !== "mynotes" && (
+        <input
+          type={type}
+          name={label}
+          value={value}
+          onChange={onChange}
+          ref={inputRef}
+        />
+      )}
       <button className="icon icon-edit" type="button" onClick={handleFocus}>
         <EditIcon />
       </button>

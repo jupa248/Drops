@@ -1,19 +1,20 @@
 import "./NotesForm.css";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAppContext } from "../contexts/AppContext";
 import { toast } from "react-toastify";
-import NotesActions from "./NotesActions";
 import SaveNoteBtn from "./SaveNoteBtn";
 
 const NotesForm = () => {
-  const { user, createNote } = useAppContext();
+  const { user, createNote, error } = useAppContext();
   const [notes, setNotes] = useState([]);
+  const nameInput = document.querySelector('input[name="wine"]')?.value;
+  const priceInput = document.querySelector('input[name="price"]')?.value;
+
   const navigate = useNavigate();
 
   const userId = user?.id;
-
+  console.log(error);
   const handleChange = (event) => {
     const { value, name } = event.target;
     setNotes({ ...notes, [name]: value });
@@ -21,22 +22,51 @@ const NotesForm = () => {
 
   const handleSubmission = async (e) => {
     e.preventDefault();
-    await createNote(userId, notes);
-    navigate("/home");
-    toast.success("Note has been registered");
+    try {
+      const result = await createNote(userId, notes);
+      console.log(result);
+      if (result.success) {
+        toast.success(result.message);
+        navigate("/home");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <div className="notes-container">
       <form onSubmit={handleSubmission}>
         <label>Wine</label>
-        <input name="wine" type="text" onChange={handleChange} />
+        <input name="wine" required type="text" onChange={handleChange} />
+        {error && nameInput?.length === 0 && (
+          <span className="required">
+            <p className="err-tooltip">* Wine name field is required</p>
+          </span>
+        )}
         <label>Date</label>
         <input name="date" type="date" onChange={handleChange} />
         <label>Price €€€</label>
-        <input name="price" type="number" onChange={handleChange} />
+        <input
+          name="price"
+          type="number"
+          step={0.1}
+          min={0}
+          onChange={handleChange}
+        />
+        {error && priceInput?.length === 0 && (
+          <span className="required">
+            <p className="err-tooltip">* Wine price field is required</p>
+          </span>
+        )}
         <label>Year</label>
-        <input name="year" type="number" onChange={handleChange} />
+        <input
+          name="year"
+          type="number"
+          min={1920}
+          placeholder="YYYY"
+          onChange={handleChange}
+        />
         <label>Variety</label>
         <input name="variety" type="text" onChange={handleChange} />
         <label>Winery</label>
@@ -54,10 +84,12 @@ const NotesForm = () => {
         <label>Finish</label>
         <input name="finish" type="text" onChange={handleChange} />
         <label>Description</label>
-        <textarea name="mynotes" type="text" onChange={handleChange} />
-        {/* <button type="submit" className="notes-button">
-          Save
-        </button> */}
+        <textarea
+          name="mynotes"
+          type="text"
+          maxLength={255}
+          onChange={handleChange}
+        />
       </form>
       <div className="save-btn">
         <SaveNoteBtn handleSubmit={handleSubmission} />

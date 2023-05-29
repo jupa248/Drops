@@ -79,7 +79,6 @@ export const login = async (req, res, next) => {
 export const getUserById = async (req, res, next) => {
   try {
     const [userId] = req.params.userId;
-    console.log("hola", userId);
     // Retrieve the user data from the database based on the user ID
     const user = await pool.query("SELECT * FROM users WHERE id = ?", [userId]);
 
@@ -105,12 +104,9 @@ export const authenticate = (req, res, next) => {
 
     // Remove "Bearer " from the token string
     const tokenString = token.replace("Bearer ", "");
-    console.log("token be:", tokenString);
 
     jwt.verify(tokenString, process.env.JWT_SECRET_KEY, (err, decoded) => {
-      console.log("decoded", decoded);
       if (err) {
-        console.log("Token verification error:", err);
         return res.status(401).json({ message: "Unauthorized" });
       }
 

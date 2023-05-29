@@ -28,8 +28,8 @@ const Home = () => {
           <div className="desk-home">
             {notes
               .filter((note, index) => index < 4)
-              .map((note) => (
-                <NoteCardSmall key={note.note_id} note={note} />
+              .map((note, index) => (
+                <NoteCardSmall key={index} note={note} />
               ))}
           </div>
           <div>
