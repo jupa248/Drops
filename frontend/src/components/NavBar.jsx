@@ -7,12 +7,13 @@ import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [active, setActive] = useState(false);
-  const { user, logout } = useAppContext();
+  const { user, logout, loading, setLoading } = useAppContext();
   const navigate = useNavigate();
 
   const handleLogout = () => {
     logout();
     navigate("/login");
+    setLoading(false);
   };
   const handleHamburger = () => {
     setActive(!active);

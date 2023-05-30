@@ -7,6 +7,8 @@ import Note from "./pages/Note";
 import Navbar from "./components/NavBar";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useAppContext } from "./contexts/AppContext";
+import MyNotes from "./pages/MyNotes";
+import "./index.css";
 
 const App = () => {
   const { user } = useAppContext();
@@ -37,6 +39,14 @@ const App = () => {
           element={
             <ProtectedRoute>
               <Note />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/my-notes"
+          element={
+            <ProtectedRoute>
+              <MyNotes />
             </ProtectedRoute>
           }
         />

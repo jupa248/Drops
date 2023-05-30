@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAppContext } from "../contexts/AppContext";
 import { toast } from "react-toastify";
-import SaveNoteBtn from "./SaveNoteBtn";
+import SaveNoteBtn from "./buttons/SaveNoteBtn";
 
 const NotesForm = () => {
   const { user, createNote, error } = useAppContext();

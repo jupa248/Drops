@@ -43,7 +43,7 @@ export const createNote = async (req, res, next) => {
     );
 
     // Check if the note was successfully inserted
-    console.log("affected:", result[0].affectedRows);
+
     if (result[0].affectedRows === 1) {
       // Fetch the updated list of notes for the user
       const updatedNotes = await pool.query(

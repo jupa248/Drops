@@ -4,11 +4,11 @@ import EditInput from "../components/EditInput";
 import "./Note.css";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import NewNoteBtn from "../components/NewNoteBtn";
-import MyNotesBtn from "../components/MyNotesBtn";
-import SaveNoteBtn from "../components/SaveNoteBtn";
-import CancelBtn from "../components/CancelBtn";
-import DeleteNoteBtn from "../components/DeleteNoteBtn";
+import NewNoteBtn from "../components/buttons/NewNoteBtn";
+import MyNotesBtn from "../components/buttons/MyNotesBtn";
+import SaveNoteBtn from "../components/buttons/SaveNoteBtn";
+import CancelBtn from "../components/buttons/CancelBtn";
+import DeleteNoteBtn from "../components/buttons/DeleteNoteBtn";
 
 const Note = () => {
   const { getNote, updateNotes, deleteNote } = useAppContext();

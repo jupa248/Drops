@@ -1,4 +1,4 @@
-import cancelIcon from "../assets/cancelIcon.svg";
+import cancelIcon from "../../assets/cancelIcon.svg";
 
 const CancelBtn = ({ handleCancel }) => {
   return (

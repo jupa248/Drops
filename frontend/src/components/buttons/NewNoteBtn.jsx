@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./NotesActions.css";
-import note from "../assets/note.svg";
+import note from "../../assets/note.svg";
 
 const NewNoteBtn = () => {
   return (

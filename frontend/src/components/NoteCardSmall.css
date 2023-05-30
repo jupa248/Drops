@@ -1,8 +1,6 @@
 .card-container {
-  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
-  justify-content: center;
   align-items: stretch;
   margin: 1rem;
 }
@@ -18,8 +16,13 @@
 }
 
 .card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: antiquewhite;
-  text-align: center;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .card-link {
@@ -28,7 +31,9 @@
   align-items: center;
   background-color: rgb(96, 6, 6);
   height: 100%;
-  color: #fff;
+  color: antiquewhite;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .card-link span {

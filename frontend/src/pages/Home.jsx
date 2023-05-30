@@ -5,7 +5,8 @@ import { ToastContainer, toast } from "react-toastify";
 import { useAppContext } from "../contexts/AppContext";
 import note from "../assets/note.svg";
 import NoteCardSmall from "../components/NoteCardSmall";
-import NotesActions from "../components/NotesActions";
+import NewNoteBtn from "../components/buttons/NewNoteBtn";
+import MyNotesBtn from "../components/buttons/MyNotesBtn";
 
 const Home = () => {
   const { user, notes, fetchNotes } = useAppContext();
@@ -22,23 +23,21 @@ const Home = () => {
   }
 
   return (
-    <>
-      <div className="homepage">
-        <div className="home-bg">
-          <div className="desk-home">
-            {notes
-              .filter((note, index) => index < 4)
-              .map((note, index) => (
-                <NoteCardSmall key={index} note={note} />
-              ))}
-          </div>
-          <div>
-            <NotesActions />
-          </div>
-        </div>
+    <section className="homepage">
+      <div>
+        <h2>Your latest notes...</h2>
+        {notes
+          .filter((note, index) => index < 4)
+          .map((note, index) => (
+            <NoteCardSmall key={index} note={note} />
+          ))}
+      </div>
+      <div className="notes-actions">
+        <NewNoteBtn />
+        <MyNotesBtn />
       </div>
       <ToastContainer position="top-center" />
-    </>
+    </section>
   );
 };
 

@@ -22,9 +22,8 @@
 
 .notes-container input {
   padding: 10px;
-  border: antiquewhite;
   border-radius: 10px;
-  color: #2f4f4f;
+  color: antiquewhite;
   background-color: transparent;
   border: solid 1px #d8bfd8;
 }
@@ -35,13 +34,9 @@
   margin-bottom: 0.5rem;
 }
 
-.notes-img {
-  background-image: url("https://i.ibb.co/mBYM0d4/grapes.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-blend-mode: lighten;
-  height: 100%;
-  width: 100%;
+::placeholder {
+  color: antiquewhite;
+  font-style: italic;
 }
 
 .notes-button {
@@ -60,9 +55,9 @@
   align-self: center;
 }
 
-.notes-container form input {
+/* .notes-container form input {
   color: antiquewhite;
-}
+} */
 
 .notes-container textarea {
   background: transparent;

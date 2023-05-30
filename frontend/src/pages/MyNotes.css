@@ -1,0 +1,43 @@
+.my-notes-container {
+  background-image: url("https://i.ibb.co/gJ1dcLX/dan-cristian-padure-LDMgqr8z7-ZE-unsplash.jpg");
+  box-sizing: border-box;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  padding-top: 6rem;
+  overflow-y: scroll;
+}
+.hidden {
+  display: none;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem 0;
+}
+
+.show-btn {
+  color: antiquewhite;
+  background-color: rgb(96, 6, 6);
+  padding: 1rem 0.5rem;
+  border-radius: 10px;
+}
+
+.back-to-top-btn {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+  color: antiquewhite;
+  background-color: rgb(96, 6, 6);
+  border-radius: 50%;
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.back-to-top-btn svg {
+  height: 2.2rem;
+  width: 2.2rem;
+}

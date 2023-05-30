@@ -54,6 +54,7 @@ export const AppProvider = ({ children }) => {
 
   const login = async (credentials) => {
     try {
+      setLoading(true);
       const response = await axiosRequest("post", "login", credentials);
       const { token, user } = response.data;
 
@@ -62,6 +63,7 @@ export const AppProvider = ({ children }) => {
 
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       setUser(user);
+      setLoading(false);
       console.log("User logged in successfully");
       return response;
     } catch (error) {
@@ -83,9 +85,11 @@ export const AppProvider = ({ children }) => {
 
   const fetchNotes = async (userId) => {
     try {
+      setLoading(true);
       const response = await axiosRequest("get", `notes/${userId}`);
       const notes = response.data;
       setNotes(notes);
+      setLoading(false);
     } catch (error) {
       console.log("Fetch notes error:", error);
     }

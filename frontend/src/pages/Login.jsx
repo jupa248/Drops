@@ -23,27 +23,25 @@ const Login = () => {
   };
 
   return (
-    <div className="signup-img">
-      <div className="signup-container">
-        <form onSubmit={handleLogin}>
-          <label>Username</label>
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <label>Password</label>
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button type="submit" className="submit-button"></button>
-        </form>
-      </div>
-    </div>
+    <section className="login-container">
+      <form onSubmit={handleLogin}>
+        <label>Username</label>
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <label>Password</label>
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit" className="submit-button"></button>
+      </form>
+    </section>
   );
 };
 export default Login;
