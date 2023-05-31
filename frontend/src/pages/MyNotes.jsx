@@ -18,7 +18,7 @@ const MyNotes = () => {
   }, [user]);
 
   useEffect(() => {
-    if (bottomRef.current) {
+    if (bottomRef.current && maxIndex > 10) {
       bottomRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [maxIndex]);

@@ -1,0 +1,19 @@
+.rating-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: antiquewhite;
+  color: black;
+  border-radius: 5px;
+  padding: 0.2rem 0;
+}
+
+.drops-container {
+  display: flex;
+  gap: 0.3rem;
+  flex-direction: row-reverse;
+}
+.drop:hover ~ .drop,
+.drop:hover {
+  fill: blue;
+}

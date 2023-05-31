@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useState, useRef } from "react";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 import { CgDrop } from "react-icons/cg";
@@ -7,8 +7,10 @@ import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [active, setActive] = useState(false);
+  const [colorChange, setColorchange] = useState(false);
   const { user, logout, loading, setLoading } = useAppContext();
   const navigate = useNavigate();
+  const navRef = useRef();
 
   const handleLogout = () => {
     logout();
@@ -19,13 +21,26 @@ const Navbar = () => {
     setActive(!active);
   };
 
+  const changeNavbarColor = () => {
+    if (window.scrollY < 50) {
+      setColorchange(true);
+    } else {
+      setColorchange(false);
+    }
+  };
+  window.addEventListener("scroll", changeNavbarColor);
+
   const body = document.querySelector("body");
   active
     ? (body.style.overflowY = "hidden")
     : (body.style.overflowY = "initial");
 
   return (
-    <div className="navbar-container">
+    <div
+      className={
+        colorChange ? "navbar-container bg-transp" : "navbar-container bg-red"
+      }
+    >
       <Link to="/homepage">
         <div className="logo">
           <CgDrop />

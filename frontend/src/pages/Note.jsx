@@ -77,7 +77,7 @@ const Note = () => {
   ];
 
   return (
-    <section className="singleNotesPage">
+    <section className="note-page">
       <form className="myNotes-container">
         <h2>{myNote.wine}</h2>
         {Object.entries(myNote)

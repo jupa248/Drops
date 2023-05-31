@@ -6,9 +6,17 @@
   justify-content: space-between;
   align-items: center;
   /* background-color: rgb(96, 6, 6); */
-  background: transparent;
   position: fixed;
   z-index: 25;
+  transition: all 0.3s ease-out;
+}
+
+.bg-transp {
+  background: transparent;
+}
+
+.bg-red {
+  background-color: rgb(96, 6, 6);
 }
 
 .navbar-desktop {

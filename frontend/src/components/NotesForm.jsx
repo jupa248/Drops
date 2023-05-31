@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useAppContext } from "../contexts/AppContext";
 import { toast } from "react-toastify";
 import SaveNoteBtn from "./buttons/SaveNoteBtn";
+import RatingInput from "./utils/RatingInput";
 
 const NotesForm = () => {
   const { user, createNote, error } = useAppContext();
@@ -73,7 +74,12 @@ const NotesForm = () => {
         <input name="winery" type="text" onChange={handleChange} />
         <label>Region/Country</label>
         <input name="region" type="text" onChange={handleChange} />
-        <label>Color/Clarity</label>
+        <hr className="rates-line" />
+        <div>
+          <h3>Rates:</h3>
+          <RatingInput wineProperty={"Color/Clarity"} />
+        </div>
+        {/* <label>Color/Clarity</label>
         <input name="color" type="text" onChange={handleChange} />
         <label>Aroma</label>
         <input name="aroma" type="text" onChange={handleChange} />
@@ -82,8 +88,8 @@ const NotesForm = () => {
         <label>Taste</label>
         <input name="taste" type="text" onChange={handleChange} />
         <label>Finish</label>
-        <input name="finish" type="text" onChange={handleChange} />
-        <label>Description</label>
+        <input name="finish" type="text" onChange={handleChange} /> */}
+        <label>Notes/Description</label>
         <textarea
           name="mynotes"
           type="text"

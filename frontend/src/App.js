@@ -9,6 +9,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { useAppContext } from "./contexts/AppContext";
 import MyNotes from "./pages/MyNotes";
 import "./index.css";
+import RatingInput from "./components/utils/RatingInput";
 
 const App = () => {
   const { user } = useAppContext();
@@ -50,6 +51,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+        <Route path="/test" element={<RatingInput />} />
         {!user && <Route path="*" element={<Navigate to="/login" replace />} />}
         {user && <Route path="*" element={<Navigate to="/home" replace />} />}
       </Routes>
