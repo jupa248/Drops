@@ -32,13 +32,15 @@ const MyNotes = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const reversedNotes = [...notes].reverse();
+
   return (
     <section className="my-notes-container">
       {loading ? (
         <p>Loading...</p>
       ) : (
         <div>
-          {notes.map(
+          {reversedNotes.map(
             (note, index) =>
               index < maxIndex && <NoteCardSmall key={index} note={note} />
           )}

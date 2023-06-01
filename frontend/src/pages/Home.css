@@ -1,6 +1,7 @@
 .homepage {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   background-image: url("https://i.ibb.co/gJ1dcLX/dan-cristian-padure-LDMgqr8z7-ZE-unsplash.jpg");
   box-sizing: border-box;
   background-size: cover;

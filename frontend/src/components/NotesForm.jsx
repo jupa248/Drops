@@ -5,6 +5,8 @@ import { useAppContext } from "../contexts/AppContext";
 import { toast } from "react-toastify";
 import SaveNoteBtn from "./buttons/SaveNoteBtn";
 import RatingInput from "./utils/RatingInput";
+import AdvancedNotes from "./utils/AdvancedNotes";
+import { advProps } from "../assets/data/formData";
 
 const NotesForm = () => {
   const { user, createNote, error } = useAppContext();
@@ -15,10 +17,18 @@ const NotesForm = () => {
   const navigate = useNavigate();
 
   const userId = user?.id;
-  console.log(error);
-  const handleChange = (event) => {
-    const { value, name } = event.target;
+
+  const ratingProps = ["color", "aroma", "body", "taste", "finish"];
+  // advProps.map((data) => console.log(data));
+
+  // const [appearance, nose] = advProps;
+  // console.log("appr:", nose);
+
+  const handleChange = (e) => {
+    console.log(e.target);
+    const { value, name } = e.target;
     setNotes({ ...notes, [name]: value });
+    console.log(notes);
   };
 
   const handleSubmission = async (e) => {
@@ -75,9 +85,20 @@ const NotesForm = () => {
         <label>Region/Country</label>
         <input name="region" type="text" onChange={handleChange} />
         <hr className="rates-line" />
-        <div>
+        <div className="rates">
           <h3>Rates:</h3>
-          <RatingInput wineProperty={"Color/Clarity"} />
+          {ratingProps.map((rate, index) => (
+            <RatingInput
+              key={index}
+              wineProperty={rate}
+              handleChange={handleChange}
+            />
+          ))}
+        </div>
+        <div className="advanced-notes">
+          {advProps.map((props) => (
+            <AdvancedNotes props={{ props }} />
+          ))}
         </div>
         {/* <label>Color/Clarity</label>
         <input name="color" type="text" onChange={handleChange} />

@@ -11,6 +11,7 @@
 .notes-container form {
   display: flex;
   flex-direction: column;
+  min-width: 70vw;
   border-radius: 15px;
   background: linear-gradient(
     360deg,
@@ -22,7 +23,7 @@
 }
 
 .notes-container input {
-  padding: 10px;
+  padding: 0.5rem;
   border-radius: 10px;
   color: antiquewhite;
   background-color: transparent;
@@ -35,7 +36,7 @@
 }
 
 input::placeholder {
-  color: antiquewhite;
+  /* color: antiquewhite; */
   font-style: italic;
 }
 
@@ -63,9 +64,11 @@ input::placeholder {
   border-radius: 30px;
 }
 
-/* .notes-container form input {
-  color: antiquewhite;
-} */
+.rates {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
 .notes-container textarea {
   background: transparent;

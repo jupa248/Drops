@@ -22,11 +22,13 @@ const Home = () => {
     return <div>Loading...</div>;
   }
 
+  const reversedNotes = [...notes].reverse();
+
   return (
     <section className="homepage">
       <div>
         <h2>Your latest notes...</h2>
-        {notes
+        {reversedNotes
           .filter((note, index) => index < 4)
           .map((note, index) => (
             <NoteCardSmall key={index} note={note} />

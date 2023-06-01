@@ -1,19 +1,46 @@
 .rating-container {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
   align-items: center;
   background-color: antiquewhite;
   color: black;
   border-radius: 5px;
   padding: 0.2rem 0;
 }
+.rating-container label {
+  justify-self: flex-start;
+  margin-left: 1.2rem;
+  text-transform: capitalize;
+}
 
 .drops-container {
   display: flex;
-  gap: 0.3rem;
+  justify-self: center;
   flex-direction: row-reverse;
 }
-.drop:hover ~ .drop,
-.drop:hover {
-  fill: blue;
+
+.drop-container {
+  display: flex;
+  align-items: center;
+}
+.drop-container input {
+  position: relative;
+  background-color: transparent;
+  border: none;
+  color: transparent;
+  /* padding: 0.3rem; */
+}
+.drop {
+  position: absolute;
+  fill: #bfbfbf;
+  width: 1.4rem;
+  height: auto;
+}
+
+.drop-container input:hover {
+  cursor: pointer;
+}
+.drop-container:hover .drop,
+.drop-container:hover ~ .drop-container .drop {
+  fill: #660066;
 }

@@ -1,48 +1,58 @@
 import { useState } from "react";
 import "./RatingInput.css";
-import { BsFillDropletFill } from "react-icons/bs";
+import { BsDropletFill } from "react-icons/bs";
 
-const RatingInput = ({ wineProperty }) => {
-  const [rating, setRating] = useState("");
-  console.log("rating:", rating);
-
-  const handleRating = (rate) => {
-    setRating(rate);
-  };
-
+const RatingInput = ({ wineProperty, handleChange }) => {
   return (
     <div className="rating-container">
-      <label>{wineProperty}</label>
+      <label>{wineProperty === "color" ? "color/clarity" : wineProperty}</label>
       <div className="drops-container">
-        <BsFillDropletFill
-          type="button"
-          className="drop"
-          onClick={() => handleRating(5)}
-        />
-        <BsFillDropletFill
-          type="button"
-          className="drop"
-          onClick={() => handleRating(4)}
-        />
-        <BsFillDropletFill
-          type="button"
-          className="drop"
-          onClick={() => handleRating(3)}
-        />
-        <BsFillDropletFill
-          type="button"
-          className="drop"
-          onClick={() => handleRating(2)}
-        />
-        <BsFillDropletFill
-          type="button"
-          className="drop"
-          onClick={() => handleRating(1)}
-        />
+        <div className="drop-container">
+          <BsDropletFill className="drop" />
+          <input
+            type="button"
+            name={wineProperty}
+            value={5}
+            onClick={handleChange}
+          />
+        </div>
+        <div className="drop-container">
+          <BsDropletFill className="drop" />
+          <input
+            type="button"
+            name={wineProperty}
+            value={4}
+            onClick={handleChange}
+          />
+        </div>
+        <div className="drop-container">
+          <BsDropletFill className="drop" />
+          <input
+            type="button"
+            name={wineProperty}
+            value={3}
+            onClick={handleChange}
+          />
+        </div>
+        <div className="drop-container">
+          <BsDropletFill className="drop" />
+          <input
+            type="button"
+            name={wineProperty}
+            value={2}
+            onClick={handleChange}
+          />
+        </div>
+        <div className="drop-container">
+          <BsDropletFill className="drop" />
+          <input
+            type="button"
+            name={wineProperty}
+            value={1}
+            onClick={handleChange}
+          />
+        </div>
       </div>
-      <span>
-        <h4>{rating ? rating : "0/5"}</h4>
-      </span>
     </div>
   );
 };
