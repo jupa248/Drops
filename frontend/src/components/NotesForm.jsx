@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import SaveNoteBtn from "./buttons/SaveNoteBtn";
 import RatingInput from "./utils/RatingInput";
 import AdvancedNotes from "./utils/AdvancedNotes";
-import { advProps } from "../assets/data/formData";
+import { advProps } from "../assets/data/formData.js";
 
 const NotesForm = () => {
   const { user, createNote, error } = useAppContext();
@@ -19,10 +19,6 @@ const NotesForm = () => {
   const userId = user?.id;
 
   const ratingProps = ["color", "aroma", "body", "taste", "finish"];
-  // advProps.map((data) => console.log(data));
-
-  // const [appearance, nose] = advProps;
-  // console.log("appr:", nose);
 
   const handleChange = (e) => {
     console.log(e.target);
@@ -96,20 +92,11 @@ const NotesForm = () => {
           ))}
         </div>
         <div className="advanced-notes">
-          {advProps.map((props) => (
-            <AdvancedNotes props={{ props }} />
+          {Object.entries(advProps).map((advPr, index) => (
+            <AdvancedNotes key={index} prop={advPr} />
           ))}
         </div>
-        {/* <label>Color/Clarity</label>
-        <input name="color" type="text" onChange={handleChange} />
-        <label>Aroma</label>
-        <input name="aroma" type="text" onChange={handleChange} />
-        <label>Body</label>
-        <input name="body" type="text" onChange={handleChange} />
-        <label>Taste</label>
-        <input name="taste" type="text" onChange={handleChange} />
-        <label>Finish</label>
-        <input name="finish" type="text" onChange={handleChange} /> */}
+
         <label>Notes/Description</label>
         <textarea
           name="mynotes"
