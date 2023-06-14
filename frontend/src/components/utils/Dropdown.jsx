@@ -11,7 +11,7 @@ const Dropdown = ({ options }) => {
     const initialActiveStates = {};
     const initialSelectedOptions = {};
 
-    Object.keys(options).forEach((title) => {
+    options.forEach(({ title }) => {
       initialActiveStates[title] = false;
       initialSelectedOptions[title] = "select...";
     });
@@ -70,7 +70,6 @@ const Dropdown = ({ options }) => {
   };
 
   const renderOptions = (title, options) => {
-    console.log("Options", options);
     if (!options || !options.length) {
       return null;
     }
@@ -78,12 +77,14 @@ const Dropdown = ({ options }) => {
     return (
       <div
         className="dropdown-content"
-        style={{ display: activeStates[title] ? "block" : "none" }}
+        style={{
+          display: activeStates[title] ? "block" : "none",
+        }}
       >
         {options.map((option) => (
           <div
             key={option}
-            className="item"
+            className={`item ${title === "Color" ? option : "item-bg"}`}
             onClick={() => handleOptionClick(title, option)}
           >
             {option}
@@ -95,7 +96,7 @@ const Dropdown = ({ options }) => {
 
   return (
     <article className="char-container">
-      {Object.entries(options).map(([title, { options }]) => (
+      {options.map(({ title, options }) => (
         <div key={title}>
           <label>{title}: </label>
           <div

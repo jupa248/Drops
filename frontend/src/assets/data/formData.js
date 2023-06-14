@@ -10,11 +10,21 @@ export const advProps = {
     },
     {
       title: "Color",
-      subcategories: {
-        white: ["lemon-green", "lemon", "gold", "amber", "brown"],
-        rosé: ["pink", "salmon", "orange"],
-        red: ["purple", "ruby", "garnet", "tawny", "brown"],
-      },
+      options: [
+        "lemon-green",
+        "lemon",
+        "gold",
+        "amber",
+        "brown",
+        "pink",
+        "salmon",
+        "orange",
+        "purple",
+        "ruby",
+        "garnet",
+        "tawny",
+        "deep-tawny",
+      ],
     },
   ],
   nose: [
