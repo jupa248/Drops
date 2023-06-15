@@ -1,15 +1,15 @@
 export const advProps = {
   appearance: [
     {
-      title: "Clarity",
+      title: "clarity",
       options: ["clear", "hazy", "faulty"],
     },
     {
-      title: "Intensity",
+      title: "intensity",
       options: ["pale", "medium", "deep"],
     },
     {
-      title: "Color",
+      title: "color$",
       options: [
         "lemon-green",
         "lemon",
@@ -29,19 +29,19 @@ export const advProps = {
   ],
   nose: [
     {
-      title: "Condition",
+      title: "condition$",
       options: ["clean", "unclean", "faulty"],
     },
     {
-      title: "Intensity",
+      title: "intensity$",
       options: ["light", "medium(-)", "medium", "medium(+)", "pronounced"],
     },
     {
-      title: "Aroma Characteristics",
+      title: "aroma$characteristics",
       options: ["primary", "secondary", "tertiary"],
     },
     {
-      title: "Development",
+      title: "development",
       options: [
         "youthful",
         "developing",
@@ -52,7 +52,7 @@ export const advProps = {
   ],
   palate: [
     {
-      title: "Sweetness",
+      title: "sweetness",
       options: [
         "dry",
         "off-dry",
@@ -63,37 +63,37 @@ export const advProps = {
       ],
     },
     {
-      title: "Acidity",
+      title: "acidity",
       options: ["low", "medium(-)", "medium", "medium(+)", "high"],
     },
     {
-      title: "Tannin",
+      title: "tannin",
       options: ["low", "medium(-)", "medium", "medium(+)", "high"],
     },
     {
-      title: "Alcohol",
+      title: "alcohol",
       options: ["low", "medium", "high"],
     },
     {
-      title: "Body",
+      title: "body$",
       options: ["light", "medium(-)", "medium", "medium(+)", "full"],
     },
     {
-      title: "Flavour Intensity",
+      title: "flavour$intensity",
       options: ["light", "medium(-)", "medium", "medium(+)", "pronounced"],
     },
     {
-      title: "Flavour Characteristics",
+      title: "flavour$characteristics",
       options: ["primary", "secondary", "tertiary"],
     },
     {
-      title: "Finish",
+      title: "finish$",
       options: ["short", "medium(-)", "medium", "medium(+)", "long"],
     },
   ],
   conclusions: [
     {
-      title: "Quality Level",
+      title: "quality$level",
       options: [
         "faulty",
         "poor",

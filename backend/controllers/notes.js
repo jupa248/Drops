@@ -1,7 +1,6 @@
 import { pool } from "../db-config.js";
 import { authenticate } from "./users.js";
 
-// Create a note
 export const createNote = async (req, res, next) => {
   try {
     const {
@@ -18,12 +17,29 @@ export const createNote = async (req, res, next) => {
       taste,
       finish,
       mynotes,
+      clarity,
+      intensity,
+      color$,
+      condition$,
+      intensity$,
+      aroma$characteristics,
+      development,
+      sweetness,
+      acidity,
+      tannin,
+      alcohol,
+      body$,
+      flavour$intensity,
+      flavour$characteristics,
+      finish$,
+      quality$level,
     } = req.body;
-    const userId = req.params.userId; // Get the authenticated user's ID from the request object
 
-    // Insert the new note into the database
+    const userId = req.params.userId;
+
     const result = await pool.query(
-      "INSERT INTO notes (wine, date, price, year, variety, winery, region, color, aroma, body, taste, finish, mynotes, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      `INSERT INTO notes (wine, date, price, year, variety, winery, region, color, aroma, body, taste, finish, mynotes, user_id, clarity, intensity, color$, condition$, intensity$, aroma$characteristics, development, sweetness, acidity, tannin, alcohol, body$, flavour$intensity, flavour$characteristics, finish$, quality$level) 
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)`,
       [
         wine,
         date,
@@ -39,13 +55,26 @@ export const createNote = async (req, res, next) => {
         finish,
         mynotes,
         userId,
+        clarity,
+        intensity,
+        color$,
+        condition$,
+        intensity$,
+        aroma$characteristics,
+        development,
+        sweetness,
+        acidity,
+        tannin,
+        alcohol,
+        body$,
+        flavour$intensity,
+        flavour$characteristics,
+        finish$,
+        quality$level,
       ]
     );
 
-    // Check if the note was successfully inserted
-
-    if (result[0].affectedRows === 1) {
-      // Fetch the updated list of notes for the user
+    if (result.affectedRows === 1) {
       const updatedNotes = await pool.query(
         "SELECT * FROM notes WHERE user_id = ?",
         [userId]
@@ -59,7 +88,6 @@ export const createNote = async (req, res, next) => {
       throw new Error("Failed to create the note");
     }
   } catch (error) {
-    // Handle the error and return a descriptive error message
     return res.status(500).json({ error: error.message });
   }
 };

@@ -2,14 +2,31 @@ import { useState } from "react";
 import "./AdvancedNotes.css";
 import Dropdown from "./Dropdown";
 
-const AdvancedNotes = ({ prop }) => {
-  const [title, options] = prop;
+const AdvancedNotes = ({ formData, handleDropdownChange }) => {
+  const [activeDropdown, setActiveDropdown] = useState(null);
 
   return (
-    <section className="advanced-container">
-      <h3>{title}</h3>
-      <Dropdown options={options} />
-    </section>
+    <>
+      {Object.entries(formData).map(([category, options]) => (
+        <section key={category} className="advanced-section">
+          <h3>{category}</h3>
+          <div className="advanced-container">
+            {options.map(({ title, options }) => (
+              <div key={title}>
+                <h4>{title}</h4>
+                <Dropdown
+                  options={options}
+                  title={title}
+                  activeDropdown={activeDropdown}
+                  setActiveDropdown={setActiveDropdown}
+                  handleDropdownChange={handleDropdownChange}
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </>
   );
 };
 

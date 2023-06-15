@@ -1,126 +1,58 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import "./Dropdown.css";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
-const Dropdown = ({ options }) => {
-  const [activeStates, setActiveStates] = useState({});
-  const [selectedOptions, setSelectedOptions] = useState({});
-  const dropdownRefs = useRef({});
+const Dropdown = ({
+  options,
+  title,
+  activeDropdown,
+  setActiveDropdown,
+  handleDropdownChange,
+}) => {
+  const isActive = activeDropdown === title;
+  const [selected, setSelected] = useState("Select one");
 
-  useEffect(() => {
-    const initialActiveStates = {};
-    const initialSelectedOptions = {};
-
-    options.forEach(({ title }) => {
-      initialActiveStates[title] = false;
-      initialSelectedOptions[title] = "select...";
-    });
-
-    setActiveStates(initialActiveStates);
-    setSelectedOptions(initialSelectedOptions);
-  }, [options]);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      const clickedElement = event.target;
-      const shouldCloseDropdowns = Object.values(dropdownRefs.current).every(
-        (ref) => {
-          return ref && ref.current && !ref.current.contains(clickedElement);
-        }
-      );
-
-      if (shouldCloseDropdowns) {
-        setActiveStates((prevState) => {
-          const updatedState = {};
-          Object.keys(prevState).forEach((title) => {
-            updatedState[title] = false;
-          });
-          return updatedState;
-        });
-      }
-    };
-
-    document.addEventListener("click", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
-
-  const handleToggleDropdown = (title) => {
-    setActiveStates((prevState) => ({
-      ...Object.keys(prevState).reduce((acc, key) => {
-        acc[key] = key === title ? !prevState[key] : false;
-        return acc;
-      }, {}),
-    }));
+  const handleToggleDropdown = () => {
+    if (isActive) {
+      setActiveDropdown(null);
+    } else {
+      setActiveDropdown(title);
+    }
   };
 
   const handleOptionClick = (title, option) => {
-    setSelectedOptions((prevState) => ({
-      ...prevState,
-      [title]: option,
-    }));
-    setActiveStates((prevState) => ({
-      ...Object.keys(prevState).reduce((acc, key) => {
-        acc[key] = false;
-        return acc;
-      }, {}),
-    }));
+    setSelected(option);
+    setActiveDropdown(null);
+    handleDropdownChange(title, option);
   };
 
-  const renderOptions = (title, options) => {
-    if (!options || !options.length) {
-      return null;
-    }
-
-    return (
+  return (
+    <div className="dropdown">
+      <div onClick={handleToggleDropdown} className="dropdown-btn">
+        {selected}
+        <span>
+          {isActive ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
+        </span>
+      </div>
       <div
         className="dropdown-content"
         style={{
-          display: activeStates[title] ? "block" : "none",
+          display: isActive ? "block" : "none",
         }}
       >
         {options.map((option) => (
           <div
             key={option}
-            className={`item ${title === "Color" ? option : "item-bg"}`}
+            className={`item ${
+              title !== "Color" ? "item-bg item-font" : ""
+            } ${option.toLowerCase()}`}
             onClick={() => handleOptionClick(title, option)}
           >
             {option}
           </div>
         ))}
       </div>
-    );
-  };
-
-  return (
-    <article className="char-container">
-      {options.map(({ title, options }) => (
-        <div key={title}>
-          <label>{title}: </label>
-          <div
-            className="dropdown"
-            ref={(ref) => (dropdownRefs.current[title] = ref)}
-          >
-            <div
-              onClick={() => handleToggleDropdown(title)}
-              className="dropdown-btn"
-            >
-              {selectedOptions[title]}
-              <span>
-                {activeStates[title] ? (
-                  <MdKeyboardArrowUp />
-                ) : (
-                  <MdKeyboardArrowDown />
-                )}
-              </span>
-            </div>
-            {renderOptions(title, options)}
-          </div>
-        </div>
-      ))}
-    </article>
+    </div>
   );
 };
 

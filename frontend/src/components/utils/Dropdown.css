@@ -92,7 +92,9 @@
   padding: 10px;
   cursor: pointer;
   text-align: center;
-  opacity: 0.9;
+  /* opacity: 0.9; */
+  border-radius: 5px;
+  border: 1px solid #562f36;
 }
 
 .dropdown-content .item:hover {
@@ -161,5 +163,13 @@
 }
 
 .item-bg {
-  background-color: #830e0d;
+  background-color: #688dff;
 }
+
+.item-font {
+  color: #fff;
+}
+
+/* .item-font:hover {
+  font-weight: bold;
+} */

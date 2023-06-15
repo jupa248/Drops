@@ -10,7 +10,7 @@ import { advProps } from "../assets/data/formData.js";
 
 const NotesForm = () => {
   const { user, createNote, error } = useAppContext();
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState({});
   const nameInput = document.querySelector('input[name="wine"]')?.value;
   const priceInput = document.querySelector('input[name="price"]')?.value;
 
@@ -24,6 +24,11 @@ const NotesForm = () => {
     console.log(e.target);
     const { value, name } = e.target;
     setNotes({ ...notes, [name]: value });
+    console.log(notes);
+  };
+
+  const handleDropdownChange = (title, option) => {
+    setNotes((prevNotes) => ({ ...prevNotes, [title]: option }));
     console.log(notes);
   };
 
@@ -92,9 +97,10 @@ const NotesForm = () => {
           ))}
         </div>
         <div className="advanced-notes">
-          {Object.entries(advProps).map((advPr, index) => (
-            <AdvancedNotes key={index} prop={advPr} />
-          ))}
+          <AdvancedNotes
+            formData={advProps}
+            handleDropdownChange={handleDropdownChange}
+          />
         </div>
 
         <label>Notes/Description</label>
