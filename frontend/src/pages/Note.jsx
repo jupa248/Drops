@@ -3,7 +3,7 @@ import { useAppContext } from "../contexts/AppContext";
 import EditInput from "../components/EditInput";
 import "./Note.css";
 import { useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import NewNoteBtn from "../components/buttons/NewNoteBtn";
 import MyNotesBtn from "../components/buttons/MyNotesBtn";
 import SaveNoteBtn from "../components/buttons/SaveNoteBtn";
@@ -30,6 +30,7 @@ const Note = () => {
       }
     };
 
+    console.log(myNote);
     fetchData();
   }, [cancelEdit]);
 
@@ -57,8 +58,11 @@ const Note = () => {
   const handleDelete = async () => {
     const noteId = myNote.note_id;
     await deleteNote(noteId);
-    navigate("/home");
+
     toast.success("Note has been deleted");
+    setTimeout(() => {
+      navigate("/home");
+    }, 1000);
   };
 
   const includedProperties = [
@@ -103,7 +107,6 @@ const Note = () => {
         {inputChanged && <SaveNoteBtn handleSubmit={handleEditSubmit} />}
         <DeleteNoteBtn handleDelete={handleDelete} />
       </div>
-      <ToastContainer />
     </section>
   );
 };

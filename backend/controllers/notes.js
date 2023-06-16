@@ -33,13 +33,19 @@ export const createNote = async (req, res, next) => {
       flavour$characteristics,
       finish$,
       quality$level,
+      color$Rate,
+      aroma$Rate,
+      body$Rate,
+      taste$Rate,
+      finish$Rate,
+      rating,
     } = req.body;
 
     const userId = req.params.userId;
-
+    console.log("req:", req.body);
     const result = await pool.query(
-      `INSERT INTO notes (wine, date, price, year, variety, winery, region, color, aroma, body, taste, finish, mynotes, user_id, clarity, intensity, color$, condition$, intensity$, aroma$characteristics, development, sweetness, acidity, tannin, alcohol, body$, flavour$intensity, flavour$characteristics, finish$, quality$level) 
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)`,
+      `INSERT INTO notes (wine, date, price, year, variety, winery, region, color, aroma, body, taste, finish, mynotes, user_id, clarity, intensity, color$, condition$, intensity$, aroma$characteristics, development, sweetness, acidity, tannin, alcohol, body$, flavour$intensity, flavour$characteristics, finish$, quality$level, color$Rate, aroma$Rate, body$Rate, taste$Rate, finish$Rate, rating) 
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?)`,
       [
         wine,
         date,
@@ -71,10 +77,16 @@ export const createNote = async (req, res, next) => {
         flavour$characteristics,
         finish$,
         quality$level,
+        color$Rate,
+        aroma$Rate,
+        body$Rate,
+        taste$Rate,
+        finish$Rate,
+        rating,
       ]
     );
 
-    if (result.affectedRows === 1) {
+    if (result[0].affectedRows === 1) {
       const updatedNotes = await pool.query(
         "SELECT * FROM notes WHERE user_id = ?",
         [userId]

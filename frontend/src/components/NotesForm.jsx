@@ -7,10 +7,12 @@ import SaveNoteBtn from "./buttons/SaveNoteBtn";
 import RatingInput from "./utils/RatingInput";
 import AdvancedNotes from "./utils/AdvancedNotes";
 import { advProps } from "../assets/data/formData.js";
+import { MdArrowDropDown } from "react-icons/md";
 
 const NotesForm = () => {
   const { user, createNote, error } = useAppContext();
   const [notes, setNotes] = useState({});
+  const [toggleAdvanced, setToggleAdvanced] = useState(false);
   const nameInput = document.querySelector('input[name="wine"]')?.value;
   const priceInput = document.querySelector('input[name="price"]')?.value;
 
@@ -18,10 +20,15 @@ const NotesForm = () => {
 
   const userId = user?.id;
 
-  const ratingProps = ["color", "aroma", "body", "taste", "finish"];
+  const ratingProps = [
+    "color$Rate",
+    "aroma$Rate",
+    "body$Rate",
+    "taste$Rate",
+    "finish$Rate",
+  ];
 
   const handleChange = (e) => {
-    console.log(e.target);
     const { value, name } = e.target;
     setNotes({ ...notes, [name]: value });
     console.log(notes);
@@ -29,7 +36,6 @@ const NotesForm = () => {
 
   const handleDropdownChange = (title, option) => {
     setNotes((prevNotes) => ({ ...prevNotes, [title]: option }));
-    console.log(notes);
   };
 
   const handleSubmission = async (e) => {
@@ -44,6 +50,11 @@ const NotesForm = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleToggleAdv = () => {
+    setToggleAdvanced(!toggleAdvanced);
+    console.log(toggleAdvanced);
   };
 
   return (
@@ -96,12 +107,20 @@ const NotesForm = () => {
             />
           ))}
         </div>
-        <div className="advanced-notes">
-          <AdvancedNotes
-            formData={advProps}
-            handleDropdownChange={handleDropdownChange}
-          />
+        <div className="expand-adv-notes">
+          <p>Advanced Notes</p>
+          <button type="button" onClick={handleToggleAdv}>
+            <MdArrowDropDown />
+          </button>
         </div>
+        {toggleAdvanced && (
+          <div className="advanced-notes">
+            <AdvancedNotes
+              formData={advProps}
+              handleDropdownChange={handleDropdownChange}
+            />
+          </div>
+        )}
 
         <label>Notes/Description</label>
         <textarea

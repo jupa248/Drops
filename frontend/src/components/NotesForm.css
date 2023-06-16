@@ -112,6 +112,20 @@ input::placeholder {
   border-color: transparent transparent #d8bfd8 transparent;
 }
 
+.advanced-notes {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 90%;
+}
+
+.expand-adv-notes {
+  display: flex;
+  justify-content: end;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
 @media only screen and (min-width: 1024px) {
   .notes-container {
     width: 50%;

@@ -26,8 +26,8 @@
 .drop-container input {
   position: relative;
   background-color: transparent;
-  border: none;
-  color: transparent;
+  border: none !important;
+  color: transparent !important;
   /* padding: 0.3rem; */
 }
 .drop {
@@ -42,5 +42,10 @@
 }
 .drop-container:hover .drop,
 .drop-container:hover ~ .drop-container .drop {
+  fill: #660066;
+}
+
+.drop-container.selected .drop,
+.drop-container.selected ~ .drop-container .drop {
   fill: #660066;
 }

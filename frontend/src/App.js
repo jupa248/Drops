@@ -11,6 +11,8 @@ import MyNotes from "./pages/MyNotes";
 import "./index.css";
 import RatingInput from "./components/utils/RatingInput";
 import AdvancedNotes from "./components/utils/AdvancedNotes";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const { user } = useAppContext();

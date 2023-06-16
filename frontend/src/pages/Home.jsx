@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
 import "./Home.css";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useAppContext } from "../contexts/AppContext";
 import note from "../assets/note.svg";
 import NoteCardSmall from "../components/NoteCardSmall";
@@ -38,7 +38,6 @@ const Home = () => {
         <NewNoteBtn />
         <MyNotesBtn />
       </div>
-      <ToastContainer position="top-center" />
     </section>
   );
 };

@@ -1,59 +1,122 @@
+// import { useState } from "react";
+// import "./RatingInput.css";
+// import { BsDropletFill } from "react-icons/bs";
+
+// const RatingInput = ({ wineProperty, handleChange }) => {
+//   return (
+//     <div className="rating-container">
+//       <label>{wineProperty === "color" ? "color/clarity" : wineProperty}</label>
+//       <div className="drops-container">
+//         <div className="drop-container">
+//           <BsDropletFill className="drop" />
+//           <input
+//             type="button"
+//             name={wineProperty}
+//             value={5}
+//             onClick={handleChange}
+//           />
+//         </div>
+//         <div className="drop-container">
+//           <BsDropletFill className="drop" />
+//           <input
+//             type="button"
+//             name={wineProperty}
+//             value={4}
+//             onClick={handleChange}
+//           />
+//         </div>
+//         <div className="drop-container">
+//           <BsDropletFill className="drop" />
+//           <input
+//             type="button"
+//             name={wineProperty}
+//             value={3}
+//             onClick={handleChange}
+//           />
+//         </div>
+//         <div className="drop-container">
+//           <BsDropletFill className="drop" />
+//           <input
+//             type="button"
+//             name={wineProperty}
+//             value={2}
+//             onClick={handleChange}
+//           />
+//         </div>
+//         <div className="drop-container">
+//           <BsDropletFill className="drop" />
+//           <input
+//             type="button"
+//             name={wineProperty}
+//             value={1}
+//             onClick={handleChange}
+//           />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+// export default RatingInput;
+
 import { useState } from "react";
 import "./RatingInput.css";
 import { BsDropletFill } from "react-icons/bs";
 
 const RatingInput = ({ wineProperty, handleChange }) => {
+  const [selectedRating, setSelectedRating] = useState(null);
+
+  const handleRatingClick = (e) => {
+    e.stopPropagation();
+    setSelectedRating(e.target.value);
+    handleChange(e);
+  };
+
+  const rateProperty = wineProperty.replaceAll("$Rate", "");
+
   return (
     <div className="rating-container">
-      <label>{wineProperty === "color" ? "color/clarity" : wineProperty}</label>
+      <label>{rateProperty === "color" ? "color/clarity" : rateProperty}</label>
       <div className="drops-container">
-        <div className="drop-container">
+        <div
+          className={`drop-container ${selectedRating >= 5 ? "selected" : ""}`}
+          onClick={handleRatingClick}
+        >
           <BsDropletFill className="drop" />
-          <input
-            type="button"
-            name={wineProperty}
-            value={5}
-            onClick={handleChange}
-          />
+          <input type="button" name={wineProperty} value={5} />
         </div>
-        <div className="drop-container">
+        <div
+          className={`drop-container ${selectedRating >= 4 ? "selected" : ""}`}
+          onClick={handleRatingClick}
+        >
           <BsDropletFill className="drop" />
-          <input
-            type="button"
-            name={wineProperty}
-            value={4}
-            onClick={handleChange}
-          />
+          <input type="button" name={wineProperty} value={4} />
         </div>
-        <div className="drop-container">
+        <div
+          className={`drop-container ${selectedRating >= 3 ? "selected" : ""}`}
+          onClick={handleRatingClick}
+        >
           <BsDropletFill className="drop" />
-          <input
-            type="button"
-            name={wineProperty}
-            value={3}
-            onClick={handleChange}
-          />
+          <input type="button" name={wineProperty} value={3} />
         </div>
-        <div className="drop-container">
+        <div
+          className={`drop-container ${selectedRating >= 2 ? "selected" : ""}`}
+          onClick={handleRatingClick}
+        >
           <BsDropletFill className="drop" />
-          <input
-            type="button"
-            name={wineProperty}
-            value={2}
-            onClick={handleChange}
-          />
+          <input type="button" name={wineProperty} value={2} />
         </div>
-        <div className="drop-container">
+        <div
+          className={`drop-container ${selectedRating >= 1 ? "selected" : ""}`}
+          onClick={handleRatingClick}
+        >
           <BsDropletFill className="drop" />
-          <input
-            type="button"
-            name={wineProperty}
-            value={1}
-            onClick={handleChange}
-          />
+          <input type="button" name={wineProperty} value={1} />
         </div>
+        {/* Repeat the same pattern for the other rating options */}
+        {/* ... */}
       </div>
     </div>
   );
 };
+
 export default RatingInput;
