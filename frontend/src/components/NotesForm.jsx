@@ -7,7 +7,8 @@ import SaveNoteBtn from "./buttons/SaveNoteBtn";
 import RatingInput from "./utils/RatingInput";
 import AdvancedNotes from "./utils/AdvancedNotes";
 import { advProps } from "../assets/data/formData.js";
-import { MdArrowDropDown } from "react-icons/md";
+import { MdExpandMore } from "react-icons/md";
+import { MdExpandLess } from "react-icons/md";
 
 const NotesForm = () => {
   const { user, createNote, error } = useAppContext();
@@ -96,7 +97,7 @@ const NotesForm = () => {
         <input name="winery" type="text" onChange={handleChange} />
         <label>Region/Country</label>
         <input name="region" type="text" onChange={handleChange} />
-        <hr className="rates-line" />
+        {/* <hr className="rates-line" /> */}
         <div className="rates">
           <h3>Rates:</h3>
           {ratingProps.map((rate, index) => (
@@ -108,9 +109,10 @@ const NotesForm = () => {
           ))}
         </div>
         <div className="expand-adv-notes">
-          <p>Advanced Notes</p>
+          {/* <p>Advanced Notes</p> */}
           <button type="button" onClick={handleToggleAdv}>
-            <MdArrowDropDown />
+            Advanced Notes{" "}
+            {!toggleAdvanced ? <MdExpandMore /> : <MdExpandLess />}
           </button>
         </div>
         {toggleAdvanced && (
