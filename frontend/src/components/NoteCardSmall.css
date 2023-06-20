@@ -16,13 +16,28 @@
 }
 
 .card-content {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  text-align: center;
   align-items: center;
   justify-content: center;
   background-color: antiquewhite;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  text-transform: capitalize;
+}
+
+.has-rating {
+  grid-template-columns: 4fr 1fr;
+}
+
+.card-content span {
+  display: flex;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.card-content span svg {
+  fill: #660066;
 }
 
 .card-link {

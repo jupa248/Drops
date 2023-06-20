@@ -13,7 +13,7 @@ const AdvancedNotes = ({ formData, handleDropdownChange }) => {
           <div className="advanced-container">
             {options.map(({ title, options }) => (
               <div key={title}>
-                <h4>{title}</h4>
+                <h4>{title.replaceAll("$", " ")}</h4>
                 <Dropdown
                   options={options}
                   title={title}
