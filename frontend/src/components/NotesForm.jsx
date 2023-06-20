@@ -1,14 +1,14 @@
-import "./NotesForm.css";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { useAppContext } from "../contexts/AppContext";
-import { toast } from "react-toastify";
-import SaveNoteBtn from "./buttons/SaveNoteBtn";
-import RatingInput from "./utils/RatingInput";
-import AdvancedNotes from "./utils/AdvancedNotes";
-import { advProps } from "../assets/data/formData.js";
-import { MdExpandMore } from "react-icons/md";
-import { MdExpandLess } from "react-icons/md";
+import './NotesForm.css';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useAppContext } from '../contexts/AppContext';
+import { toast } from 'react-toastify';
+import SaveNoteBtn from './buttons/SaveNoteBtn';
+import RatingInput from './utils/RatingInput';
+import AdvancedNotes from './utils/AdvancedNotes';
+import { advProps } from '../assets/data/formData.js';
+import { MdExpandMore } from 'react-icons/md';
+import { MdExpandLess } from 'react-icons/md';
 
 const NotesForm = () => {
   const { user, createNote, error } = useAppContext();
@@ -22,11 +22,11 @@ const NotesForm = () => {
   const userId = user?.id;
 
   const ratingProps = [
-    "color$Rate",
-    "aroma$Rate",
-    "body$Rate",
-    "taste$Rate",
-    "finish$Rate",
+    'color$Rate',
+    'aroma$Rate',
+    'body$Rate',
+    'taste$Rate',
+    'finish$Rate',
   ];
 
   const handleChange = (e) => {
@@ -42,10 +42,9 @@ const NotesForm = () => {
     e.preventDefault();
     try {
       const result = await createNote(userId, notes);
-      console.log(result);
       if (result.success) {
         toast.success(result.message);
-        navigate("/home");
+        navigate('/home');
       }
     } catch (error) {
       console.log(error);
@@ -110,7 +109,7 @@ const NotesForm = () => {
         <div className="expand-adv-notes">
           {/* <p>Advanced Notes</p> */}
           <button type="button" onClick={handleToggleAdv}>
-            Advanced Notes{" "}
+            Advanced Notes{' '}
             {!toggleAdvanced ? <MdExpandMore /> : <MdExpandLess />}
           </button>
         </div>
