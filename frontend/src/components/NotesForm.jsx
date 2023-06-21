@@ -32,6 +32,7 @@ const NotesForm = () => {
   const handleChange = (e) => {
     const { value, name } = e.target;
     setNotes({ ...notes, [name]: value });
+    console.log(notes);
   };
 
   const handleDropdownChange = (title, option) => {
@@ -55,7 +56,6 @@ const NotesForm = () => {
     setToggleAdvanced(!toggleAdvanced);
   };
 
-  console.log(advProps);
   return (
     <div className="notes-container">
       <form onSubmit={handleSubmission}>

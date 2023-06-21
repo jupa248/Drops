@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import NavBar from "../components/NavBar";
-import "./Home.css";
-import { toast } from "react-toastify";
-import { useAppContext } from "../contexts/AppContext";
-import note from "../assets/note.svg";
-import NoteCardSmall from "../components/NoteCardSmall";
-import NewNoteBtn from "../components/buttons/NewNoteBtn";
-import MyNotesBtn from "../components/buttons/MyNotesBtn";
+import React, { useEffect, useState } from 'react';
+import NavBar from '../components/NavBar';
+import './Home.css';
+import { toast } from 'react-toastify';
+import { useAppContext } from '../contexts/AppContext';
+import note from '../assets/note.svg';
+import NoteCardSmall from '../components/NoteCardSmall';
+import NewNoteBtn from '../components/buttons/NewNoteBtn';
+import MyNotesBtn from '../components/buttons/MyNotesBtn';
 
 const Home = () => {
   const { user, notes, fetchNotes } = useAppContext();
@@ -21,6 +21,8 @@ const Home = () => {
     //TO DO: Spinning
     return <div>Loading...</div>;
   }
+
+  console.log(notes);
 
   const reversedNotes = [...notes].reverse();
 

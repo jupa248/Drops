@@ -10,12 +10,16 @@ import SaveNoteBtn from '../components/buttons/SaveNoteBtn';
 import CancelBtn from '../components/buttons/CancelBtn';
 import DeleteNoteBtn from '../components/buttons/DeleteNoteBtn';
 import RatingInput from '../components/utils/RatingInput';
+import { BsDropletFill } from 'react-icons/bs';
+import { EditIcon } from '../assets/svgIcons';
+import { BiArrowBack } from 'react-icons/bi';
 
 const Note = () => {
   const { getNote, updateNotes, deleteNote } = useAppContext();
   const [myNote, setMyNote] = useState('');
   const [inputChanged, setInputChanged] = useState(false);
   const [cancelEdit, setCancelEdit] = useState(false);
+  const [editRates, setEditRates] = useState(false);
   const navigate = useNavigate();
 
   let param = useParams();
@@ -31,7 +35,6 @@ const Note = () => {
       }
     };
 
-    console.log(myNote);
     fetchData();
   }, [cancelEdit]);
 
@@ -43,8 +46,15 @@ const Note = () => {
     }));
   };
 
+  const handleRatingChange = (e) => {
+    setInputChanged(true);
+    const { value, name } = e.target;
+    setMyNote({ ...myNote, [name]: value });
+  };
+
   const handleEditSubmit = async (e) => {
     e.preventDefault();
+    console.log('myNote', myNote);
     const noteId = myNote.note_id;
     await updateNotes(noteId, myNote);
     setInputChanged(false);
@@ -64,6 +74,10 @@ const Note = () => {
     setTimeout(() => {
       navigate('/home');
     }, 1000);
+  };
+
+  const handleEditRates = () => {
+    setEditRates(!editRates);
   };
 
   const editInputProps = [
@@ -89,43 +103,56 @@ const Note = () => {
     'finish$Rate',
   ];
 
-  //const excludedProps = ['note_id', 'user_id', 'wine', 'rating'];
-
-  console.log(myNote);
+  // console.log(myNote);
 
   return (
     <section className="note-page">
       <form className="myNotes-container">
         <h2>{myNote.wine}</h2>
         {Object.entries(myNote)
-          // .filter(([fieldName, fieldValue]) =>
-          //   editInputProps.includes(fieldName),
-          // )
-          .map(([fieldName, fieldValue]) => {
-            return (
-              <>
-                {console.log(fieldName)}
-                {editInputProps.includes(fieldName) && (
-                  <EditInput
-                    key={fieldName}
-                    label={fieldName}
-                    type={fieldName === 'date' ? 'date' : 'text'}
-                    value={fieldValue || ''}
-                    onChange={(e) =>
-                      handleInputChange(fieldName, e.target.value)
-                    }
-                  />
-                )}
-                {ratingProps.includes(fieldName) && (
-                  <RatingInput
-                    key={fieldName}
-                    wineProperty={fieldName}
-                    handleChange={handleInputChange}
-                  />
-                )}
-              </>
-            );
-          })}
+          .filter(([fieldName, fieldValue]) =>
+            editInputProps.includes(fieldName),
+          )
+          .map(([fieldName, fieldValue, index]) => (
+            <EditInput
+              key={fieldName}
+              label={fieldName}
+              type={fieldName === 'date' ? 'date' : 'text'}
+              value={fieldValue || ''}
+              onChange={(e) => handleInputChange(fieldName, e.target.value)}
+            />
+          ))}
+        <hr className="rates-hr" />
+
+        {Object.entries(myNote)
+          .filter(([fieldName, fieldValue]) => ratingProps.includes(fieldName))
+          .map(([fieldName, fieldValue, index]) =>
+            editRates ? (
+              <RatingInput
+                key={fieldName}
+                wineProperty={fieldName}
+                handleChange={handleRatingChange}
+                currentRate={fieldValue || ''}
+              />
+            ) : (
+              <article className="note-ratings" key={fieldName}>
+                <h4>{fieldName.replace('$Rate', '')}</h4>
+                <p>
+                  {fieldValue}
+                  {<BsDropletFill />}
+                </p>
+              </article>
+            ),
+          )}
+
+        <button
+          type="button"
+          onClick={handleEditRates}
+          className="edit-rates-btn"
+        >
+          {!editRates ? 'Edit Rates' : <BiArrowBack />}
+          {!editRates ? <EditIcon /> : ''}
+        </button>
       </form>
       <div className="notes-actions">
         {!inputChanged && <NewNoteBtn />}
@@ -139,3 +166,46 @@ const Note = () => {
 };
 
 export default Note;
+
+/*
+ {Object.entries(myNote)
+          // .filter(([fieldName, fieldValue]) =>
+          //   editInputProps.includes(fieldName),
+          // )
+          .map(([fieldName, fieldValue, index]) => {
+            return (
+              <div key={fieldName}>
+                {editInputProps.includes(fieldName) && (
+                  <EditInput
+                    key={fieldName}
+                    label={fieldName}
+                    type={fieldName === 'date' ? 'date' : 'text'}
+                    value={fieldValue || ''}
+                    onChange={(e) =>
+                      handleInputChange(fieldName, e.target.value)
+                    }
+                  />
+                )}
+
+                {ratingProps.includes(fieldName) && editRates && (
+                  <RatingInput
+                    key={fieldName}
+                    wineProperty={fieldName}
+                    handleChange={handleInputChange}
+                    currentRate={fieldValue || ''}
+                  />
+                )}
+                {console.log('index', index)}
+                {ratingProps.includes(fieldName) && !editRates && (
+                  <article className="note-ratings">
+                    <h4>{fieldName.replace('$Rate', '')}</h4>
+                    <p>
+                      {fieldValue}
+                      {<BsDropletFill />}
+                    </p>
+                  </article>
+                )}
+              </div>
+            );
+          })}
+*/

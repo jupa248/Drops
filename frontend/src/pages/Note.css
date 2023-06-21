@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url("https://i.ibb.co/gJ1dcLX/dan-cristian-padure-LDMgqr8z7-ZE-unsplash.jpg");
+  background-image: url('https://i.ibb.co/gJ1dcLX/dan-cristian-padure-LDMgqr8z7-ZE-unsplash.jpg');
   box-sizing: border-box;
   background-size: cover;
   background-repeat: no-repeat;
@@ -34,10 +34,14 @@
   padding: 1rem 0;
 }
 
-.myNotes-container div {
+.myNotes-container .edit-input {
   display: grid;
   grid-template-columns: 20% auto 5%;
   align-items: center;
+}
+
+.myNotes-container .drop-container input {
+  margin: 0.5rem;
 }
 
 .edit-input label {
@@ -74,6 +78,47 @@ textarea {
 }
 
 .icon-edit svg {
+  fill: antiquewhite;
+}
+
+.note-ratings {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: antiquewhite;
+  border-radius: 5px;
+  padding: 0.6rem 0;
+  text-transform: capitalize;
+}
+
+.note-ratings svg {
+  fill: #660066;
+  margin-left: 0.3rem;
+}
+
+.note-ratings p {
+  display: flex;
+}
+
+.rates-hr {
+  border-bottom: solid 1px #d8bfd8;
+}
+
+.edit-rates-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0e73d8;
+  border: none;
+  color: antiquewhite;
+  border-radius: 5px;
+  padding: 0.4rem 0;
+  gap: 0.5rem;
+}
+
+.edit-rates-btn svg {
+  height: 1rem;
+  width: auto;
   fill: antiquewhite;
 }
 

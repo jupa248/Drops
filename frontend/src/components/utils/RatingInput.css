@@ -17,6 +17,7 @@
   display: flex;
   justify-self: center;
   flex-direction: row-reverse;
+  /* gap: 0.2rem; */
 }
 
 .drop-container {
