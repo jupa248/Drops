@@ -13,6 +13,10 @@ import RatingInput from '../components/utils/RatingInput';
 import { BsDropletFill } from 'react-icons/bs';
 import { EditIcon } from '../assets/svgIcons';
 import { BiArrowBack } from 'react-icons/bi';
+import { MdExpandMore } from 'react-icons/md';
+import { MdExpandLess } from 'react-icons/md';
+import { advProps } from '../assets/data/formData';
+import AdvancedNotes from '../components/utils/AdvancedNotes';
 
 const Note = () => {
   const { getNote, updateNotes, deleteNote } = useAppContext();
@@ -20,6 +24,8 @@ const Note = () => {
   const [inputChanged, setInputChanged] = useState(false);
   const [cancelEdit, setCancelEdit] = useState(false);
   const [editRates, setEditRates] = useState(false);
+  const [editAdvNotes, setEditAdvNotes] = useState(false);
+  const [toggleAdvanced, setToggleAdvanced] = useState(false);
   const navigate = useNavigate();
 
   let param = useParams();
@@ -54,11 +60,13 @@ const Note = () => {
 
   const handleEditSubmit = async (e) => {
     e.preventDefault();
-    console.log('myNote', myNote);
     const noteId = myNote.note_id;
     await updateNotes(noteId, myNote);
     setInputChanged(false);
-    toast.success('Note updated!');
+    toast.success('Note has been updated!');
+    setTimeout(() => {
+      navigate('/home');
+    }, 1000);
   };
 
   const handleCancelEdit = () => {
@@ -78,6 +86,19 @@ const Note = () => {
 
   const handleEditRates = () => {
     setEditRates(!editRates);
+  };
+  const handleEditAdvNotes = () => {
+    setEditAdvNotes(!editAdvNotes);
+  };
+
+  const handleToggleAdv = () => {
+    setToggleAdvanced(!toggleAdvanced);
+  };
+
+  const handleDropdownChange = (title, option) => {
+    setInputChanged(true);
+    setMyNote((prevNotes) => ({ ...prevNotes, [title]: option }));
+    console.log('myNote', myNote);
   };
 
   const editInputProps = [
@@ -103,7 +124,24 @@ const Note = () => {
     'finish$Rate',
   ];
 
-  // console.log(myNote);
+  const advNotesProps = [
+    'clarity',
+    'intensity',
+    'color$',
+    'condition$',
+    'intensity$',
+    'aroma$characteristics',
+    'development',
+    'sweetness',
+    'acidity',
+    'tannin',
+    'alcohol',
+    'body$',
+    'flavour$intensity',
+    'flavour$characteristics',
+    'finish$',
+    'quality$level',
+  ];
 
   return (
     <section className="note-page">
@@ -145,14 +183,58 @@ const Note = () => {
             ),
           )}
 
-        <button
-          type="button"
-          onClick={handleEditRates}
-          className="edit-rates-btn"
-        >
+        <button type="button" onClick={handleEditRates} className="edit-btn">
           {!editRates ? 'Edit Rates' : <BiArrowBack />}
           {!editRates ? <EditIcon /> : ''}
         </button>
+        <section className="adv-notes-section">
+          <button
+            type="button"
+            onClick={handleToggleAdv}
+            className="adv-notes-btn"
+          >
+            Advanced Notes{' '}
+            {!toggleAdvanced ? <MdExpandMore /> : <MdExpandLess />}
+          </button>
+          {toggleAdvanced &&
+            !editAdvNotes &&
+            Object.entries(myNote)
+              .filter(([fieldName, fieldValue]) =>
+                advNotesProps.includes(fieldName),
+              )
+              .map(([fieldName, fieldValue]) => (
+                <article key={fieldName} className="adv-notes-article">
+                  <h4>{fieldName.replace('$', ' ')}</h4>
+                  <p>{fieldValue || '...'}</p>
+                </article>
+              ))}
+          {toggleAdvanced && !editAdvNotes && (
+            <button
+              type="button"
+              onClick={handleEditAdvNotes}
+              className="edit-btn"
+            >
+              {!editAdvNotes ? 'Edit Advanced Notes' : <BiArrowBack />}
+              {!editAdvNotes ? <EditIcon /> : ''}
+            </button>
+          )}
+        </section>
+        {editAdvNotes && toggleAdvanced && (
+          <AdvancedNotes
+            formData={advProps}
+            handleDropdownChange={handleDropdownChange}
+          />
+        )}
+        {toggleAdvanced && editAdvNotes && (
+          <button
+            type="button"
+            onClick={handleEditAdvNotes}
+            className="edit-btn"
+          >
+            {!editAdvNotes ? 'Edit Advanced Notes' : <BiArrowBack />}
+            {!editAdvNotes ? <EditIcon /> : ''}
+          </button>
+        )}
       </form>
       <div className="notes-actions">
         {!inputChanged && <NewNoteBtn />}

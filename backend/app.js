@@ -1,6 +1,6 @@
-import express from "express";
-import cors from "cors";
-import router from "./routes/routes.js";
+import express from 'express';
+import cors from 'cors';
+import router from './routes/routes.js';
 
 const app = express();
 
@@ -13,9 +13,14 @@ app.use(router);
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json({ message: "Internal Server Error" });
+  res.status(500).json({ message: 'Internal Server Error' });
+});
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: 'Internal Server Error' });
 });
 
 app.listen(5000, () => {
-  console.log("Server is running on port 5000");
+  console.log('Server is running on port 5000');
 });

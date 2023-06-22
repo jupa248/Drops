@@ -14,6 +14,7 @@ const NotesForm = () => {
   const { user, createNote, error } = useAppContext();
   const [notes, setNotes] = useState({});
   const [toggleAdvanced, setToggleAdvanced] = useState(false);
+  const [inputChanged, setInputChanged] = useState(false);
   const nameInput = document.querySelector('input[name="wine"]')?.value;
   const priceInput = document.querySelector('input[name="price"]')?.value;
 
@@ -30,9 +31,9 @@ const NotesForm = () => {
   ];
 
   const handleChange = (e) => {
+    setInputChanged(true);
     const { value, name } = e.target;
     setNotes({ ...notes, [name]: value });
-    console.log(notes);
   };
 
   const handleDropdownChange = (title, option) => {
@@ -130,9 +131,11 @@ const NotesForm = () => {
           onChange={handleChange}
         />
       </form>
-      <div className="save-btn">
-        <SaveNoteBtn handleSubmit={handleSubmission} />
-      </div>
+      {inputChanged && (
+        <div className="save-btn">
+          <SaveNoteBtn handleSubmit={handleSubmission} />
+        </div>
+      )}
     </div>
   );
 };

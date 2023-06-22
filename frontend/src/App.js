@@ -1,18 +1,15 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Home from "./pages/Home";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
-import CreateNote from "./pages/CreateNote";
-import Note from "./pages/Note";
-import Navbar from "./components/NavBar";
-import ProtectedRoute from "./components/ProtectedRoute";
-import { useAppContext } from "./contexts/AppContext";
-import MyNotes from "./pages/MyNotes";
-import "./index.css";
-import RatingInput from "./components/utils/RatingInput";
-import AdvancedNotes from "./components/utils/AdvancedNotes";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Home from './pages/Home';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import CreateNote from './pages/CreateNote';
+import Note from './pages/Note';
+import Navbar from './components/NavBar';
+import ProtectedRoute from './components/ProtectedRoute';
+import { useAppContext } from './contexts/AppContext';
+import MyNotes from './pages/MyNotes';
+import './index.css';
+import AdvancedNotes from './components/utils/AdvancedNotes';
 
 const App = () => {
   const { user } = useAppContext();

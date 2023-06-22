@@ -22,8 +22,6 @@ const Home = () => {
     return <div>Loading...</div>;
   }
 
-  console.log(notes);
-
   const reversedNotes = [...notes].reverse();
 
   return (
