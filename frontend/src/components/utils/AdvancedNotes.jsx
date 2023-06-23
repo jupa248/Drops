@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './AdvancedNotes.css';
 import Dropdown from './Dropdown';
-import { EyeIcon } from '../../assets/svgIcons';
+import { ConclusionIcon, EyeIcon, MouthIcon } from '../../assets/svgIcons';
 import { NoseIcon } from '../../assets/svgIcons';
 
 const AdvancedNotes = ({ formData, handleDropdownChange }) => {
@@ -20,7 +20,9 @@ const AdvancedNotes = ({ formData, handleDropdownChange }) => {
           <div className="category-section">
             <h3>{category}</h3>
             {(category === 'appearance' && <EyeIcon />) ||
-              (category === 'nose' && <NoseIcon />)}
+              (category === 'nose' && <NoseIcon />) ||
+              (category === 'palate' && <MouthIcon />) ||
+              (category === 'conclusions' && <ConclusionIcon />)}
             <span></span>
           </div>
           <div className="advanced-container">
