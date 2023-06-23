@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import NavBar from '../components/NavBar';
+import React, { useEffect } from 'react';
 import './Home.css';
-import { toast } from 'react-toastify';
 import { useAppContext } from '../contexts/AppContext';
-import note from '../assets/note.svg';
 import NoteCardSmall from '../components/NoteCardSmall';
 import NewNoteBtn from '../components/buttons/NewNoteBtn';
 import MyNotesBtn from '../components/buttons/MyNotesBtn';
@@ -15,7 +12,7 @@ const Home = () => {
     if (user) {
       fetchNotes(user?.id);
     }
-  }, [user]);
+  }, [fetchNotes, user]);
 
   if (!user || !notes) {
     //TO DO: Spinning

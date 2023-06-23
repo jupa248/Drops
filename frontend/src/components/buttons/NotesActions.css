@@ -10,19 +10,31 @@
   display: grid;
   grid-template-rows: 2fr 1fr;
   grid-template-columns: auto;
-  color: antiquewhite;
+  /* color: antiquewhite; */
   align-items: center;
+  padding-bottom: 0.5rem;
   background: transparent;
   border-radius: 10px;
   border: none;
-  -webkit-box-shadow: 0px 17px 12px -15px antiquewhite;
-  -moz-box-shadow: 0px 17px 12px -15px antiquewhite;
-  box-shadow: 0px 17px 12px -15px antiquewhite;
+  -webkit-box-shadow: 0px 17px 12px -15px #660066;
+  -moz-box-shadow: 0px 17px 12px -15px #660066;
+  box-shadow: 0px 17px 12px -15px #660066;
+}
+
+a {
+  text-decoration: none;
 }
 
 .icon-notes img {
-  width: 5rem;
+  width: 4rem;
   height: auto;
+}
+
+.light-font {
+  color: antiquewhite;
+  -webkit-box-shadow: 0px 17px 12px -15px antiquewhite;
+  -moz-box-shadow: 0px 17px 12px -15px antiquewhite;
+  box-shadow: 0px 17px 12px -15px antiquewhite;
 }
 
 .icon-edition {
@@ -30,7 +42,7 @@
 }
 .icon-edition img {
   justify-self: center;
-  width: 3.5rem;
+  width: 3rem;
   height: auto;
 }
 .barrel img {

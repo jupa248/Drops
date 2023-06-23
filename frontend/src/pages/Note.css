@@ -12,7 +12,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #2d202b;
+  background: rgb(224, 204, 220);
+  background: linear-gradient(
+    90deg,
+    rgba(224, 204, 220, 0.3477984943977591) 0%,
+    rgba(193, 138, 217, 0.1012998949579832) 50%,
+    rgba(202, 158, 238, 0.15172006302521013) 100%
+  );
   /* background-image: url("https://i.ibb.co/mBYM0d4/grapes.jpg"); */
   box-sizing: border-box;
   /* background-size: cover;
@@ -26,11 +32,7 @@
   display: flex;
   flex-direction: column;
   border-radius: 15px;
-  background: linear-gradient(
-    360deg,
-    rgba(61, 62, 55, 0.7) 0%,
-    rgba(97, 5, 5, 0.7) 100%
-  );
+  background-color: rgb(96, 6, 6);
   width: 70%;
   padding: 1.5rem;
   margin-top: 3rem;
@@ -139,10 +141,10 @@ textarea {
   gap: 1rem;
 }
 
-/* .myNotes-container h3,
-.myNotes-container h4 {
+.advanced-section h3,
+.advanced-section h4 {
   color: antiquewhite;
-} */
+}
 
 .adv-notes-btn {
   display: flex;

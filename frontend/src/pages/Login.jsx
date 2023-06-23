@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { useAppContext } from "../contexts/AppContext";
-import { useNavigate } from "react-router-dom";
-import "./Login.css";
+import React, { useState } from 'react';
+import { useAppContext } from '../contexts/AppContext';
+import { useNavigate, Link } from 'react-router-dom';
+import './Login.css';
 
 const Login = () => {
   const { login } = useAppContext();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -16,9 +16,9 @@ const Login = () => {
       const response = await login({ username, password });
       const { user } = response.data;
 
-      navigate("/home");
+      navigate('/home');
     } catch (error) {
-      console.log("Login error:", error);
+      console.log('Login error:', error);
     }
   };
 
@@ -40,6 +40,9 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit" className="submit-button"></button>
+        <Link to={'/register'}>
+          <p>Don't have an account?</p>
+        </Link>
       </form>
     </section>
   );

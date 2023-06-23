@@ -1,23 +1,23 @@
-import { useState, useRef } from "react";
-import "./NavBar.css";
-import { Link } from "react-router-dom";
-import { CgDrop } from "react-icons/cg";
-import { useAppContext } from "../contexts/AppContext";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import './NavBar.css';
+import { Link } from 'react-router-dom';
+import { CgDrop } from 'react-icons/cg';
+import { useAppContext } from '../contexts/AppContext';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [active, setActive] = useState(false);
   const [colorChange, setColorchange] = useState(false);
-  const { user, logout, loading, setLoading } = useAppContext();
+  const { user, logout, setLoading } = useAppContext();
   const navigate = useNavigate();
-  const navRef = useRef();
 
   const handleLogout = () => {
     logout();
-    navigate("/login");
+    navigate('/login');
     setLoading(false);
   };
   const handleHamburger = () => {
+    window.scroll(0, 51);
     setActive(!active);
   };
 
@@ -28,17 +28,17 @@ const Navbar = () => {
       setColorchange(false);
     }
   };
-  window.addEventListener("scroll", changeNavbarColor);
+  window.addEventListener('scroll', changeNavbarColor);
 
-  const body = document.querySelector("body");
+  const body = document.querySelector('body');
   active
-    ? (body.style.overflowY = "hidden")
-    : (body.style.overflowY = "initial");
+    ? (body.style.overflowY = 'hidden')
+    : (body.style.overflowY = 'initial');
 
   return (
     <div
       className={
-        colorChange ? "navbar-container bg-transp" : "navbar-container bg-red"
+        colorChange ? 'navbar-container bg-transp' : 'navbar-container bg-red'
       }
     >
       <Link to="/homepage">
@@ -47,30 +47,30 @@ const Navbar = () => {
           Drops
         </div>
       </Link>
-      {user && (
-        <div>
-          <h2>{user[0]?.username}</h2>
-          <button type="button" onClick={handleLogout}>
-            Logout
-          </button>
-        </div>
-      )}
+
       <nav className="navbar-desktop">
         <div className="">
           <Link to="/homepage">Home</Link>
           <Link to="/my-notes">My notes</Link>
           <Link to="/create-notes">Take notes</Link>
           <Link to="/dictionary">Dictionary</Link>
-          <Link to="/wish">Wish list</Link>
+          {user && (
+            <div>
+              <h2>{user[0]?.username}</h2>
+              <button type="button" onClick={handleLogout}>
+                Logout
+              </button>
+            </div>
+          )}
         </div>
       </nav>
       <button
-        className={active ? "burger-is-active , hamburger" : "hamburger"}
+        className={active ? 'burger-is-active , hamburger' : 'hamburger'}
         onClick={handleHamburger}
       >
         <div className="bar"></div>
       </button>
-      <nav className={active ? "side-is-active , mobileNav" : "mobileNav"}>
+      <nav className={active ? 'side-is-active , mobileNav' : 'mobileNav'}>
         <Link to="/homepage" onClick={handleHamburger}>
           Home
         </Link>
@@ -83,9 +83,14 @@ const Navbar = () => {
         <Link to="/dictionary" onClick={handleHamburger}>
           Dictionary
         </Link>
-        <Link to="/wish" onClick={handleHamburger}>
-          Wish list
-        </Link>
+        {user && (
+          <div>
+            <h2>{user[0]?.username}</h2>
+            <button type="button" onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
+        )}
       </nav>
     </div>
   );

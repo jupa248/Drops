@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Graduate&family=Inter:wght@100;200;300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Graduate&family=Inter:wght@100;200;300;400;500;600;700&display=swap');
 
 .notes-container {
   display: flex;
@@ -13,11 +13,7 @@
   flex-direction: column;
   min-width: 70vw;
   border-radius: 15px;
-  background: linear-gradient(
-    360deg,
-    rgba(61, 62, 55, 0.7) 0%,
-    rgba(97, 5, 5, 0.7) 100%
-  );
+  background-color: rgb(96, 6, 6);
   padding: 1.5rem;
   margin-top: 2rem;
 }
@@ -41,7 +37,7 @@ input::placeholder {
 }
 
 .notes-button {
-  background-image: url("https://i.ibb.co/XJJw37t/posters-cork-background.jpg");
+  background-image: url('https://i.ibb.co/XJJw37t/posters-cork-background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   height: 4rem;
@@ -50,7 +46,7 @@ input::placeholder {
   margin-top: 1rem;
   font-weight: 500;
   text-align: center;
-  font-family: "Graduate", cursive;
+  font-family: 'Graduate', cursive;
   font-weight: bold;
   color: #2e0c0c;
   align-self: center;
@@ -99,14 +95,14 @@ input::placeholder {
   color: #cc0000;
   position: absolute;
   border-radius: 5px;
-  top: -0.5rem;
+  top: 0.5rem;
   left: -0.5rem;
   z-index: 20;
   transition: ease-in-out;
 }
 
 .err-tooltip::after {
-  content: " ";
+  content: ' ';
   position: absolute;
   top: 100%; /* At the top of the tooltip */
   margin-top: -2.7rem;
@@ -125,7 +121,7 @@ input::placeholder {
 
 .expand-adv-notes {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   gap: 1rem;
   padding: 1rem 0;
   margin-top: 1.5rem;

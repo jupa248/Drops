@@ -1,6 +1,6 @@
-import { useState } from "react";
-import "./Dropdown.css";
-import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+import { useState } from 'react';
+import './Dropdown.css';
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
 
 const Dropdown = ({
   options,
@@ -10,7 +10,7 @@ const Dropdown = ({
   handleDropdownChange,
 }) => {
   const isActive = activeDropdown === title;
-  const [selected, setSelected] = useState("Select one");
+  const [selected, setSelected] = useState('Select one');
 
   const handleToggleDropdown = () => {
     if (isActive) {
@@ -37,14 +37,14 @@ const Dropdown = ({
       <div
         className="dropdown-content"
         style={{
-          display: isActive ? "block" : "none",
+          display: isActive ? 'block' : 'none',
         }}
       >
         {options.map((option) => (
           <div
             key={option}
             className={`item ${
-              title !== "Color" ? "item-bg item-font" : ""
+              title !== 'color$' ? 'item-bg item-font' : ''
             } ${option.toLowerCase()}`}
             onClick={() => handleOptionClick(title, option)}
           >
