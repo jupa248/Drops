@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { CgDrop } from 'react-icons/cg';
 import { useAppContext } from '../contexts/AppContext';
 import { useNavigate } from 'react-router-dom';
+import { TbLogout } from 'react-icons/tb';
 
 const Navbar = () => {
   const [active, setActive] = useState(false);
@@ -57,7 +58,11 @@ const Navbar = () => {
           {user && (
             <div>
               <h2>{user[0]?.username}</h2>
-              <button type="button" onClick={handleLogout}>
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="logout-btn"
+              >
                 Logout
               </button>
             </div>
@@ -86,8 +91,8 @@ const Navbar = () => {
         {user && (
           <div>
             <h2>{user[0]?.username}</h2>
-            <button type="button" onClick={handleLogout}>
-              Logout
+            <button type="button" onClick={handleLogout} className="logout-btn">
+              Logout <TbLogout />
             </button>
           </div>
         )}

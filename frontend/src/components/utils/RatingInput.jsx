@@ -13,8 +13,12 @@ const RatingInput = ({ wineProperty, handleChange, currentRate }) => {
   const rateProperty = wineProperty.replaceAll('$Rate', '');
 
   useEffect(() => {
-    if (!!currentRate) {
+    const changeSelectedRate = () => {
       setSelectedRating(currentRate);
+    };
+
+    if (!!currentRate) {
+      changeSelectedRate();
     }
   }, [currentRate]);
 
