@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useAppContext } from '../contexts/AppContext';
 import { useNavigate, Link } from 'react-router-dom';
+import { CgDrop } from 'react-icons/cg';
 import './Login.css';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const { login } = useAppContext();
@@ -13,18 +15,27 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await login({ username, password });
-      const { user } = response.data;
+      await login({ username, password });
 
       navigate('/home');
     } catch (error) {
-      console.log('Login error:', error);
+      setUsername('');
+      setPassword('');
+      toast.error(error);
     }
   };
 
   return (
     <section className="login-container">
+      <div className="login-header">
+        <h1>
+          <CgDrop />
+          Drops
+        </h1>
+        <p>Wine notes application</p>
+      </div>
       <form onSubmit={handleLogin}>
+        <h3>Please Login</h3>
         <label>Username</label>
         <input
           type="text"
@@ -44,6 +55,7 @@ const Login = () => {
           <p>Don't have an account?</p>
         </Link>
       </form>
+      <span></span>
     </section>
   );
 };

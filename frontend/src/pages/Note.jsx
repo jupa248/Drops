@@ -17,9 +17,11 @@ import { MdExpandMore } from 'react-icons/md';
 import { MdExpandLess } from 'react-icons/md';
 import { advProps } from '../assets/data/formData';
 import AdvancedNotes from '../components/utils/AdvancedNotes';
+import Spinner from '../components/utils/Spinner';
 
 const Note = () => {
   const { getNote, updateNotes, deleteNote } = useAppContext();
+  const [loading, setLoading] = useState();
   const [myNote, setMyNote] = useState('');
   const [inputChanged, setInputChanged] = useState(false);
   const [cancelEdit, setCancelEdit] = useState(false);
@@ -33,8 +35,10 @@ const Note = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true);
         const response = await getNote(param.id);
         setMyNote(response[0]);
+        setLoading(false);
       } catch (error) {
         toast.error(error);
         console.error(error);
@@ -42,7 +46,7 @@ const Note = () => {
     };
 
     fetchData();
-  }, [cancelEdit]);
+  }, [cancelEdit, getNote, param.id]);
 
   const handleInputChange = (fieldName, value) => {
     setInputChanged(true);
@@ -142,6 +146,10 @@ const Note = () => {
     'finish$',
     'quality$level',
   ];
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <section className="note-page">

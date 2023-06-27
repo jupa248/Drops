@@ -7,7 +7,19 @@
   min-height: 100vh;
   padding-top: 6rem;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
+.my-notes-container h2 {
+  font-size: 3rem;
+  text-align: center;
+  color: antiquewhite;
+  margin: 2rem 0;
+  font-style: italic;
+}
+
 .hidden {
   display: none;
 }

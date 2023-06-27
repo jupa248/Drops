@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext } from 'react';
 import axios from 'axios';
 
 const AppContext = createContext();
@@ -10,7 +10,6 @@ export const AppProvider = ({ children }) => {
 
   const [user, setUser] = useState(initialUser);
   const [notes, setNotes] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   const API_URL = 'http://localhost:5000';
@@ -32,7 +31,7 @@ export const AppProvider = ({ children }) => {
       });
       return response;
     } catch (error) {
-      console.error('Request error:', error.message);
+      //console.error('Request error:', error.message);
       throw error;
     }
   };
@@ -48,13 +47,12 @@ export const AppProvider = ({ children }) => {
         throw new Error(data.message);
       }
     } catch (error) {
-      console.error('Registration error:', error.message);
+      throw error.response.data.message;
     }
   };
 
   const login = async (credentials) => {
     try {
-      setLoading(true);
       const response = await axiosRequest('post', 'login', credentials);
       const { token, user } = response.data;
 
@@ -63,12 +61,11 @@ export const AppProvider = ({ children }) => {
 
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       setUser(user);
-      setLoading(false);
-      console.log('User logged in successfully');
+
       return response;
     } catch (error) {
-      console.log('Login error:', error);
-      throw error;
+      const errMsg = error.response.data.message;
+      throw errMsg;
     }
   };
 
@@ -79,33 +76,21 @@ export const AppProvider = ({ children }) => {
 
       setUser(user);
     } catch (error) {
-      console.log('Fetch user error:', error);
+      throw error;
     }
   };
 
   const fetchNotes = async (userId) => {
     try {
-      setLoading(true);
       const response = await axiosRequest('get', `notes/${userId}`);
       const notes = response.data;
-      setNotes(notes);
-      setLoading(false);
+
+      return notes;
     } catch (error) {
-      console.log('Fetch notes error:', error);
+      //console.log('Fetch notes error:', error);
+      return error;
     }
   };
-
-  // useEffect(() => {
-  //   const storedUser = localStorage.getItem("user");
-  //   if (storedUser) {
-  //     const parsedUser = JSON.parse(storedUser);
-  //     setUser(parsedUser);
-  //     axios.defaults.headers.common[
-  //       "Authorization"
-  //     ] = `Bearer ${parsedUser.token}`;
-  //   }
-  //   setLoading(false);
-  // }, []);
 
   const logout = async () => {
     try {
@@ -118,18 +103,6 @@ export const AppProvider = ({ children }) => {
     }
   };
 
-  // const createNote = async (noteId, noteData) => {
-  //   try {
-  //     const response = await axiosRequest("post", `notes/${noteId}`, noteData);
-  //     const data = response.data;
-  //     setNotes([...notes, data]);
-  //   } catch (err) {
-  //     const error = err.response.data.error;
-  //     console.log(error);
-  //     setError(error);
-  //   }
-  // };
-
   const createNote = async (noteId, noteData) => {
     try {
       const response = await axiosRequest('post', `notes/${noteId}`, noteData);
@@ -138,8 +111,8 @@ export const AppProvider = ({ children }) => {
       return { success: true, message: 'Note created successfully' };
     } catch (err) {
       const error = err.response.data.error;
-      console.log(error);
       setError(error);
+      console.log('error', error);
       return { success: false, message: 'Failed to create the note', error };
     }
   };
@@ -147,6 +120,7 @@ export const AppProvider = ({ children }) => {
   const getNote = async (noteId) => {
     try {
       const response = await axiosRequest('get', `note/${noteId}`);
+
       return response.data;
     } catch (error) {
       console.log(error);
@@ -160,9 +134,8 @@ export const AppProvider = ({ children }) => {
         note.id === noteId ? { ...note, ...updatedData } : note,
       );
       setNotes(updatedNotes);
-      console.log('notes-ctx', notes);
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   };
 
@@ -181,7 +154,6 @@ export const AppProvider = ({ children }) => {
       value={{
         user,
         fetchUser,
-        loading,
         setUser,
         notes,
         register,

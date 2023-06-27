@@ -10,6 +10,7 @@ import { useAppContext } from './contexts/AppContext';
 import MyNotes from './pages/MyNotes';
 import './index.css';
 import AdvancedNotes from './components/utils/AdvancedNotes';
+import Spinner from './components/utils/Spinner';
 
 const App = () => {
   const { user } = useAppContext();
@@ -51,7 +52,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route path="/test" element={<AdvancedNotes />} />
+        {/* <Route path="/test" element={<Spinner />} /> */}
         {!user && <Route path="*" element={<Navigate to="/login" replace />} />}
         {user && <Route path="*" element={<Navigate to="/home" replace />} />}
       </Routes>

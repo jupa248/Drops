@@ -1,8 +1,8 @@
 .homepage {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  background-image: url("https://i.ibb.co/gJ1dcLX/dan-cristian-padure-LDMgqr8z7-ZE-unsplash.jpg");
+  justify-content: space-between;
+  background-image: url('https://i.ibb.co/gJ1dcLX/dan-cristian-padure-LDMgqr8z7-ZE-unsplash.jpg');
   box-sizing: border-box;
   background-size: cover;
   background-repeat: no-repeat;
@@ -11,11 +11,17 @@
   padding-top: 6rem;
 }
 
+.homepage-header {
+  margin-top: 3rem;
+}
+
 .homepage a:link {
   text-decoration: none;
 }
 
-.homepage h2 {
+.homepage h2,
+.homepage h3 {
+  font-size: 2rem;
   color: antiquewhite;
   margin: 1rem;
   text-align: center;

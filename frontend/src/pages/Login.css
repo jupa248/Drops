@@ -1,5 +1,5 @@
 .login-container {
-  background-image: url("https://i.ibb.co/mBYM0d4/grapes.jpg");
+  background-image: url('https://i.ibb.co/mBYM0d4/grapes.jpg');
   box-sizing: border-box;
   background-size: cover;
   background-repeat: no-repeat;
@@ -7,9 +7,26 @@
   min-height: 100vh;
   /* padding-top: 6rem; */
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
+}
+
+.login-header {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  /* background-color: black; */
+  width: 100%;
+  height: auto;
+  font-size: 1.5rem;
+  color: antiquewhite;
+  margin: -3rem 0;
+}
+
+.login-header svg {
+  fill: rgb(96, 6, 6);
 }
 
 .login-container form {
@@ -26,8 +43,14 @@
   gap: 0.5rem;
 }
 
+.login-container h3 {
+  text-align: center;
+  color: antiquewhite;
+}
+
 input::placeholder {
   opacity: 0.6;
+  color: antiquewhite;
 }
 
 .login-container label {
@@ -45,8 +68,14 @@ input::placeholder {
   color: antiquewhite;
 }
 
+.login-container p {
+  color: antiquewhite;
+  font-style: italic;
+  margin-top: 1rem;
+}
+
 .submit-button {
-  background-image: url("https://i.ibb.co/y5kSbcj/wine-corkscrew-wooden-handle-engraving-style-old-cork-screw-vintage-199123870.jpg");
+  background-image: url('https://i.ibb.co/y5kSbcj/wine-corkscrew-wooden-handle-engraving-style-old-cork-screw-vintage-199123870.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   transform: rotate(45deg);

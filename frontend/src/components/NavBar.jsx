@@ -8,40 +8,35 @@ import { TbLogout } from 'react-icons/tb';
 
 const Navbar = () => {
   const [active, setActive] = useState(false);
-  const [colorChange, setColorchange] = useState(false);
-  const { user, logout, setLoading } = useAppContext();
+  //const [colorChange, setColorchange] = useState(false);
+  const { user, logout } = useAppContext();
   const navigate = useNavigate();
 
   const handleLogout = () => {
     logout();
     navigate('/login');
-    setLoading(false);
   };
   const handleHamburger = () => {
     window.scroll(0, 51);
     setActive(!active);
   };
 
-  const changeNavbarColor = () => {
-    if (window.scrollY < 50) {
-      setColorchange(true);
-    } else {
-      setColorchange(false);
-    }
-  };
-  window.addEventListener('scroll', changeNavbarColor);
+  // const changeNavbarColor = () => {
+  //   if (window.scrollY < 50) {
+  //     setColorchange(true);
+  //   } else {
+  //     setColorchange(false);
+  //   }
+  // };
+  // window.addEventListener('scroll', changeNavbarColor);
 
-  const body = document.querySelector('body');
-  active
-    ? (body.style.overflowY = 'hidden')
-    : (body.style.overflowY = 'initial');
+  // const body = document.querySelector('body');
+  // active
+  //   ? (body.style.overflowY = 'hidden')
+  //   : (body.style.overflowY = 'initial');
 
   return (
-    <div
-      className={
-        colorChange ? 'navbar-container bg-transp' : 'navbar-container bg-red'
-      }
-    >
+    <div className="navbar-container bg-red">
       <Link to="/homepage">
         <div className="logo">
           <CgDrop />

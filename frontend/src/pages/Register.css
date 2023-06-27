@@ -22,6 +22,11 @@
   line-height: 2rem;
 }
 
+.signup-container h3 {
+  text-align: center;
+  color: antiquewhite;
+}
+
 .signup-container input {
   padding: 10px;
   border: antiquewhite;

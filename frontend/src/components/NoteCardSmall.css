@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   align-items: stretch;
-  margin: 1rem;
+  margin: 1rem 3rem;
 }
 
 .card-img {

@@ -1,5 +1,5 @@
-import NotesForm from "../components/NotesForm";
-import "./CreateNote.css";
+import NotesForm from '../components/NotesForm';
+import './CreateNote.css';
 
 const CreateNote = () => {
   return (

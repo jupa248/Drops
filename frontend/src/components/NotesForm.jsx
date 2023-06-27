@@ -16,7 +16,6 @@ const NotesForm = () => {
   const [toggleAdvanced, setToggleAdvanced] = useState(false);
   const [inputChanged, setInputChanged] = useState(false);
   const nameInput = document.querySelector('input[name="wine"]')?.value;
-  const priceInput = document.querySelector('input[name="price"]')?.value;
 
   const navigate = useNavigate();
 
@@ -49,7 +48,7 @@ const NotesForm = () => {
         navigate('/home');
       }
     } catch (error) {
-      console.log(error);
+      toast.error(error);
     }
   };
 
@@ -64,7 +63,7 @@ const NotesForm = () => {
         <input name="wine" required type="text" onChange={handleChange} />
         {error && nameInput?.length === 0 && (
           <span className="required">
-            <p className="err-tooltip">* Wine name field is required</p>
+            <p className="err-tooltip">* Wine field is required</p>
           </span>
         )}
         <label>Date</label>
@@ -77,11 +76,6 @@ const NotesForm = () => {
           min={0}
           onChange={handleChange}
         />
-        {error && priceInput?.length === 0 && (
-          <span className="required">
-            <p className="err-tooltip">* Wine price field is required</p>
-          </span>
-        )}
         <label>Year</label>
         <input
           name="year"
