@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './NavBar.css';
 import { Link } from 'react-router-dom';
 import { CgDrop } from 'react-icons/cg';
-import { useAppContext } from '../contexts/AppContext';
+import { useAppContext } from '../../contexts/AppContext';
 import { useNavigate } from 'react-router-dom';
 import { TbLogout } from 'react-icons/tb';
 

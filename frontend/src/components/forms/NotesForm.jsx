@@ -1,12 +1,12 @@
 import './NotesForm.css';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { useAppContext } from '../contexts/AppContext';
+import { useAppContext } from '../../contexts/AppContext';
 import { toast } from 'react-toastify';
-import SaveNoteBtn from './buttons/SaveNoteBtn';
-import RatingInput from './utils/RatingInput';
-import AdvancedNotes from './utils/AdvancedNotes';
-import { advProps } from '../assets/data/formData.js';
+import SaveNoteBtn from '../buttons/SaveNoteBtn';
+import RatingInput from '../inputs/RatingInput';
+import AdvancedNotes from '../forms/AdvancedNotes';
+import { advProps, ratingProps } from '../../assets/data/formData';
 import { MdExpandMore } from 'react-icons/md';
 import { MdExpandLess } from 'react-icons/md';
 
@@ -21,13 +21,6 @@ const NotesForm = () => {
 
   const userId = user?.id;
 
-  const ratingProps = [
-    'color$Rate',
-    'aroma$Rate',
-    'body$Rate',
-    'taste$Rate',
-    'finish$Rate',
-  ];
 
   const handleChange = (e) => {
     setInputChanged(true);

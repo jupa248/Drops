@@ -1,5 +1,5 @@
 .login-container {
-  background-image: url('https://i.ibb.co/mBYM0d4/grapes.jpg');
+  background-image: url(../assets/images/grapes.jpg);
   box-sizing: border-box;
   background-size: cover;
   background-repeat: no-repeat;
@@ -75,7 +75,7 @@ input::placeholder {
 }
 
 .submit-button {
-  background-image: url('https://i.ibb.co/y5kSbcj/wine-corkscrew-wooden-handle-engraving-style-old-cork-screw-vintage-199123870.jpg');
+  background-image: url(../assets/images/corkscrew.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   transform: rotate(45deg);

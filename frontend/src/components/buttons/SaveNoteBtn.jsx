@@ -1,4 +1,4 @@
-import barrel from "../../assets/barrel.svg";
+import barrel from "../../assets/images/barrel.svg";
 
 const SaveNoteBtn = ({ handleSubmit }) => {
   return (

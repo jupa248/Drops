@@ -105,3 +105,45 @@ export const advProps = {
     },
   ],
 };
+
+export const editInputProps = [
+  'date',
+  'price',
+  'year',
+  'variety',
+  'winery',
+  'region',
+  'color',
+  'aroma',
+  'body',
+  'taste',
+  'finish',
+  'mynotes',
+];
+
+export const ratingProps = [
+  'aroma$Rate',
+  'body$Rate',
+  'color$Rate',
+  'taste$Rate',
+  'finish$Rate',
+];
+
+export const advNotesProps = [
+  'clarity',
+  'intensity',
+  'color$',
+  'condition$',
+  'intensity$',
+  'aroma$characteristics',
+  'development',
+  'sweetness',
+  'acidity',
+  'tannin',
+  'alcohol',
+  'body$',
+  'flavour$intensity',
+  'flavour$characteristics',
+  'finish$',
+  'quality$level',
+];

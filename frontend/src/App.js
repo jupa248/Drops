@@ -4,13 +4,13 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import CreateNote from './pages/CreateNote';
 import Note from './pages/Note';
-import Navbar from './components/NavBar';
-import ProtectedRoute from './components/ProtectedRoute';
+import Navbar from './components/UI/NavBar';
+import ProtectedRoute from './components/UI/ProtectedRoute';
 import { useAppContext } from './contexts/AppContext';
 import MyNotes from './pages/MyNotes';
 import './index.css';
-import AdvancedNotes from './components/utils/AdvancedNotes';
-import Spinner from './components/utils/Spinner';
+import Vocabulary from './pages/Vocabulary';
+
 
 const App = () => {
   const { user } = useAppContext();
@@ -52,7 +52,15 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        {/* <Route path="/test" element={<Spinner />} /> */}
+        <Route
+          path="/vocabulary"
+          element={
+            <ProtectedRoute>
+              <Vocabulary />
+            </ProtectedRoute>
+          }
+        />
+        {/* <Route path="/vocabulary" element={<Vocabulary />} /> */}
         {!user && <Route path="*" element={<Navigate to="/login" replace />} />}
         {user && <Route path="*" element={<Navigate to="/home" replace />} />}
       </Routes>

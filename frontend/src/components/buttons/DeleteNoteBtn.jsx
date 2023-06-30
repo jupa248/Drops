@@ -1,4 +1,4 @@
-import trashCan from "../../assets/trashCan.svg";
+import trashCan from "../../assets/images/trashCan.svg";
 
 const DeleteNoteBtn = ({ handleDelete }) => {
   return (

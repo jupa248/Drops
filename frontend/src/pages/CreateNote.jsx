@@ -1,4 +1,4 @@
-import NotesForm from '../components/NotesForm';
+import NotesForm from '../components/forms/NotesForm';
 import './CreateNote.css';
 
 const CreateNote = () => {

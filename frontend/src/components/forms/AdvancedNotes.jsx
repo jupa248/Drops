@@ -1,17 +1,12 @@
 import { useState } from 'react';
 import './AdvancedNotes.css';
-import Dropdown from './Dropdown';
-import { ConclusionIcon, EyeIcon, MouthIcon } from '../../assets/svgIcons';
-import { NoseIcon } from '../../assets/svgIcons';
+import Dropdown from '../inputs/Dropdown';
+import { ConclusionIcon, EyeIcon, MouthIcon,NoseIcon } from '../../assets/images/svgIcons';
+
 
 const AdvancedNotes = ({ formData, handleDropdownChange }) => {
   const [activeDropdown, setActiveDropdown] = useState(null);
 
-  let categoryIcon;
-
-  // if(category === 'appearance') {
-  //   categoryIcon = <EyeIcon />
-  // }
 
   return (
     <>

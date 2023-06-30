@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import './NotesActions.css';
-import myNotesIcon from '../../assets/myNotesIcon.svg';
+import myNotesIcon from '../../assets/images/myNotesIcon.svg';
 
 const MyNotesBtn = () => {
   const homeUrl = window.location.href.includes('home');

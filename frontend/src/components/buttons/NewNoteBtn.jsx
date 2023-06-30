@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import './NotesActions.css';
-import note from '../../assets/note.svg';
+import note from '../../assets/images/note.svg';
 
 const NewNoteBtn = () => {
   const homeUrl = window.location.href.includes('home');

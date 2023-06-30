@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAppContext } from '../contexts/AppContext';
-import EditInput from '../components/EditInput';
+import EditInput from '../components/inputs/EditInput';
 import './Note.css';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
@@ -9,15 +9,15 @@ import MyNotesBtn from '../components/buttons/MyNotesBtn';
 import SaveNoteBtn from '../components/buttons/SaveNoteBtn';
 import CancelBtn from '../components/buttons/CancelBtn';
 import DeleteNoteBtn from '../components/buttons/DeleteNoteBtn';
-import RatingInput from '../components/utils/RatingInput';
+import RatingInput from '../components/inputs/RatingInput';
 import { BsDropletFill } from 'react-icons/bs';
-import { EditIcon } from '../assets/svgIcons';
+import { EditIcon } from '../assets/images/svgIcons';
 import { BiArrowBack } from 'react-icons/bi';
 import { MdExpandMore } from 'react-icons/md';
 import { MdExpandLess } from 'react-icons/md';
-import { advProps } from '../assets/data/formData';
-import AdvancedNotes from '../components/utils/AdvancedNotes';
-import Spinner from '../components/utils/Spinner';
+import { advProps, editInputProps, ratingProps, advNotesProps } from '../assets/data/formData';
+import AdvancedNotes from '../components/forms/AdvancedNotes';
+import Spinner from '../components/UI/Spinner';
 
 const Note = () => {
   const { getNote, updateNotes, deleteNote } = useAppContext();
@@ -105,47 +105,6 @@ const Note = () => {
     console.log('myNote', myNote);
   };
 
-  const editInputProps = [
-    'date',
-    'price',
-    'year',
-    'variety',
-    'winery',
-    'region',
-    'color',
-    'aroma',
-    'body',
-    'taste',
-    'finish',
-    'mynotes',
-  ];
-
-  const ratingProps = [
-    'aroma$Rate',
-    'body$Rate',
-    'color$Rate',
-    'taste$Rate',
-    'finish$Rate',
-  ];
-
-  const advNotesProps = [
-    'clarity',
-    'intensity',
-    'color$',
-    'condition$',
-    'intensity$',
-    'aroma$characteristics',
-    'development',
-    'sweetness',
-    'acidity',
-    'tannin',
-    'alcohol',
-    'body$',
-    'flavour$intensity',
-    'flavour$characteristics',
-    'finish$',
-    'quality$level',
-  ];
 
   if (loading) {
     return <Spinner />;

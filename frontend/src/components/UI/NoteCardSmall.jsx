@@ -1,6 +1,6 @@
 import './NoteCardSmall.css';
 import { Link } from 'react-router-dom';
-import glass from '../assets/wine-glass.svg';
+import glass from '../../assets/images/wine-glass.svg';
 import { FaChevronRight } from 'react-icons/fa';
 import { BsDropletFill } from 'react-icons/bs';
 

@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { EditIcon } from "../assets/svgIcons";
+import { EditIcon } from "../../assets/images/svgIcons";
 
 const EditInput = ({ label, value, onChange, type }) => {
   const inputRef = useRef(null);

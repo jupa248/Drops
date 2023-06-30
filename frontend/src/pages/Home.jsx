@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import './Home.css';
 import { useAppContext } from '../contexts/AppContext';
-import NoteCardSmall from '../components/NoteCardSmall';
+import NoteCardSmall from '../components/UI/NoteCardSmall';
 import NewNoteBtn from '../components/buttons/NewNoteBtn';
 import MyNotesBtn from '../components/buttons/MyNotesBtn';
 import { toast } from 'react-toastify';
-import Spinner from '../components/utils/Spinner';
+import Spinner from '../components/UI/Spinner';
 
 const Home = () => {
   const { user, fetchNotes } = useAppContext();

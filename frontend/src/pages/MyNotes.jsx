@@ -1,31 +1,37 @@
-import { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useAppContext } from '../contexts/AppContext';
-import NoteCardSmall from '../components/NoteCardSmall';
+import NoteCardSmall from '../components/UI/NoteCardSmall';
 import { BsArrowUp } from 'react-icons/bs';
 import NewNoteBtn from '../components/buttons/NewNoteBtn';
 import MyNotesBtn from '../components/buttons/MyNotesBtn';
-import Spinner from '../components/utils/Spinner';
+import { toast } from 'react-toastify';
+import Spinner from '../components/UI/Spinner';
 import './MyNotes.css';
 
 const MyNotes = () => {
-  const { user, notes, fetchNotes } = useAppContext();
+  const { user, fetchNotes } = useAppContext();
   const [maxIndex, setMaxIndex] = useState(10);
+  const [notes, setNotes] = useState([]);
+  const [loading, setLoading] = useState();
   const bottomRef = useRef(null);
-  console.log('notes', notes);
-  const showClass = maxIndex < notes.length ? 'show-btn' : 'hidden';
+  const showClass = maxIndex < notes?.length ? 'show-btn' : 'hidden';
 
-  const memoizedFetchNotes = useCallback(
-    (userId) => {
-      fetchNotes(userId);
-    },
-    [fetchNotes],
-  );
 
   useEffect(() => {
+    const fetchAllUserNotes = async () => {
+      try {
+        setLoading(true);
+        const response = await fetchNotes(user?.id);
+        setNotes(response);
+        setLoading(false);
+      } catch (error) {
+        toast.error(error);
+      }
+    };
     if (user) {
-      memoizedFetchNotes(user?.id);
+      fetchAllUserNotes(user?.id);
     }
-  }, [user, memoizedFetchNotes]);
+  }, [user, fetchNotes]);
 
   useEffect(() => {
     if (bottomRef.current && maxIndex > 10) {
@@ -44,9 +50,9 @@ const MyNotes = () => {
 
   const reversedNotes = [...notes].reverse();
 
-  // if (loading) {
-  //   return <Spinner />;
-  // }
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <section className="my-notes-container">
