@@ -60,7 +60,6 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        {/* <Route path="/vocabulary" element={<Vocabulary />} /> */}
         {!user && <Route path="*" element={<Navigate to="/login" replace />} />}
         {user && <Route path="*" element={<Navigate to="/home" replace />} />}
       </Routes>

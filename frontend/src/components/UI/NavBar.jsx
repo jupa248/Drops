@@ -34,7 +34,7 @@ const Navbar = () => {
   // active
   //   ? (body.style.overflowY = 'hidden')
   //   : (body.style.overflowY = 'initial');
-
+  console.log(user);
   return (
     <div className="navbar-container bg-red">
       <Link to="/homepage">
@@ -49,20 +49,15 @@ const Navbar = () => {
           <Link to="/homepage">Home</Link>
           <Link to="/my-notes">My notes</Link>
           <Link to="/create-notes">Take notes</Link>
-          <Link to="/dictionary">Dictionary</Link>
-          {user && (
-            <div>
-              <h2>{user[0]?.username}</h2>
-              <button
-                type="button"
-                onClick={handleLogout}
-                className="logout-btn"
-              >
-                Logout
-              </button>
-            </div>
-          )}
+          <Link to="/vocabulary">Vocabulary</Link>
         </div>
+        {user && (
+          <div>
+            <button type="button" onClick={handleLogout} className="logout-btn">
+              Logout <TbLogout />
+            </button>
+          </div>
+        )}
       </nav>
       <button
         className={active ? 'burger-is-active , hamburger' : 'hamburger'}
@@ -80,12 +75,11 @@ const Navbar = () => {
         <Link to="/create-notes" onClick={handleHamburger}>
           Take notes
         </Link>
-        <Link to="/dictionary" onClick={handleHamburger}>
-          Dictionary
+        <Link to="/vocabulary" onClick={handleHamburger}>
+          Vocabulary
         </Link>
         {user && (
           <div>
-            <h2>{user[0]?.username}</h2>
             <button type="button" onClick={handleLogout} className="logout-btn">
               Logout <TbLogout />
             </button>

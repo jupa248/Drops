@@ -11,7 +11,7 @@
   background-size: auto, cover;
   min-height: 100vh;
   padding-top: 6rem;
-  gap: 0.7rem;
+  gap: 1rem;
 }
 
 .vocabulary-header {
@@ -22,6 +22,9 @@
   color: antiquewhite;
   padding: 1.2rem;
   text-align: center;
+  -webkit-box-shadow: 0px 4px 12px -3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 4px 12px -3px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 4px 12px -3px rgba(0, 0, 0, 0.75);
 }
 
 .vocabulary-header p {
@@ -34,11 +37,17 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  -webkit-box-shadow: 0px 4px 12px -3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 4px 12px -3px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 4px 12px -3px rgba(0, 0, 0, 0.75);
 }
 
 .categories-container {
-  min-width: 100%;
+  width: 95%;
   margin-bottom: 2.5rem;
+  -webkit-box-shadow: 0px 4px 12px -3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 4px 12px -3px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 4px 12px -3px rgba(0, 0, 0, 0.75);
 }
 
 .bg-light-blue {
@@ -66,6 +75,9 @@
   width: 100%;
   /* margin: 0.7rem 0; */
   line-height: 1.5rem;
+  -webkit-box-shadow: 0px 4px 12px -3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 4px 12px -3px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 4px 12px -3px rgba(0, 0, 0, 0.75);
 }
 
 .key-questions h4 {
@@ -85,8 +97,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-
-  padding: 0.3rem 0.8rem;
+  padding: 0.6rem 0.8rem;
 }
 
 .clusters-header > h4:nth-child(2) {
@@ -105,6 +116,7 @@
 }
 .cluster-desc {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .cluster-desc p {

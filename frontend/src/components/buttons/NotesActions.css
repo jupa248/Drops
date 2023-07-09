@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: 1.5rem auto;
+  margin: 5.5rem auto;
   width: 100%;
 }
 
@@ -63,8 +63,12 @@ a {
   }
 
   .notes-actions {
-    justify-content: flex-end;
+    /* justify-content: flex-end;
     margin-right: 2rem;
-    gap: 2rem;
+    gap: 2rem; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
   }
 }

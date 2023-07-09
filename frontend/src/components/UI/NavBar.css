@@ -205,5 +205,16 @@ nav a:hover {
   .navbar-desktop {
     display: -ms-grid;
     display: grid;
+    padding-right: 2rem;
+    color: antiquewhite;
+  }
+
+  .logout-btn svg {
+    width: 1.5rem;
+    height: auto;
+  }
+
+  nav a {
+    font-size: 1.5rem;
   }
 }

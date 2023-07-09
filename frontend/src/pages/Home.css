@@ -46,9 +46,26 @@
 
 @media only screen and (min-width: 1024px) {
   .homepage {
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    gap: 80px;
+    gap: 80px; */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  .header {
+    grid-area: 1 / 1 / 2 / 5;
+    align-self: center;
+  }
+  .cards {
+    grid-area: 2 / 1 / 4 / 4;
+    align-self: center;
+    max-width: 80%;
+  }
+  .actions {
+    grid-area: 2 / 4 / 4 / 5;
+    align-self: center;
   }
 
   .homepage h2 {

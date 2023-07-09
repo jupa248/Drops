@@ -1,27 +1,3 @@
-// import { vocabularyData } from '../assets/data/vocabularyData'
-// import './Vocabulary.css'
-
-// const Vocabulary = () => {
-
-//     //vocabularyData.map(text => console.log(text))
-//   return (
-//     <section className="vocabulary-section">
-//         <h2>DESCRIBING AROMA AND FLAVOUR</h2>
-//         <p>Think in terms of primary, secondary and tertiary</p>
-//             {vocabularyData.map((text,index) => (
-//         <article key={index}>
-//                 <h3>{text.title}</h3>
-//                 <h5>{text.subTitle}</h5>
-//                 <div>
-//                     <h6>{text.categoryTitles}</h6>
-//                 </div>
-//         </article>
-//             ))}
-//     </section>
-//   )
-// }
-// export default Vocabulary
-
 import {
   vocabularyClusters1,
   vocabularyClusters2,

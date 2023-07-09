@@ -37,7 +37,7 @@ const Home = () => {
 
   return (
     <section className="homepage">
-      <div className="homepage-header">
+      <div className="homepage-header header">
         <h2>Hi {user.username},</h2>
         <h3>
           {reversedNotes.length > 0
@@ -45,13 +45,13 @@ const Home = () => {
             : 'start creating your notes...'}
         </h3>
       </div>
-      <div>
+      <div className="cards">
         {reversedNotes &&
           reversedNotes
             .filter((note, index) => index < 4)
             .map((note, index) => <NoteCardSmall key={index} note={note} />)}
       </div>
-      <div className="notes-actions">
+      <div className="notes-actions actions">
         <NewNoteBtn />
         <MyNotesBtn />
       </div>
