@@ -217,4 +217,9 @@ nav a:hover {
   nav a {
     font-size: 1.5rem;
   }
+
+  .logo svg {
+    width: 2rem;
+    height: auto;
+  }
 }

@@ -51,7 +51,7 @@ const Home = () => {
             .filter((note, index) => index < 4)
             .map((note, index) => <NoteCardSmall key={index} note={note} />)}
       </div>
-      <div className="notes-actions actions">
+      <div className="notes-actions actions home-actions">
         <NewNoteBtn />
         <MyNotesBtn />
       </div>

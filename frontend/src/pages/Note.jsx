@@ -15,7 +15,12 @@ import { EditIcon } from '../assets/images/svgIcons';
 import { BiArrowBack } from 'react-icons/bi';
 import { MdExpandMore } from 'react-icons/md';
 import { MdExpandLess } from 'react-icons/md';
-import { advProps, editInputProps, ratingProps, advNotesProps } from '../assets/data/formData';
+import {
+  advProps,
+  editInputProps,
+  ratingProps,
+  advNotesProps,
+} from '../assets/data/formData';
 import AdvancedNotes from '../components/forms/AdvancedNotes';
 import Spinner from '../components/UI/Spinner';
 
@@ -104,7 +109,6 @@ const Note = () => {
     setMyNote((prevNotes) => ({ ...prevNotes, [title]: option }));
     console.log('myNote', myNote);
   };
-
 
   if (loading) {
     return <Spinner />;
