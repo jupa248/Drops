@@ -6,7 +6,6 @@
   background-size: cover;
   min-height: 100vh;
   padding-top: 6rem;
-  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -20,15 +19,22 @@
   font-style: italic;
 }
 
+.small-cards-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 75%;
+  align-self: center;
+}
+
 .hidden {
   display: none;
 }
 
-.btn-container {
+/* .btn-container {
   display: flex;
   justify-content: space-around;
   margin: 2rem 0;
-}
+} */
 
 .show-btn {
   color: antiquewhite;
@@ -52,4 +58,41 @@
 .back-to-top-btn svg {
   height: 2.2rem;
   width: 2.2rem;
+}
+
+.fixed-btn {
+  position: fixed;
+  bottom: 1rem;
+  right: 1.5rem;
+}
+.fixed-btn-left {
+  position: fixed;
+  bottom: 1rem;
+  left: 1.5rem;
+}
+
+@media only screen and (min-width: 1024px) {
+  .small-cards-container {
+    max-width: 60%;
+  }
+
+  .my-notes-actions {
+    align-items: center;
+    margin: 0;
+  }
+
+  .my-notes-container button {
+    opacity: 0.9;
+  }
+
+  .my-notes-container button:hover {
+    cursor: pointer;
+    outline: 1px solid antiquewhite;
+    box-shadow: none;
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out;
+    -moz-transition: opacity 0.4s ease-in-out;
+    -webkit-transition: opacity 0.4s ease-in-out;
+    -o-transition: opacity 0.4s ease-in-out;
+  }
 }

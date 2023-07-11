@@ -6,6 +6,7 @@
   color: black;
   border-radius: 5px;
   padding: 0.2rem 0;
+  margin: 1.3rem 0;
 }
 .rating-container label {
   justify-self: flex-start;

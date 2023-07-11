@@ -35,7 +35,7 @@ const Login = () => {
         <p>Wine notes application</p>
       </div>
       <form onSubmit={handleLogin}>
-        <h3>Please Login</h3>
+        <h3>Login</h3>
         <label>Username</label>
         <input
           type="text"

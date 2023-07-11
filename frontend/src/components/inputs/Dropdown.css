@@ -90,16 +90,9 @@
 
 .dropdown-content .item {
   padding: 10px;
-  cursor: pointer;
   text-align: center;
-  /* opacity: 0.9; */
   border-radius: 5px;
   border: 1px solid #562f36;
-}
-
-.dropdown-content .item:hover {
-  opacity: 1;
-  transition: all 0.3s ease-in-out;
 }
 
 .lemon-green {
@@ -173,3 +166,15 @@
 /* .item-font:hover {
   font-weight: bold;
 } */
+
+@media only screen and (min-width: 1024px) {
+  .dropdown-content .item {
+    cursor: pointer;
+    opacity: 0.9;
+  }
+
+  .dropdown-content .item:hover {
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
+  }
+}

@@ -77,13 +77,12 @@ a {
     display: flex;
     background-color: rgb(96, 6, 6);
     padding: 0.5rem 1rem;
-    opacity: 0.7;
+    opacity: 0.9;
   }
 
   .icon-notes:hover {
     cursor: pointer;
     outline: 1px solid antiquewhite;
-    font-weight: bold;
     box-shadow: none;
     opacity: 1;
     transition: opacity 0.4s ease-in-out;

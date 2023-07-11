@@ -83,11 +83,10 @@ export const AppProvider = ({ children }) => {
   const fetchNotes = async (userId) => {
     try {
       const response = await axiosRequest('get', `notes/${userId}`);
-      const notes = response.data;
-
+      const notes = response?.data;
+      console.log('notes ctx:', notes);
       return notes;
     } catch (error) {
-      //console.log('Fetch notes error:', error);
       return error;
     }
   };

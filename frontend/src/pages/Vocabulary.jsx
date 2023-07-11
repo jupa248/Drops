@@ -22,7 +22,7 @@ const Vocabulary = () => {
           <h4>Key questions</h4>
         </div>
         <div>
-          <h4>Are the flavours...</h4>
+          <h5>Are the flavours...</h5>
           <p>delicate or intense?</p>
           <p>simple or complex?</p>
           <p>generic or well-defined?</p>
@@ -61,7 +61,7 @@ const Vocabulary = () => {
           <h4>Key questions</h4>
         </div>
         <div>
-          <h4>Are the flavours....</h4>
+          <h5>Are the flavours....</h5>
           <p>from yeast, MLF, or oak?</p>
         </div>
       </div>
@@ -95,7 +95,7 @@ const Vocabulary = () => {
           <h4>Key questions</h4>
         </div>
         <div>
-          <h4>Do the flavours show....</h4>
+          <h5>Do the flavours show....</h5>
           <p>deliberate oxidation?</p>
           <p>fruit development?</p>
           <p>bottle age?</p>

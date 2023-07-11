@@ -11,6 +11,7 @@
 .notes-container form {
   display: flex;
   flex-direction: column;
+  align-self: center;
   min-width: 70vw;
   border-radius: 15px;
   background-color: rgb(96, 6, 6);
@@ -84,6 +85,11 @@ input::placeholder {
   margin-top: 1rem;
 }
 
+.save-btn .icon-notes {
+  background-color: transparent;
+  gap: 0.5rem;
+}
+
 .required {
   position: relative;
   background-color: gray;
@@ -143,12 +149,39 @@ input::placeholder {
   width: auto;
 }
 
+.notes-form-actions {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.notes-form-to-top-btn {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+}
+
 @media only screen and (min-width: 1024px) {
   .notes-container {
-    width: 50%;
+    max-width: 50vw;
+  }
+  .notes-container form {
+    min-width: 50vw;
   }
 
   .notes-button:hover {
     transform: rotate(15deg);
+  }
+
+  .save-btn .icon-notes {
+    box-shadow: none;
+  }
+  .save-btn .icon-notes:hover {
+    -webkit-box-shadow: 0px 17px 12px -15px #660066;
+    -moz-box-shadow: 0px 17px 12px -15px #660066;
+    box-shadow: 0px 17px 12px -15px #660066;
+  }
+
+  .notes-container button:hover {
+    cursor: pointer;
   }
 }

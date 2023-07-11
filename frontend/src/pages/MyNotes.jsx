@@ -2,8 +2,8 @@ import { useEffect, useState, useRef } from 'react';
 import { useAppContext } from '../contexts/AppContext';
 import NoteCardSmall from '../components/UI/NoteCardSmall';
 import { BsArrowUp } from 'react-icons/bs';
+import { BsArrowDown } from 'react-icons/bs';
 import NewNoteBtn from '../components/buttons/NewNoteBtn';
-import MyNotesBtn from '../components/buttons/MyNotesBtn';
 import { toast } from 'react-toastify';
 import Spinner from '../components/UI/Spinner';
 import './MyNotes.css';
@@ -13,9 +13,9 @@ const MyNotes = () => {
   const [maxIndex, setMaxIndex] = useState(10);
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState();
+  const [scrollDown, setScrollDown] = useState();
   const bottomRef = useRef(null);
   const showClass = maxIndex < notes?.length ? 'show-btn' : 'hidden';
-
 
   useEffect(() => {
     const fetchAllUserNotes = async () => {
@@ -44,11 +44,27 @@ const MyNotes = () => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const scrollPosition = () => {
+    if (window.scrollY < 250) {
+      setScrollDown(true);
+    } else {
+      setScrollDown(false);
+    }
+  };
+  window.addEventListener('scroll', scrollPosition);
+
+  const handleGoToBottom = () => {
+    window.scrollTo({ top: 5000, behavior: 'smooth' });
+  };
+
   const handleGoToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const reversedNotes = [...notes].reverse();
+  let reversedNotes;
+  if (notes.length > 0) {
+    reversedNotes = [...notes]?.reverse();
+  }
 
   if (loading) {
     return <Spinner />;
@@ -56,32 +72,41 @@ const MyNotes = () => {
 
   return (
     <section className="my-notes-container">
-      <div>
+      <div className="small-cards-container">
         <h2>My Notes</h2>
-        {reversedNotes.map(
-          (note, index) =>
-            index < maxIndex && <NoteCardSmall key={index} note={note} />,
-        )}
-        <div className="btn-container">
-          {maxIndex > 10 && (
-            <button
-              type="button"
-              onClick={handleGoToTop}
-              className="back-to-top-btn"
-            >
-              <BsArrowUp />
-            </button>
+        {reversedNotes &&
+          reversedNotes.map(
+            (note, index) =>
+              index < maxIndex && <NoteCardSmall key={index} note={note} />,
           )}
+        {scrollDown && (
+          <button
+            type="button"
+            onClick={handleGoToBottom}
+            className="back-to-top-btn fixed-btn"
+          >
+            <BsArrowDown />
+          </button>
+        )}
+        {!scrollDown && maxIndex > 10 && (
+          <button
+            type="button"
+            onClick={handleGoToTop}
+            className="back-to-top-btn fixed-btn"
+          >
+            <BsArrowUp />
+          </button>
+        )}
+        <div className="fixed-btn-left">
+          <NewNoteBtn />
+        </div>
+        <div ref={bottomRef} className="notes-actions my-notes-actions">
           <button type="button" onClick={handleShowMore} className={showClass}>
             Show more
           </button>
         </div>
       </div>
       )
-      <div ref={bottomRef} className="notes-actions">
-        <NewNoteBtn />
-        <MyNotesBtn />
-      </div>
     </section>
   );
 };

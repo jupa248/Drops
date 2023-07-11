@@ -34,7 +34,7 @@ const Navbar = () => {
   // active
   //   ? (body.style.overflowY = 'hidden')
   //   : (body.style.overflowY = 'initial');
-  console.log(user);
+
   return (
     <div className="navbar-container bg-red">
       <Link to="/homepage">

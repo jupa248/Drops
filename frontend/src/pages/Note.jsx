@@ -117,97 +117,113 @@ const Note = () => {
   return (
     <section className="note-page">
       <form className="myNotes-container">
-        <h2>{myNote.wine}</h2>
-        {Object.entries(myNote)
-          .filter(([fieldName, fieldValue]) =>
-            editInputProps.includes(fieldName),
-          )
-          .map(([fieldName, fieldValue, index]) => (
-            <EditInput
-              key={fieldName}
-              label={fieldName}
-              type={fieldName === 'date' ? 'date' : 'text'}
-              value={fieldValue || ''}
-              onChange={(e) => handleInputChange(fieldName, e.target.value)}
-            />
-          ))}
-        <hr className="rates-hr" />
-
-        {Object.entries(myNote)
-          .filter(([fieldName, fieldValue]) => ratingProps.includes(fieldName))
-          .map(([fieldName, fieldValue, index]) =>
-            editRates ? (
-              <RatingInput
-                key={fieldName}
-                wineProperty={fieldName}
-                handleChange={handleRatingChange}
-                currentRate={fieldValue || ''}
-              />
-            ) : (
-              <article className="note-ratings" key={fieldName}>
-                <h4>{fieldName.replace('$Rate', '')}</h4>
-                <p>
-                  {fieldValue}
-                  {<BsDropletFill />}
-                </p>
-              </article>
-            ),
-          )}
-
-        <button type="button" onClick={handleEditRates} className="edit-btn">
-          {!editRates ? 'Edit Rates' : <BiArrowBack />}
-          {!editRates ? <EditIcon /> : ''}
-        </button>
-        <section className="adv-notes-section">
-          <button
-            type="button"
-            onClick={handleToggleAdv}
-            className="adv-notes-btn"
-          >
-            Advanced Notes{' '}
-            {!toggleAdvanced ? <MdExpandMore /> : <MdExpandLess />}
-          </button>
-          {toggleAdvanced &&
-            !editAdvNotes &&
-            Object.entries(myNote)
+        <div className="form-sections">
+          <div className="form-section">
+            <h2>{myNote.wine}</h2>
+            {Object.entries(myNote)
               .filter(([fieldName, fieldValue]) =>
-                advNotesProps.includes(fieldName),
+                editInputProps.includes(fieldName),
               )
-              .map(([fieldName, fieldValue]) => (
-                <article key={fieldName} className="adv-notes-article">
-                  <h4>{fieldName.replace('$', ' ')}</h4>
-                  <p>{fieldValue || '...'}</p>
-                </article>
+              .map(([fieldName, fieldValue, index]) => (
+                <EditInput
+                  key={fieldName}
+                  label={fieldName}
+                  type={fieldName === 'date' ? 'date' : 'text'}
+                  value={fieldValue || ''}
+                  onChange={(e) => handleInputChange(fieldName, e.target.value)}
+                />
               ))}
-          {toggleAdvanced && !editAdvNotes && (
+          </div>
+          <div className="form-section">
+            <h3>Ratings:</h3>
+            {Object.entries(myNote)
+              .filter(([fieldName, fieldValue]) =>
+                ratingProps.includes(fieldName),
+              )
+              .map(([fieldName, fieldValue, index]) =>
+                editRates ? (
+                  <RatingInput
+                    key={fieldName}
+                    wineProperty={fieldName}
+                    handleChange={handleRatingChange}
+                    currentRate={fieldValue || ''}
+                  />
+                ) : (
+                  <article className="note-ratings" key={fieldName}>
+                    <h4>{fieldName.replace('$Rate', '')}</h4>
+                    <p>
+                      {fieldValue}
+                      {fieldValue > 0 && <BsDropletFill />}
+                    </p>
+                  </article>
+                ),
+              )}
+
             <button
               type="button"
-              onClick={handleEditAdvNotes}
+              onClick={handleEditRates}
               className="edit-btn"
             >
-              {!editAdvNotes ? 'Edit Advanced Notes' : <BiArrowBack />}
-              {!editAdvNotes ? <EditIcon /> : ''}
+              {!editRates ? 'Edit Rates' : <BiArrowBack />}
+              {!editRates ? <EditIcon /> : ''}
             </button>
-          )}
-        </section>
-        {editAdvNotes && toggleAdvanced && (
-          <AdvancedNotes
-            formData={advProps}
-            handleDropdownChange={handleDropdownChange}
-          />
-        )}
-        {toggleAdvanced && editAdvNotes && (
-          <button
-            type="button"
-            onClick={handleEditAdvNotes}
-            className="edit-btn"
-          >
-            {!editAdvNotes ? 'Edit Advanced Notes' : <BiArrowBack />}
-            {!editAdvNotes ? <EditIcon /> : ''}
-          </button>
-        )}
+            <button
+              type="button"
+              onClick={handleToggleAdv}
+              className="adv-notes-btn"
+            >
+              Advanced Notes{' '}
+              {!toggleAdvanced ? <MdExpandMore /> : <MdExpandLess />}
+            </button>
+          </div>
+
+          {/* <hr className="rates-hr" /> */}
+
+          <div className={!editAdvNotes ? 'form-section' : 'edit-adv'}>
+            <section className={!editAdvNotes ? 'adv-notes-section' : 'none'}>
+              {toggleAdvanced &&
+                !editAdvNotes &&
+                Object.entries(myNote)
+                  .filter(([fieldName, fieldValue]) =>
+                    advNotesProps.includes(fieldName),
+                  )
+                  .map(([fieldName, fieldValue]) => (
+                    <article key={fieldName} className="adv-notes-article">
+                      <h4>{fieldName.replace('$', ' ')}</h4>
+                      <p>{fieldValue || '...'}</p>
+                    </article>
+                  ))}
+              {toggleAdvanced && !editAdvNotes && (
+                <button
+                  type="button"
+                  onClick={handleEditAdvNotes}
+                  className="edit-btn"
+                >
+                  {!editAdvNotes ? 'Edit Advanced Notes' : <BiArrowBack />}
+                  {!editAdvNotes ? <EditIcon /> : ''}
+                </button>
+              )}
+            </section>
+            {editAdvNotes && toggleAdvanced && (
+              <AdvancedNotes
+                formData={advProps}
+                handleDropdownChange={handleDropdownChange}
+              />
+            )}
+            {toggleAdvanced && editAdvNotes && (
+              <button
+                type="button"
+                onClick={handleEditAdvNotes}
+                className="edit-btn"
+              >
+                {!editAdvNotes ? 'Edit Advanced Notes' : <BiArrowBack />}
+                {!editAdvNotes ? <EditIcon /> : ''}
+              </button>
+            )}
+          </div>
+        </div>
       </form>
-      <div className="notes-actions">
+      <div className="note-page-actions">
         {!inputChanged && <NewNoteBtn />}
         {!inputChanged && <MyNotesBtn />}
         {inputChanged && <CancelBtn handleCancel={handleCancelEdit} />}
@@ -219,46 +235,3 @@ const Note = () => {
 };
 
 export default Note;
-
-/*
- {Object.entries(myNote)
-          // .filter(([fieldName, fieldValue]) =>
-          //   editInputProps.includes(fieldName),
-          // )
-          .map(([fieldName, fieldValue, index]) => {
-            return (
-              <div key={fieldName}>
-                {editInputProps.includes(fieldName) && (
-                  <EditInput
-                    key={fieldName}
-                    label={fieldName}
-                    type={fieldName === 'date' ? 'date' : 'text'}
-                    value={fieldValue || ''}
-                    onChange={(e) =>
-                      handleInputChange(fieldName, e.target.value)
-                    }
-                  />
-                )}
-
-                {ratingProps.includes(fieldName) && editRates && (
-                  <RatingInput
-                    key={fieldName}
-                    wineProperty={fieldName}
-                    handleChange={handleInputChange}
-                    currentRate={fieldValue || ''}
-                  />
-                )}
-                {console.log('index', index)}
-                {ratingProps.includes(fieldName) && !editRates && (
-                  <article className="note-ratings">
-                    <h4>{fieldName.replace('$Rate', '')}</h4>
-                    <p>
-                      {fieldValue}
-                      {<BsDropletFill />}
-                    </p>
-                  </article>
-                )}
-              </div>
-            );
-          })}
-*/

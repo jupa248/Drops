@@ -72,6 +72,7 @@ input::placeholder {
   color: antiquewhite;
   font-style: italic;
   margin-top: 1rem;
+  text-align: center;
 }
 
 .submit-button {
@@ -88,6 +89,18 @@ input::placeholder {
 
 @media only screen and (min-width: 1024px) {
   .submit-button:hover {
+    cursor: pointer;
     transform: rotate(15deg);
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .login-header h1 {
+    font-size: 3.6rem;
+  }
+  .login-header svg {
+    font-size: 3rem;
+  }
+  .login-header p {
+    font-size: 1.6rem;
   }
 }

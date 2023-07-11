@@ -33,14 +33,17 @@ const Home = () => {
     return <Spinner />;
   }
 
-  const reversedNotes = [...notes].reverse();
+  let reversedNotes;
+  if (notes.length > 0) {
+    reversedNotes = [...notes]?.reverse();
+  }
 
   return (
     <section className="homepage">
       <div className="homepage-header header">
         <h2>Hi {user.username},</h2>
         <h3>
-          {reversedNotes.length > 0
+          {notes?.length > 0
             ? 'these are your latest notes...'
             : 'start creating your notes...'}
         </h3>
@@ -51,7 +54,7 @@ const Home = () => {
             .filter((note, index) => index < 4)
             .map((note, index) => <NoteCardSmall key={index} note={note} />)}
       </div>
-      <div className="notes-actions actions home-actions">
+      <div className="notes-actions actions">
         <NewNoteBtn />
         <MyNotesBtn />
       </div>
