@@ -1,0 +1,12 @@
+.page-bg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: linear-gradient(180deg,rgba(232,236,239,.60),#f0f2f6),url(../assets/images/grapes.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  background-size: auto,cover;
+  min-height: 100vh;
+  padding-top: 6rem;
+}

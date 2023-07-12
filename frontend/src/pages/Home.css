@@ -1,0 +1,71 @@
+.homepage {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-image: url(../assets/images/bottles.jpg);
+  box-sizing: border-box;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  padding-top: 6rem;
+}
+
+.homepage-header {
+  margin-top: 3rem;
+}
+
+.homepage a:link {
+  text-decoration: none;
+}
+
+.homepage h2,
+.homepage h3 {
+  font-size: 2rem;
+  color: antiquewhite;
+  margin: 1rem;
+  text-align: center;
+  font-style: italic;
+}
+
+.top-list {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    360deg,
+    rgba(61, 62, 55, 0.7) 0%,
+    rgba(97, 5, 5, 0.7) 100%
+  );
+  color: antiquewhite;
+}
+
+@media only screen and (min-width: 1024px) {
+  .homepage {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
+
+  .header {
+    grid-area: 1 / 1 / 2 / 5;
+    align-self: center;
+  }
+  .cards {
+    grid-area: 2 / 1 / 5 / 4;
+    align-self: flex-start;
+    max-width: 80%;
+    padding-bottom: 6rem;
+  }
+  .actions {
+    grid-area: 2 / 4 / 5 / 5;
+    align-self: center;
+  }
+
+  .homepage-header {
+    margin-top: 0;
+  }
+
+  .homepage h2 {
+    font-size: 2rem;
+  }
+}

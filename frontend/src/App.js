@@ -1,27 +1,69 @@
-import React from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
-import Profile from "./components/Profile";
-import AuthContextProvider from "./contexts/AuthContext";
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Home from './pages/Home';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import CreateNote from './pages/CreateNote';
+import Note from './pages/Note';
+import Navbar from './components/UI/NavBar';
+import ProtectedRoute from './components/UI/ProtectedRoute';
+import { useAppContext } from './contexts/AppContext';
+import MyNotes from './pages/MyNotes';
+import './index.css';
+import Vocabulary from './pages/Vocabulary';
 
-// ! FALTA CRIAR OS PROTECTED ROUTES!!
-
-function App() {
+const App = () => {
+  const { user } = useAppContext();
   return (
-    <div className="App">
-      <AuthContextProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/login" element={<Login/>} />
-            <Route path="/signup" element={<Signup/>} />
-            <Route path="/profile" element={<Profile/>} />
-            <Route path="*" element={<Navigate to="/login" replace/>} />
-          </Routes>
-        </BrowserRouter>
-      </AuthContextProvider>
-    </div>
+    <BrowserRouter>
+      {user && <Navbar />}
+      <Routes>
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        {!user && <Route path="/register" element={<Register />} />}
+        {!user && <Route path="/login" element={<Login />} />}
+        <Route
+          path="/create-notes"
+          element={
+            <ProtectedRoute>
+              <CreateNote />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/note/:id"
+          element={
+            <ProtectedRoute>
+              <Note />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/my-notes"
+          element={
+            <ProtectedRoute>
+              <MyNotes />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/vocabulary"
+          element={
+            <ProtectedRoute>
+              <Vocabulary />
+            </ProtectedRoute>
+          }
+        />
+        {!user && <Route path="*" element={<Navigate to="/login" replace />} />}
+        {user && <Route path="*" element={<Navigate to="/home" replace />} />}
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;

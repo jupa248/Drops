@@ -1,0 +1,161 @@
+.vocabulary-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(../assets/images/grapes.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  background-size: cover;
+  min-height: 100vh;
+  padding-top: 6rem;
+  gap: 1rem;
+}
+
+.vocabulary-header {
+  width: 100%;
+  height: 20%;
+  background: #0e73d8;
+  color: #fff;
+  padding: 1.2rem;
+  text-align: center;
+  -webkit-box-shadow: 0px 4px 12px -3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 4px 12px -3px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 4px 12px -3px rgba(0, 0, 0, 0.75);
+}
+
+.vocabulary-header p {
+  margin-top: 0.7rem;
+}
+
+.vocabulary-subtitle {
+  padding: 1rem 0;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-shadow: 0px 4px 12px -3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 4px 12px -3px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 4px 12px -3px rgba(0, 0, 0, 0.75);
+}
+
+.categories-container {
+  width: 95%;
+  margin-bottom: 2.5rem;
+  -webkit-box-shadow: 0px 4px 12px -3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 4px 12px -3px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 4px 12px -3px rgba(0, 0, 0, 0.75);
+}
+
+.bg-light-blue {
+  color: #141313;
+  background: #9fccf9;
+}
+.bg-lighter-blue {
+  color: #737373;
+  background: #cfe6fc;
+}
+
+.bg-white {
+  color: #666666;
+  background-color: #fff;
+}
+
+.key-questions {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  align-items: center;
+  justify-items: center;
+  padding: 0.5rem 0;
+  color: #666666;
+  background-color: antiquewhite;
+  width: 100%;
+  line-height: 1.5rem;
+  -webkit-box-shadow: 0px 4px 12px -3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 4px 12px -3px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 4px 12px -3px rgba(0, 0, 0, 0.75);
+}
+
+.key-questions h4 {
+  margin: 0 1rem;
+  font-weight: bolder;
+}
+
+.key-questions > div:nth-child(1) {
+  border-right: 1px solid #666666;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.clusters-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+}
+
+.clusters-header > h4:nth-child(2) {
+  margin-right: 10rem;
+}
+.cluster {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 1.5rem;
+  padding: 0.2rem 0.8rem;
+}
+
+.cluster h5 {
+  font-size: medium;
+}
+.cluster-desc {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cluster-desc p {
+  margin: 0 0.2rem;
+}
+
+@media only screen and (min-width: 1024px) {
+  .vocabulary-section {
+    line-height: 3rem;
+    gap: 3rem;
+  }
+
+  .vocabulary-section > div {
+    border-radius: 5px;
+  }
+
+  .vocabulary-section h1,
+  .vocabulary-section h2 {
+    font-size: 2rem;
+  }
+
+  .vocabulary-section p {
+    font-size: 1.3rem;
+    padding: 0.5rem 0;
+  }
+
+  .vocabulary-section h4 {
+    font-size: 1.6rem;
+  }
+  .vocabulary-section h5 {
+    font-size: 1.4rem;
+  }
+
+  .vocabulary-subtitle {
+    max-width: 95%;
+  }
+
+  .categories-container {
+    max-width: 70%;
+  }
+
+  .key-questions {
+    width: 85%;
+    padding: 2.5rem 0;
+  }
+}

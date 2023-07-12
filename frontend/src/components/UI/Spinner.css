@@ -1,0 +1,30 @@
+.spinner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(96, 6, 6, 0.8);
+  height: 100vh;
+  width: auto;
+  color: antiquewhite;
+}
+
+.spinner h2 {
+  padding: 2rem 0;
+}
+
+.spinner svg {
+  width: 3.5rem;
+  height: auto;
+  fill: antiquewhite;
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

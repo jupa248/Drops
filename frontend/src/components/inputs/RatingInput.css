@@ -1,0 +1,51 @@
+.rating-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  background-color: antiquewhite;
+  color: black;
+  border-radius: 5px;
+  padding: 0.2rem 0;
+  margin: 1.3rem 0;
+}
+.rating-container label {
+  justify-self: flex-start;
+  margin-left: 1.2rem;
+  text-transform: capitalize;
+}
+
+.drops-container {
+  display: flex;
+  justify-self: center;
+  flex-direction: row-reverse;
+}
+
+.drop-container {
+  display: flex;
+  align-items: center;
+}
+.drop-container input {
+  position: relative;
+  background-color: transparent;
+  border: none !important;
+  color: transparent !important;
+}
+.drop {
+  position: absolute;
+  fill: #bfbfbf;
+  width: 1.4rem;
+  height: auto;
+}
+
+.drop-container input:hover {
+  cursor: pointer;
+}
+.drop-container:hover .drop,
+.drop-container:hover ~ .drop-container .drop {
+  fill: #660066;
+}
+
+.drop-container.selected .drop,
+.drop-container.selected ~ .drop-container .drop {
+  fill: #660066;
+}
