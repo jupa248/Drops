@@ -33,7 +33,6 @@
 }
 
 input::placeholder {
-  /* color: antiquewhite; */
   font-style: italic;
 }
 
@@ -55,7 +54,6 @@ input::placeholder {
 
 .rates-line {
   width: 90%;
-  /* border: 1px solid antiquewhite; */
   margin: 3rem 0.5rem;
   align-self: center;
   border-bottom: 1px solid antiquewhite;
@@ -102,7 +100,7 @@ input::placeholder {
   position: absolute;
   border-radius: 5px;
   top: 0.5rem;
-  left: -0.5rem;
+  left: -8.5rem;
   z-index: 20;
   transition: ease-in-out;
 }
@@ -110,7 +108,7 @@ input::placeholder {
 .err-tooltip::after {
   content: ' ';
   position: absolute;
-  top: 100%; /* At the top of the tooltip */
+  top: 100%;
   margin-top: -2.7rem;
   margin-left: -7rem;
   border-width: 5px;

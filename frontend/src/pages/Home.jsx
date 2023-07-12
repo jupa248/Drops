@@ -6,6 +6,7 @@ import NewNoteBtn from '../components/buttons/NewNoteBtn';
 import MyNotesBtn from '../components/buttons/MyNotesBtn';
 import { toast } from 'react-toastify';
 import Spinner from '../components/UI/Spinner';
+import NewUserPage from '../components/UI/NewUserPage';
 
 const Home = () => {
   const { user, fetchNotes } = useAppContext();
@@ -49,14 +50,17 @@ const Home = () => {
         </h3>
       </div>
       <div className="cards">
-        {reversedNotes &&
+        {reversedNotes ? (
           reversedNotes
             .filter((note, index) => index < 4)
-            .map((note, index) => <NoteCardSmall key={index} note={note} />)}
+            .map((note, index) => <NoteCardSmall key={index} note={note} />)
+        ) : (
+          <NewUserPage />
+        )}
       </div>
       <div className="notes-actions actions">
         <NewNoteBtn />
-        <MyNotesBtn />
+        {notes?.length > 0 && <MyNotesBtn />}
       </div>
     </section>
   );

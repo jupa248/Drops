@@ -10,7 +10,6 @@
   display: grid;
   grid-template-rows: 2fr 1fr;
   grid-template-columns: auto;
-  /* color: antiquewhite; */
   align-items: center;
   padding-bottom: 0.5rem;
   background: transparent;
@@ -26,7 +25,7 @@ a {
 }
 
 .icon-notes img {
-  width: 4rem;
+  width: 5rem;
   height: auto;
 }
 
@@ -42,7 +41,7 @@ a {
 }
 .icon-edition img {
   justify-self: center;
-  width: 3rem;
+  width: 4rem;
   height: auto;
 }
 .barrel img {
@@ -63,9 +62,6 @@ a {
   }
 
   .notes-actions {
-    /* justify-content: flex-end;
-    margin-right: 2rem;
-    gap: 2rem; */
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
@@ -89,5 +85,13 @@ a {
     -moz-transition: opacity 0.4s ease-in-out;
     -webkit-transition: opacity 0.4s ease-in-out;
     -o-transition: opacity 0.4s ease-in-out;
+  }
+
+  .icon-notes img {
+    width: 4rem;
+  }
+
+  .icon-edition img {
+    width: 3rem;
   }
 }

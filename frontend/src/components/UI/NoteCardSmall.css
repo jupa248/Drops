@@ -24,6 +24,7 @@
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   text-transform: capitalize;
+  font-size: 1.3rem;
 }
 
 .has-rating {
@@ -49,19 +50,14 @@
   color: antiquewhite;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+  font-size: 1.2rem;
 }
 
 .card-link span {
   display: flex;
   gap: 0.6rem;
+  align-items: center;
 }
-
-/* .card-link span:hover,
-:active {
-  transition: all 0.5s ease-in-out;
-  transform: scale(1.1);
-  color: gray;
-} */
 
 .card-link:active {
   background-color: rgb(54, 4, 4);

@@ -1,5 +1,4 @@
 import { pool } from '../db-config.js';
-import { authenticate } from './users.js';
 
 export const createNote = async (req, res, next) => {
   try {
@@ -229,7 +228,7 @@ export const updateNote = async (req, res, next) => {
         body$Rate,
         taste$Rate,
         finish$Rate,
-        noteId, // Include noteId here as well
+        noteId,
       ],
     );
 

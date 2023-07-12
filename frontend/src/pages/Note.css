@@ -35,6 +35,7 @@
 .myNotes-container h2 {
   color: antiquewhite;
   text-align: center;
+  font-size: 2.5rem;
   font-style: italic;
   font-weight: bold;
   padding: 1rem 0;
@@ -159,6 +160,8 @@ textarea {
   background-color: transparent;
   border: none;
   padding: 0.4rem 0;
+  font-size: 1.3rem;
+  padding-top: 1rem;
 }
 
 .adv-notes-article {

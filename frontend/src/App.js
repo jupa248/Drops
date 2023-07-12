@@ -11,7 +11,6 @@ import MyNotes from './pages/MyNotes';
 import './index.css';
 import Vocabulary from './pages/Vocabulary';
 
-
 const App = () => {
   const { user } = useAppContext();
   return (

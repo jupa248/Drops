@@ -1,7 +1,6 @@
 .advanced-container {
   display: flex;
   flex-direction: column;
-  /* height: 50vh; */
   justify-content: space-around;
   align-items: center;
   gap: 1rem;
@@ -16,7 +15,6 @@
 .advanced-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  /* align-items: center; */
   margin-top: 1rem;
   margin-bottom: 1rem;
   text-transform: capitalize;
@@ -28,6 +26,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
 
 @media only screen and (min-width: 1024px) {

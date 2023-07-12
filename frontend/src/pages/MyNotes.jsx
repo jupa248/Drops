@@ -7,6 +7,7 @@ import NewNoteBtn from '../components/buttons/NewNoteBtn';
 import { toast } from 'react-toastify';
 import Spinner from '../components/UI/Spinner';
 import './MyNotes.css';
+import NewUserPage from '../components/UI/NewUserPage';
 
 const MyNotes = () => {
   const { user, fetchNotes } = useAppContext();
@@ -73,13 +74,16 @@ const MyNotes = () => {
   return (
     <section className="my-notes-container">
       <div className="small-cards-container">
-        <h2>My Notes</h2>
-        {reversedNotes &&
+        {reversedNotes ? <h2>My Notes</h2> : <h2>You don't have notes...</h2>}
+        {reversedNotes ? (
           reversedNotes.map(
             (note, index) =>
               index < maxIndex && <NoteCardSmall key={index} note={note} />,
-          )}
-        {scrollDown && (
+          )
+        ) : (
+          <NewUserPage />
+        )}
+        {reversedNotes && scrollDown && (
           <button
             type="button"
             onClick={handleGoToBottom}

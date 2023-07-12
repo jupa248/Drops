@@ -31,7 +31,6 @@ export const AppProvider = ({ children }) => {
       });
       return response;
     } catch (error) {
-      //console.error('Request error:', error.message);
       throw error;
     }
   };
@@ -84,7 +83,6 @@ export const AppProvider = ({ children }) => {
     try {
       const response = await axiosRequest('get', `notes/${userId}`);
       const notes = response?.data;
-      console.log('notes ctx:', notes);
       return notes;
     } catch (error) {
       return error;
@@ -122,7 +120,7 @@ export const AppProvider = ({ children }) => {
 
       return response.data;
     } catch (error) {
-      console.log(error);
+      return error;
     }
   };
 

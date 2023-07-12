@@ -108,7 +108,6 @@ const NotesForm = () => {
         <input name="winery" type="text" onChange={handleChange} />
         <label>Region/Country</label>
         <input name="region" type="text" onChange={handleChange} />
-        {/* <hr className="rates-line" /> */}
         <div className="rates">
           <h3>Rates:</h3>
           {ratingProps.map((rate, index) => (
@@ -120,7 +119,6 @@ const NotesForm = () => {
           ))}
         </div>
         <div className="expand-adv-notes">
-          {/* <p>Advanced Notes</p> */}
           <button type="button" onClick={handleToggleAdv}>
             Advanced Notes{' '}
             {!toggleAdvanced ? <MdExpandMore /> : <MdExpandLess />}

@@ -177,8 +177,6 @@ const Note = () => {
             </button>
           </div>
 
-          {/* <hr className="rates-hr" /> */}
-
           <div className={!editAdvNotes ? 'form-section' : 'edit-adv'}>
             <section className={!editAdvNotes ? 'adv-notes-section' : 'none'}>
               {toggleAdvanced &&
