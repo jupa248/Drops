@@ -8,7 +8,8 @@
     "start": "concurrently \"npm --prefix ./frontend run dev\" \"npm --prefix ./backend run dev\"",
     "dev-front": "npm --prefix ./frontend run dev",
     "dev-back": "npm --prefix ./backend run dev",
-    "fix": "npm --prefix ./frontend run fix && npm --prefix ./backend run fix"
+    "fix": "npm --prefix ./frontend run fix && npm --prefix ./backend run fix",
+    "build": "npm install --omit=dev && react-scripts build"
   },
   "keywords": [],
   "author": "Juan Pablo Giménez",
@@ -17,8 +18,5 @@
     "concurrently": "^7.2.1",
     "react": "^18.1.0"
   },
-  "proxy": "http://localhost:5000",
-  "devDependencies": {
-    "depcheck": "^1.4.3"
-  }
+  "proxy": "http://localhost:5000"
 }
