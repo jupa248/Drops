@@ -1,0 +1,126 @@
+::placeholder {
+  color: black;
+}
+
+.char-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dropdown {
+  margin: 0 auto;
+  position: relative;
+  min-width: 25vw;
+}
+
+.dropdown .dropdown-btn {
+  cursor: pointer;
+  background: antiquewhite;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  color: #777;
+  font-weight: 500;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 0;
+  left: -90%;
+  width: 90%;
+  z-index: 1;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.07);
+}
+
+.dropdown-content .item {
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid #562f36;
+}
+
+.lemon-green {
+  color: #777;
+  background-color: #effecc;
+}
+
+.lemon {
+  color: #777;
+  background-color: #fff9ba;
+}
+
+.gold {
+  background-color: #eccd13;
+  color: #fcfcfc;
+}
+
+.amber {
+  color: #fff;
+  background-color: #ffbf00;
+}
+
+.brown {
+  color: #fff;
+  background-color: #d2b48c;
+}
+
+.pink {
+  color: #999999;
+  background-color: #facdd4;
+}
+.salmon {
+  color: #f2f2f2;
+  background-color: #fca69c;
+}
+
+.orange {
+  color: #f2f2f2;
+  background-color: #ffa500;
+}
+
+.purple {
+  color: #fff;
+  background-color: #924678;
+}
+.ruby {
+  color: #fff;
+  background-color: #9f2a3d;
+}
+.garnet {
+  color: #fff;
+  background-color: #830e0d;
+}
+.tawny {
+  color: #fff;
+  background-color: #6b3b44;
+}
+.deep-tawny {
+  color: #fff;
+  background-color: #562f36;
+}
+
+.item-bg {
+  background-color: #688dff;
+}
+
+.item-font {
+  color: #fff;
+}
+
+@media only screen and (min-width: 1024px) {
+  .dropdown-content .item {
+    cursor: pointer;
+    opacity: 0.9;
+  }
+
+  .dropdown-content .item:hover {
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
+  }
+}

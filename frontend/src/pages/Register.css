@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Graduate&family=Inter:wght@100;200;300;400;500;600;700&display=swap');
+
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+  border-radius: 15px;
+}
+
+.signup-container form {
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  background: linear-gradient(
+    360deg,
+    rgba(61, 62, 55, 0.7) 0%,
+    rgba(97, 5, 5, 0.7) 100%
+  );
+  padding: 1.5rem;
+  margin-top: 2rem;
+  line-height: 2rem;
+}
+
+.signup-container h3 {
+  text-align: center;
+  color: antiquewhite;
+}
+
+.signup-container input {
+  padding: 10px;
+  border: antiquewhite;
+  border-radius: 10px;
+  color: #2f4f4f;
+  background-color: transparent;
+  border: solid 1px #d8bfd8;
+  color: antiquewhite;
+}
+
+.signup-container label {
+  color: antiquewhite;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.signup-img {
+  background-image: url('https://i.ibb.co/mBYM0d4/grapes.jpg');
+  box-sizing: border-box;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-button {
+  background-image: url('https://i.ibb.co/XJJw37t/posters-cork-background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  margin-top: 1rem;
+  font-weight: 500;
+  text-align: center;
+  font-family: 'Graduate', cursive;
+  font-weight: bold;
+  color: #2e0c0c;
+  align-self: center;
+}
+
+.link {
+  text-decoration: none;
+  color: antiquewhite;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.link:hover {
+  color: gray;
+}
+
+@media only screen and (min-width: 1024px) {
+  .signup-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .signup-button:hover {
+    cursor: pointer;
+    transform: rotate(15deg);
+    transition: transform 0.4s ease-in-out;
+  }
+}

@@ -1,64 +1,69 @@
-import React from "react";
-import { BrowserRouter, Routes, Route, Navigate, useNavigate } from "react-router-dom";
-import Signup from "./components/Signup";
-import HomePage from "./components/HomePage";
-import AuthContextProvider from "./contexts/AuthContext";
-import LandingPage from "./components/LandingPage";
-import MyNotes from "./components/MyNotes";
-import "./App.css"
-import { AuthContext } from "./contexts/AuthContext";
-import CreateNotes from "./components/CreateNotes";
-import SingleNote from "./components/SingleNote";
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Home from './pages/Home';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import CreateNote from './pages/CreateNote';
+import Note from './pages/Note';
+import Navbar from './components/UI/NavBar';
+import ProtectedRoute from './components/UI/ProtectedRoute';
+import { useAppContext } from './contexts/AppContext';
+import MyNotes from './pages/MyNotes';
+import './index.css';
+import Vocabulary from './pages/Vocabulary';
 
-// ! FALTA CRIAR OS PROTECTED ROUTES!!
-//create protected routes
-// const ProtectedRoute = ({ element, ...rest }) => {
-//   const { auth } = React.useContext(AuthContext);
-
-//   const navigate = useNavigate();
-
-//   return (
-//     <Route
-//       {...rest}
-//       render={({ location }) =>
-//         auth ? (
-//           element
-//         ) : (
-//           navigate("/login", { replace: true })
-//         )
-//       }
-//     />
-//   );
-// }
-
-
-function App() {
+const App = () => {
+  const { user } = useAppContext();
   return (
-    <div className="App">
-      <AuthContextProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/login" element={<LandingPage/>} />
-            <Route path="/signup" element={<Signup/>} />
-              <Route path="/homepage" element={<HomePage/>} />
-              <Route path="/my-notes" element={<MyNotes/>} />
-              <Route path="/create-notes" element={<CreateNotes/>} />
-              <Route
-                  path="/single-note/:id"
-                  element={<SingleNote />}
-                />
-              {/* <Route path="/wish" element={<WishList/>} /> */}
-              {/* <Route path="/dictionary" element={<Dictionary/>} /> */}
-            <Route path="*" element={<Navigate to="/login" replace/>} />
-          </Routes>
-        </BrowserRouter>
-      </AuthContextProvider>
-    </div>
+    <BrowserRouter>
+      {user && <Navbar />}
+      <Routes>
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        {!user && <Route path="/register" element={<Register />} />}
+        {!user && <Route path="/login" element={<Login />} />}
+        <Route
+          path="/create-notes"
+          element={
+            <ProtectedRoute>
+              <CreateNote />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/note/:id"
+          element={
+            <ProtectedRoute>
+              <Note />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/my-notes"
+          element={
+            <ProtectedRoute>
+              <MyNotes />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/vocabulary"
+          element={
+            <ProtectedRoute>
+              <Vocabulary />
+            </ProtectedRoute>
+          }
+        />
+        {!user && <Route path="*" element={<Navigate to="/login" replace />} />}
+        {user && <Route path="*" element={<Navigate to="/home" replace />} />}
+      </Routes>
+    </BrowserRouter>
   );
-}
-           
-          
-     
-        
+};
 
 export default App;
