@@ -1,5 +1,5 @@
-import { Route, Navigate } from "react-router-dom";
-import { useAppContext } from "../../contexts/AppContext";
+import { Navigate } from 'react-router-dom';
+import { useAppContext } from '../../contexts/AppContext';
 
 const ProtectedRoute = ({ children }) => {
   const { user } = useAppContext();
