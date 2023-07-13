@@ -1,7 +1,7 @@
 {
   "name": "drops",
   "version": "1.0.0",
-  "description": "",
+  "description": "root directory",
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"npm --prefix ./frontend run dev\"",
