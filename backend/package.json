@@ -1,7 +1,7 @@
 {
   "name": "drops-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "backend",
   "main": "app.js",
   "type": "module",
   "scripts": {
