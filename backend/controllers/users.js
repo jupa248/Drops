@@ -69,11 +69,7 @@ export const login = async (req, res, next) => {
     });
 
     // Set the JWT token as a cookie
-    res.cookie('token', token, {
-      httpOnly: true,
-      secure: true,
-      sameSite: 'none',
-    });
+    res.cookie('token', token, { httpOnly: true });
 
     // Exclude the password field from the user object
     const { password: excludedPassword, ...userData } = user;

@@ -9,7 +9,7 @@
     "dev-front": "npm --prefix ./frontend run dev",
     "dev-back": "npm --prefix ./backend run dev",
     "fix": "npm --prefix ./frontend run fix && npm --prefix ./backend run fix",
-    "build": "npm --prefix ./frontend run build"
+    "build": "CI=false npm --prefix ./frontend run build"
   },
   "keywords": [],
   "author": "Juan Pablo Giménez",
