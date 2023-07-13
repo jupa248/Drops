@@ -14,18 +14,10 @@
   "author": "Juan Pablo Giménez",
   "license": "ISC",
   "dependencies": {
-    "@material-tailwind/react": "^1.0.6",
     "axios": "^0.27.2",
     "concurrently": "^7.2.1",
-    "dotenv": "^16.0.1",
-    "express": "^4.18.1",
-    "mongoose": "^6.4.0",
     "react": "^18.1.0",
-    "react-apexcharts": "^1.4.0",
-    "react-dom": "^18.1.0",
-    "react-hook-form": "^7.31.3",
-    "react-tooltip": "^4.2.21",
-    "tailwind-react-ui": "^0.8.1"
+    "react-dom": "^18.1.0"
   },
   "proxy": "http://localhost:5000"
 }
