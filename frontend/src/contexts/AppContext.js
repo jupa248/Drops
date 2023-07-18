@@ -12,7 +12,7 @@ export const AppProvider = ({ children }) => {
   const [notes, setNotes] = useState([]);
   const [error, setError] = useState('');
 
-  const API_URL = 'http://localhost:5000';
+  const API_URL = 'mysql://root:k5DJA6kfRU35CSNXmgHd@containers-us-west-86.railway.app:6788/railway';
   const token = localStorage.getItem('token');
 
   const config = {
