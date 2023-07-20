@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nodemon app.js",
     "start": "node app.js",
-    "predeploy": "npm ci"
+    "predeploy": "npm install"
   },
   "keywords": [],
   "author": "",
