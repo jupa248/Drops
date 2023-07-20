@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nodemon app.js",
     "start": "node app.js",
-    "my-start": "PROD=true node index.js",
+    "my-start": "PROD=true node app.js",
     "predeploy": "npm install"
   },
   "keywords": [],
